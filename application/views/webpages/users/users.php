@@ -217,8 +217,8 @@
                                             <td class="text-right">
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
-                                                <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/view" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/edit" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     <?php } } ?>                                           
