@@ -1,0 +1,1081 @@
+
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Sidebarmenu {
+
+  public function __construct() {
+    $this->CI = & get_instance();
+  }
+
+  public function get_menu_items($role_id, $user_data, $crypt_data, $status, $count) {
+
+    $side_bar = '';
+    $supplier_id = $user_data['supplier_id'];
+    $order_token = $this->CI->validation->gen_token(array($user_data['supplier_id'], 'order'));
+    $product_profile_token = $this->CI->validation->gen_token(array($user_data['branch_id'], 'product'));
+    $service_profile_token = $this->CI->validation->gen_token(array($user_data['branch_id'], 'service'));
+    if ($role_id == '41') {
+      if ($user_data['user_entity'] == 'SA') {
+        $side_bar = $side_bar . '<section class = "sidebar" style= "padding-top: 0px;">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view supplier profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\" ></i>Supplier Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i><span>Products</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add product\" href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add products in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view enquiry received\" href=\"" . $this->CI->config->item('base_url') . "supplier/admin/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><span>Masters</span>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "supplier/products/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '1' . '/' . $order_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '2' . '/' . $order_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '3' . '/' . $order_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '4' . '/' . $order_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '5' . '/' . $order_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '6' . '/' . $order_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '7' . '/' . $order_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+      if ($user_data['user_entity'] == 'SE') {
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view supplier profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Supplier Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Products</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add product\" href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add products in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view enquiry received\" href=\"" . $this->CI->config->item('base_url') . "supplier/admin/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "supplier/products/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '1' . '/' . $order_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '2' . '/' . $order_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '3' . '/' . $order_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '4' . '/' . $order_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '5' . '/' . $order_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '6' . '/' . $order_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '7' . '/' . $order_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+
+      if ($user_data['user_entity'] == 'BA') {
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '2';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view branch admin profile\" href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Products</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu"  style= "padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products list\" href=\"" . $this->CI->config->item('base_url') . "branch/active_products_for_branch_admin/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['product_profile_token'] . "\"><i class =\"fa fa-reorder\"></i>Products List</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view enquiry received\" href=\"" . $this->CI->config->item('base_url') . "enquiry/response/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '1' . '/' . $product_profile_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '2' . '/' . $product_profile_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '3' . '/' . $product_profile_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '4' . '/' . $product_profile_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '5' . '/' . $product_profile_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '6' . '/' . $product_profile_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '7' . '/' . $product_profile_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+
+        $side_bar = $side_bar . '</section>';
+      }
+      if ($user_data['user_entity'] == 'BE') {
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '2';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view branch executive profile\" href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '1' . '/' . $product_profile_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '2' . '/' . $product_profile_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '3' . '/' . $product_profile_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '4' . '/' . $product_profile_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '5' . '/' . $product_profile_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '6' . '/' . $product_profile_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '7' . '/' . $product_profile_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view enquiry received\" href=\"" . $this->CI->config->item('base_url') . "enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+    }
+    if ($role_id == '42') {
+
+      if ($user_data['user_entity'] == 'SA') {
+
+        $side_bar = $side_bar . '<section class = "sidebar" style= "padding-top: 0px;">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view service provider profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Service Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add service\" href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add services in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active services\" href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft services\" href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services enquiry\" href=\"" . $this->CI->config->item('base_url') . "service/admin/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "services/details/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '1' . '/' . $order_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '2' . '/' . $order_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '3' . '/' . $order_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '4' . '/' . $order_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '5' . '/' . $order_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '6' . '/' . $order_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '7' . '/' . $order_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+      if ($user_data['user_entity'] == 'SE') {
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view service provider profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Service Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add service\" href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add services in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active services\" href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft services\" href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services enquiry\" href=\"" . $this->CI->config->item('base_url') . "service/admin/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "services/details/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '1' . '/' . $order_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '2' . '/' . $order_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '3' . '/' . $order_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '4' . '/' . $order_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '5' . '/' . $order_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '6' . '/' . $order_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '7' . '/' . $order_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+
+      if ($user_data['user_entity'] == 'BA') {
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '3';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view service branch admin profile\" href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu"  style= "padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services list\" href=\"" . $this->CI->config->item('base_url') . "branch/active_services_for_branch_admin/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['service_profile_token'] . "\"><i class =\"fa fa-reorder\"></i>Service List</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services enquiry\" href=\"" . $this->CI->config->item('base_url') . "service/enquiry/response/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '1' . '/' . $service_profile_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '2' . '/' . $service_profile_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '3' . '/' . $service_profile_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '4' . '/' . $service_profile_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '5' . '/' . $service_profile_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '6' . '/' . $service_profile_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '7' . '/' . $service_profile_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+      if ($user_data['user_entity'] == 'BE') {
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '3';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view service executive profile\" href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><i style="font-style: normal;">Masters</i>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '1' . '/' . $service_profile_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '2' . '/' . $service_profile_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '3' . '/' . $service_profile_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '4' . '/' . $service_profile_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '5' . '/' . $service_profile_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '6' . '/' . $service_profile_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $user_data['supplier_id'] . '/' . '7' . '/' . $service_profile_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services enquiry\" href=\"" . $this->CI->config->item('base_url') . "service/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received ($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      }
+    }
+
+
+
+    if ($role_id == '43') {
+
+      if ($user_data['user_entity'] == 'SA') {
+
+        $side_bar = $side_bar . '<section class = "sidebar" style= "padding-top: 0px;">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i><span>Products</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add product\" href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add products in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add service\" href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add services in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active services\" href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft services\" href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view enquiry received\" href=\"" . $this->CI->config->item('base_url') . "supplier/admin/enquiry/response/" . $supplier_id . '/' . $crypt_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiries Received($count)</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . "<i class =\"fa fa-cart-arrow-down\"></i><span data-toggle=\"tooltip\" title=\"Click to view orders received\">Orders Received ($status[sum1])</span>";
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu orders" style="padding-left:0px;">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '1' . '/' . $order_token . "\">Released ($status[rele_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '2' . '/' . $order_token . "\">Rejected ($status[reje_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '3' . '/' . $order_token . "\">Approved - Payment Pending ($status[pay_pen_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '4' . '/' . $order_token . "\">Offline Payment ($status[off_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '5' . '/' . $order_token . "\">Approved - Offline Payment ($status[appr_offl_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '6' . '/' . $order_token . "\">Payment Done  ($status[pay_done_status])</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/branch/view_orders_list/" . $user_data['supplier_id'] . '/' . '7' . '/' . $order_token . "\">Canceled ($status[canl_status])</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href = "#">';
+        $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+        $side_bar = $side_bar . '<span class = "pull-right-container">';
+        $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+        $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "supplier/products/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview">';
+        $side_bar = $side_bar . '<a href="#">';
+        $side_bar = $side_bar . '<i class="fa fa-th"></i><span>Masters</span>';
+        $side_bar = $side_bar . '<span class="pull-right-container">';
+        $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+        $side_bar = $side_bar . '</span>';
+        $side_bar = $side_bar . '</a>';
+        $side_bar = $side_bar . '<ul class="treeview-menu">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . "</li>";
+        $side_bar = $side_bar . "</ul>";
+        $side_bar = $side_bar . '</section>';
+      } elseif ($user_data['user_entity'] == 'SE') {
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Supplier Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        foreach ($user_data['user_role_id_list'] as $user) {
+          if ($user['entity_id'] == 2) {
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            $side_bar = $side_bar . '<a href = "#">';
+            $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Products</span>';
+            $side_bar = $side_bar . '<span class = "pull-right-container">';
+            $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            $side_bar = $side_bar . '</span>';
+            $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class = "treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '</section>';
+          } elseif ($user['entity_id'] == 6) {
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            $side_bar = $side_bar . '<a href = "#">';
+            $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+            $side_bar = $side_bar . '<span class = "pull-right-container">';
+            $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            $side_bar = $side_bar . '</span>';
+            $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+            //$side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "upload/service/documents/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Upload Services</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            $side_bar = $side_bar . '<a href="#">';
+            $side_bar = $side_bar . '<i class="fa fa-th"></i><span>Masters</span>';
+            $side_bar = $side_bar . '<span class="pull-right-container">';
+            $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+            $side_bar = $side_bar . '</span>';
+            $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class="treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '</section>';
+          }
+        }
+      }
+
+      if ($user_data['user_entity'] == 'BA') {
+
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '4';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        foreach ($user_data['user_role_id_list'] as $user) {
+          if ($user['entity_id'] == 3) {
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            $side_bar = $side_bar . '<a href = "#">';
+            $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+            $side_bar = $side_bar . '<span class = "pull-right-container">';
+            $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            $side_bar = $side_bar . '</span>';
+            $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class = "treeview-menu"  style= "padding-left: 32px;">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/active_products_for_branch_admin/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['product_profile_token'] . "\"><i class =\"fa fa-reorder\"></i>Products List</a></li>";
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "enquiry/response/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiry</a></li>";
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/view_orders_list/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['product_profile_token'] . "\"><i class = \"fa fa-newspaper-o\"></i>Orders Received</a></li>";
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '</section>';
+          } elseif ($user['entity_id'] == 7) {
+
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            $side_bar = $side_bar . '<a href = "#">';
+            $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+            $side_bar = $side_bar . '<span class = "pull-right-container">';
+            $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            $side_bar = $side_bar . '</span>';
+            $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class = "treeview-menu"  style= "padding-left: 32px;">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/active_services_for_branch_admin/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['service_profile_token'] . "\"><i class =\"fa fa-reorder\"></i>Service List</a></li>";
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/enquiry/response/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"glyphicon glyphicon-hand-right\"></i>Enquiry</a></li>";
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . "</li>";
+
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview-menu">';
+            $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/branch/view_requests_received/" . $user_data['branch_id'] . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-newspaper-o\"></i>Service Requests Received</a></li>";
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+
+
+            $side_bar = $side_bar . "</ul>";
+            $side_bar = $side_bar . '</section>';
+          }
+        }
+      }
+
+      if ($user_data['user_entity'] == 'BE') {
+        $this->CI->load->library('validation');
+        $bran_token_data = $this->CI->validation->gen_branch_token($user_data['branch_id']);
+        $show_button = '4';
+        $side_bar = $side_bar . '<section class = "sidebar">';
+        $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+        $side_bar = $side_bar . '<li class = "treeview-menu">';
+        $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "branch/branch_profile_for_admin/" . $user_data['branch_id'] . '/' . $show_button . '/' . $supplier_id . '/' . $bran_token_data['branch_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Branch Profile</a></li>";
+        $side_bar = $side_bar . '</li>';
+        $side_bar = $side_bar . '</ul>';
+        foreach ($user_data['user_role_id_list'] as $user) {
+          if ($user['entity_id'] == 4) {
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            //  $side_bar = $side_bar . '<a href = "#">';
+            //  $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Products</span>';
+            //  $side_bar = $side_bar . '<span class = "pull-right-container">';
+            //  $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            //  $side_bar = $side_bar . '</span>';
+            //  $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class = "treeview-menu" style= "padding-left: 32px;">';
+            //                $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/product_list\"><i class = \"fa fa-cogs\"></i>Product List</a></li>";
+            //     $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+            //    $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+
+
+            $side_bar = $side_bar . '</section>';
+          } elseif ($user['entity_id'] == 8) {
+            $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+            $side_bar = $side_bar . '<li class = "treeview">';
+            //  $side_bar = $side_bar . '<a href = "#">';
+            //  $side_bar = $side_bar . '<i class ="fa fa-gears"></i> <span>Services</span>';
+            //  $side_bar = $side_bar . '<span class = "pull-right-container">';
+            //  $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+            //  $side_bar = $side_bar . '</span>';
+            //  $side_bar = $side_bar . '</a>';
+            $side_bar = $side_bar . '<ul class = "treeview-menu" style= "padding-left: 32px;">';
+            //                $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/product_list\"><i class = \"fa fa-cogs\"></i>Product List</a></li>";
+            //   $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+            //   $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+            $side_bar = $side_bar . '</ul>';
+            $side_bar = $side_bar . '</li>';
+            $side_bar = $side_bar . '</ul>';
+
+            $side_bar = $side_bar . "</li>";
+            $side_bar = $side_bar . "</ul>";
+
+
+            $side_bar = $side_bar . '</section>';
+          }
+        }
+      }
+    }
+    return $side_bar;
+  }
+
+  public function get_admin_menu_items($role_id, $supplier_id, $crypt_data) {
+    $side_bar = '';
+    if ($role_id == 'Supplier') {
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree" style = "padding-top: 60px; font-size: 15px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view supplier profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Supplier Profile</a></li>";
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="fa fa-cogs"></i><i style="font-style: normal;">Products</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add product\" href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add products in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft products\" href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree" style= "font-size: 15px;">';
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="glyphicon glyphicon-th"></i><i style="font-style: normal;">Masters</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view products stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+      $side_bar = $side_bar . '<ul class = "treeview-menu">';
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-check\"></i>Uploads</a></li>";
+      $side_bar = $side_bar . '</ul>';
+      $side_bar = $side_bar . '</li>';
+      $side_bar = $side_bar . '</ul>';
+
+      $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+      $side_bar = $side_bar . '<li class = "treeview">';
+      $side_bar = $side_bar . '<a href = "#">';
+      $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+      $side_bar = $side_bar . '<span class = "pull-right-container">';
+      $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "supplier/products/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+      $side_bar = $side_bar . '</ul>';
+      $side_bar = $side_bar . '</li>';
+      $side_bar = $side_bar . '</ul>';
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+
+
+      return $side_bar;
+    }
+    if ($role_id == 'Service Provider') {
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree" style= "padding-top: 63px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view service provider profile\" href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Service Profile</a></li>";
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="glyphicon glyphicon-align-justify"></i><i style="font-style: normal;">Services</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add service\" href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to add services in bulk\" href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view active services\" href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view draft services\" href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree">';
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="glyphicon glyphicon-th"></i><i style="font-style: normal;">Masters</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services delivery status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view services stock status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+      $side_bar = $side_bar . '<ul class = "sidebar-menu" data-widget = "tree">';
+      $side_bar = $side_bar . '<li class = "treeview">';
+      $side_bar = $side_bar . '<a href = "#">';
+      $side_bar = $side_bar . '<i class ="fa fa-file"></i><span>Reports</span>';
+      $side_bar = $side_bar . '<span class = "pull-right-container">';
+      $side_bar = $side_bar . '<i class = "fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class = "treeview-menu" style="padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view the details\" href=\"" . $this->CI->config->item('base_url') . "services/details/reports/" . $supplier_id . '/' . $crypt_data['report_token'] . "\"><i class = \"glyphicon glyphicon-list-alt\"></i>Details</a></li>";
+      $side_bar = $side_bar . '</ul>';
+      $side_bar = $side_bar . '</li>';
+      $side_bar = $side_bar . '</ul>';
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+      return $side_bar;
+    }
+    if ($role_id == 'Supplier and Service Provider') {
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree" style= "padding-top: 63px;">';
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/supplier_profile/" . $supplier_id . '/' . $crypt_data['sup_profile_token'] . "\"><i class = \"fa fa-user-circle-o\"></i>Profile</a></li>";
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="fa fa-cogs"></i><i style="font-style: normal;">Products</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style ="padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/product/add/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-line-chart\"></i>Add New</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/upload/products/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Products</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Products</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/supplier/products/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Products</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree">';
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="fa fa-list"></i><i style="font-style: normal;">Services</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "services/add/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Add Services</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "master/upload/services/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-upload\"></i>Upload Services</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/active/" . $supplier_id . '/' . $crypt_data['active_pro_token'] . "\"><i class = \"fa fa-check\"></i>Active Services</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "service/draft/" . $supplier_id . '/' . $crypt_data['draft_pro_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Draft Services</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . '<ul class="sidebar-menu" data-widget="tree">';
+      $side_bar = $side_bar . '<li class="treeview">';
+      $side_bar = $side_bar . '<a href="#">';
+      $side_bar = $side_bar . '<i class="glyphicon glyphicon-th"></i><i style="font-style: normal;">Masters</i>';
+      $side_bar = $side_bar . '<span class="pull-right-container">';
+      $side_bar = $side_bar . '<i class="fa fa-angle-left pull-right"></i>';
+      $side_bar = $side_bar . '</span>';
+      $side_bar = $side_bar . '</a>';
+      $side_bar = $side_bar . '<ul class="treeview-menu" style = "padding-left: 32px;">';
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/delivery_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-check\"></i>Delivery Status</a></li>";
+      $side_bar = $side_bar . "<li><a href=\"" . $this->CI->config->item('base_url') . "supplier/master/stock_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-hourglass-1\"></i>Stock Status</a></li>";
+      $side_bar = $side_bar . "<li><a data-toggle=\"tooltip\" title=\"Click to view remarks status\" href=\"" . $this->CI->config->item('base_url') . "supplier/master/remarks_status/" . $supplier_id . '/' . $crypt_data['master_token'] . "\"><i class = \"fa fa-file-text\"></i>Remarks Status</a></li>";
+      $side_bar = $side_bar . "</ul>";
+      $side_bar = $side_bar . "</li>";
+      $side_bar = $side_bar . "</ul>";
+
+      return $side_bar;
+    }
+  }
+
+}

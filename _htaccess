@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+#Checks to see if the user is attempting to access a valid file,
+#such as an image or css document, if this isn't true it sends the
+#request to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#This last condition enables access to the images and css folders, and the robots.txt file
+RewriteCond $1 !^(index\.php|public|images|robots\.txt|css)
+RewriteCond $1 !^(index\.php|jquery|js|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteCond %{REQUEST_METHOD} ^(PUT|DELETE|PATCH|CONNECT|CUSTOM|TRACE|TRACK|OPTIONS|HEAD) 
+RewriteRule .* - [F]
+
+</IfModule>
+<IfModule mod_headers.c>
+
+Header edit Set-Cookie ^(.*)$ $1;Secure;HttpOnly
+Header set Set-Cookie "%{http_cookie}e; HTTPOnly" env=http_cookie
+
+<FilesMatch "\.(css|png|js)$">
+Header set X-XSS-Protection:1; mode=block
+Header set X-Frame-Options: deny
+Header set X-Content-Type-Options nosniff
+Header set Content-Security-Policy: report-url/report-csp.php
+Header set Strict-Transport-Security: max-age=31536000
+Header set X-XSS-Protection: "1; mode=block"
+Header edit Set-Cookie ^(.*)$ $1;Secure;HttpOnly
+Header set Set-Cookie "%{http_cookie}e; HTTPOnly" env=http_cookie  
+</FilesMatch>  

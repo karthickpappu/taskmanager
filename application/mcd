@@ -1,0 +1,495 @@
+<?php
+
+Class CustodianProjectModel extends CI_Model {
+
+    public $msg = "";
+    public $last_id;
+    public $ci;
+
+    function get_project_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration,  DATE_FORMAT(cs.custodian_proj_submitted_date, "%d-%b-%Y")as custodian_proj_submitted_date');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 1);
+        $this->db->where('cs.fa_approved_status', 0);
+        $this->db->where('cs.institute_id', $institute_id);
+        $this->db->order_by('cs.custodian_proj_submitted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_approved_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration, DATE_FORMAT(cs.proj_submission_accepted_date,"%d-%b-%Y") as proj_submission_accepted_date, cs.approved_by_institution, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 3);
+        $this->db->where("cs.fa_approved_status  IN('1','2','3')");
+        $this->db->where('cs.institute_id', $institute_id);
+        $this->db->order_by('cs.proj_submission_accepted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_reject_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration,DATE_FORMAT(cs.proj_submission_rejected_date, "%d-%b-%Y") as proj_submission_rejected_date,cs.approved_by_institution, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        // $this->db->join('istem_users as ist', 'ist.user_id=cs.approved_by_institution', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 2);
+        $this->db->where('cs.fa_approved_status', 2);
+        $this->db->where('cs.institute_id', $institute_id);
+        $this->db->order_by('cs.proj_submission_rejected_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function insert_project($data) {
+
+        $this->db->reset_query();
+        $this->db->set('last_updated_on', 'NOW()', FALSE);
+        $this->db->set('custodian_proj_created_date', 'NOW()', FALSE);
+        $this->db->trans_start();
+        if ($this->db->insert('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() == 1) {
+                $this->last_id = null;
+                $this->last_id = $this->db->insert_id();
+                $new_project_id = $this->db->insert_id();
+                $this->db->trans_complete();
+                return $new_project_id;
+            } else {
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return 0;
+            }
+        } else {
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function insert_project_submit($data) {
+
+        $this->db->reset_query();
+        $this->db->set('last_updated_on', 'NOW()', FALSE);
+        $this->db->set('custodian_proj_created_date', 'NOW()', FALSE);
+        $this->db->set('custodian_proj_submitted_date', 'NOW()', FALSE);
+        $this->db->trans_start();
+        if ($this->db->insert('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() == 1) {
+                $this->last_id = null;
+                $this->last_id = $this->db->insert_id();
+                $new_project_id = $this->db->insert_id();
+                $this->db->trans_complete();
+                return $new_project_id;
+            } else {
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return 0;
+            }
+        } else {
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function save_project_data($data, $condition) {
+        $this->db->reset_query();
+        $this->db->set('proj_submission_accepted_date', 'NOW()', FALSE);
+        $this->db->trans_start();
+        $this->db->where($condition);
+        if ($this->db->update('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() > 0) {
+
+                $this->db->trans_complete();
+                return true;
+            } else {
+
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't update data";
+                return false;
+            }
+        } else {
+
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function save_project_reject_data($data, $condition) {
+        $this->db->reset_query();
+        $this->db->set('proj_submission_rejected_date', 'NOW()', FALSE);
+        $this->db->trans_start();
+        $this->db->where($condition);
+        if ($this->db->update('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() > 0) {
+
+                $this->db->trans_complete();
+                return true;
+            } else {
+
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't update data";
+                return false;
+            }
+        } else {
+
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function get_draft_project_list($user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status,cs.funding_agency_id,fa.fund_agen_name,cs.area, cs.project_duration, DATE_FORMAT(cs.custodian_proj_created_date, "%d-%b-%Y")as custodian_proj_created_date, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->where('cs.user_id', $user_id);
+        $this->db->where('cs.submission_status', '0');
+        $this->db->order_by('cs.custodian_proj_created_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_submitted_list($user_id) {
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status,cs.funding_agency_id,fa.fund_agen_name,cs.area,cs.project_duration, DATE_FORMAT(cs.custodian_proj_submitted_date, "%d-%b-%Y")as custodian_proj_submitted_date, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->where('cs.user_id', $user_id);
+        $this->db->where('cs.submission_status', '1');
+        $this->db->where('cs.insitute_approved_status', '1');
+        $this->db->order_by('cs.custodian_proj_submitted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_accepted_project_list($user_id) {
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status,cs.funding_agency_id,fa.fund_agen_name,cs.area,cs.project_duration, DATE_FORMAT(cs.proj_submission_accepted_date, "%d-%b-%Y")as proj_submission_accepted_date, cs.approved_by_institution, cs.last_updated_on, cs.approved_by_institution');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        // $this->db->join('institutes as ins', 'ins.institute_id=cs.institute_id', 'left');
+        $this->db->where('cs.user_id', $user_id);
+        $this->db->where('cs.submission_status', '1');
+        $this->db->where('cs.insitute_approved_status', '3');
+        $this->db->where("cs.fa_approved_status  IN('1','2','3')");
+        $this->db->order_by('cs.proj_submission_accepted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_rejected_project_list($user_id) {
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status,cs.funding_agency_id,fa.fund_agen_name,cs.area,cs.project_duration, DATE_FORMAT(cs.proj_submission_rejected_date, "%d-%b-%Y")as proj_submission_rejected_date, cs.approved_by_institution, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        // $this->db->join('institutes as ins', 'ins.institute_id=cs.institute_id', 'left');
+        $this->db->where('cs.user_id', $user_id);
+        $this->db->where('cs.submission_status', '1');
+        $this->db->where('cs.insitute_approved_status', '2');
+        $this->db->order_by('cs.proj_submission_rejected_date', 'DESC');
+        ///  $this->db->where("cs.fa_approved_status  IN('1','2','3')");
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function update_custodian_project($data, $condition) {
+        $this->db->reset_query();
+        $this->db->set('last_updated_on', 'NOW()', FALSE);
+        $this->db->set('custodian_proj_submitted_date', 'NOW()', FALSE);
+        $this->db->trans_start();
+        $this->db->where($condition);
+        if ($this->db->update('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() > 0) {
+
+                $this->db->trans_complete();
+                return true;
+            } else {
+
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't update data";
+                return false;
+            }
+        } else {
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function update_custodian_project_draft($data, $condition) {
+        $this->db->reset_query();
+        $this->db->set('last_updated_on', 'NOW()', FALSE);
+        $this->db->trans_start();
+        $this->db->where($condition);
+        if ($this->db->update('custodian_projects', $data)) {
+
+            if ($this->db->affected_rows() > 0) {
+
+                $this->db->trans_complete();
+                return true;
+            } else {
+
+                $this->db->trans_complete();
+                $this->msg = "UNKNOWN ERROR: Couldn't update data";
+                return false;
+            }
+        } else {
+            $this->db->trans_complete();
+            $this->msg = $this->db->error();
+            return false;
+        }
+    }
+
+    function get_custodian_project_data($project_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.approved_by_institution, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,cs.project_summary,cs.remarks_by_institution,cs.remarks_for_reject, concat(ist.user_saluation, " " ,ist.first_name, " " ,ist.last_name)as submited_by,user_email, ist.designation,fa.fund_agen_name,cs.project_duration, DATE_FORMAT(cs.custodian_proj_submitted_date, "%d-%b-%Y")as custodian_proj_submitted_date ,DATE_FORMAT(cs.custodian_proj_created_date, "%d-%b-%Y") as custodian_proj_created_date, DATE_FORMAT(cs.proj_submission_accepted_date,"%d-%b-%Y") as proj_submission_accepted_date, DATE_FORMAT(cs.proj_submission_rejected_date, "%d-%b-%Y") as proj_submission_rejected_date, DATE_FORMAT(cs.project_approved_by_fh_date, "%d-%b-%Y") as project_approved_by_fh_date,cs.user_id,cs.user_name,ist.user_role, cs.approved_by_institution');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->where('project_id', $project_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $data = $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
+    function get_investigator_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration,  DATE_FORMAT(cs.custodian_proj_submitted_date, "%d-%b-%Y")as custodian_proj_submitted_date, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 1);
+        $this->db->where('cs.fa_approved_status', 0);
+        $this->db->order_by('cs.custodian_proj_submitted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_investigator_approved_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration, DATE_FORMAT(cs.proj_submission_accepted_date,"%d-%b-%Y") as proj_submission_accepted_date, cs.approved_by_institution, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 3);
+        // $this->db->where('cs.fa_approved_status', 1);
+        $this->db->where("cs.fa_approved_status  IN('1','2','3')");
+        $this->db->order_by('cs.proj_submission_accepted_date', 'DESC');
+
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_investigator_reject_list($institute_id, $user_entity, $user_id) {
+
+        $this->db->reset_query();
+        $this->db->select('cs.project_id, cs.project_title, cs.generic_title, cs.funding_amount, cs.insitute_approved_status, cs.submission_status, cs.fa_approved_status, cs.area, cs.funding_agency_id,fa.fund_agen_name,cs.user_id,cs.user_name, cs.project_duration,DATE_FORMAT(cs.proj_submission_rejected_date, "%d-%b-%Y") as proj_submission_rejected_date,cs.approved_by_institution, cs.last_updated_on');
+        $this->db->from('custodian_projects as cs');
+        $this->db->join('funding_agency as fa', 'fa.fund_agen_id=cs.funding_agency_id', 'left');
+        $this->db->join('istem_users as ist', 'ist.user_id=cs.user_id', 'left');
+        $this->db->where('cs.submission_status', 1);
+        $this->db->where('cs.insitute_approved_status', 2);
+        $this->db->where('cs.fa_approved_status', 2);
+        $this->db->order_by('cs.proj_submission_rejected_date', 'DESC');
+
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_draft_project_list_pu($user_name) {
+        $this->db->reset_query();
+        $this->db->select("*");
+        $this->db->from('project_integration pi');
+        //   $this->db->where('pi.user_name', $user_name);
+        $this->db->where('pi.status', '0');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_rejected_project_list_pu($user_name) {
+        
+        $this->db->reset_query();
+        $this->db->select('pi.project_id, pi.title, pi.gen_title, pi.description, pi.institute_id, pi.dept_id, pi.fac_id, pi.user_id, pi.user_name, pi.funding_type, pi.funding_by, pi.funding_amount, pi.area, pi.project_created_date, pi.status, pi.project_submitted_date, pi.remarks,  DATE_FORMAT(pi.proj_submission_rejected_date,"%d-%b-%Y") as proj_submission_rejected_date,pi.proj_submission_accepted_date, pi.last_updated_by, pi.approved_by_custodian');
+        $this->db->from('project_integration pi');
+        $this->db->where('pi.status', '2');
+        $this->db->order_by('pi.proj_submission_rejected_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_pending_project_list() {
+        $this->db->reset_query();
+        $this->db->select('pi.project_id, pi.title, pi.gen_title, pi.description, pi.institute_id, pi.dept_id, pi.fac_id, pi.user_id, pi.user_name, pi.funding_type, pi.funding_by, pi.funding_amount, pi.area, pi.project_created_date, pi.status, pi.project_submitted_date, pi.remarks,  DATE_FORMAT(pi.project_submitted_date,"%d-%b-%Y") as project_submitted_date,pi.proj_submission_accepted_date, pi.last_updated_by');
+        $this->db->from('project_integration pi');
+        $this->db->where('pi.status', '1');
+        $this->db->order_by('pi.project_submitted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function approved_projects($user_name) {
+
+        $this->db->reset_query();
+        $this->db->select('pi.project_id, pi.title, pi.gen_title, pi.description, pi.institute_id, pi.dept_id, pi.fac_id, pi.user_id, pi.user_name, pi.funding_type, pi.funding_by, pi.funding_amount, pi.area, pi.project_created_date, pi.status, pi.project_submitted_date, pi.remarks,  DATE_FORMAT(pi.proj_submission_accepted_date,"%d-%b-%Y") as proj_submission_accepted_date, pi.last_updated_by, pi.approved_by_custodian');
+        $this->db->from('project_integration pi');
+        $this->db->where('pi.status', '3');
+        $this->db->order_by('pi.proj_submission_accepted_date', 'DESC');
+        $query = $this->db->get();
+        if ($query) {
+            $data = $query->result_array();
+        } else {
+            /* DB Error */
+            $data = null;
+        }
+        return $data;
+    }
+
+    function get_custodian_name_by_user_name($user_name) {
+        $this->db->reset_query();
+        $this->db->select("concat(ist.user_saluation,' ',ist.first_name,' ',ist.last_name) as full_name");
+        $this->db->from('istem_users ist');
+        $this->db->where('ist.user_name', $user_name);
+        $query = $this->db->get();
+        if ($query) {
+            $result = $query->row_array();
+            if (isset($result)) {
+                return $result;
+            } else {
+                return null;
+            }
+        } else {
+            /* DB Error */
+            return null;
+        }
+    }
+
+    function get_public_users_name_by_user_name($user_name) {
+        $this->db->reset_query();
+        $this->db->select("concat(pu.user_salutation,' ',pu.user_firstname ,' ',pu.user_lastname) as full_name");
+        $this->db->from('public_users pu');
+        $this->db->where('pu.user_name', $user_name);
+        $query = $this->db->get();
+        if ($query) {
+            $result = $query->row_array();
+            if (isset($result)) {
+                return $result;
+            } else {
+                return null;
+            }
+        } else {
+            /* DB Error */
+            return null;
+        }
+    }
+
+}
+
+?>
