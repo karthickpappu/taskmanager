@@ -510,3 +510,570 @@ DEBUG - 2022-04-27 06:11:28 --> Global POST, GET and COOKIE data sanitized
 ERROR - 2022-04-27 06:11:28 --> 404 Page Not Found: Assets/plugins
 DEBUG - 2022-04-27 06:11:28 --> Global POST, GET and COOKIE data sanitized
 ERROR - 2022-04-27 06:11:28 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:19:45 --> Total execution time: 0.0970
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:19:45 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:19:45 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:19:45 --> UTF-8 Support Enabled
+ERROR - 2022-04-27 06:19:45 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:19:45 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:19:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:19:45 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:25:42 --> Total execution time: 0.0829
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:25:42 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-04-27 06:25:42 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:25:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:25:42 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:25:42 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:25:42 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:37:09 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:37:09 --> Total execution time: 0.1289
+DEBUG - 2022-04-27 06:37:10 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:37:10 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:37:10 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:37:10 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:37:10 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:37:10 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:37:10 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:10 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:37:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:37:10 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:37:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:37:10 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:39:15 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:15 --> Total execution time: 0.0814
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:16 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:16 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:28 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:28 --> Total execution time: 0.1175
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:39:30 --> Total execution time: 0.1034
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:30 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:39:30 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:39:30 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:30 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:39:30 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:39:30 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:40:13 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:13 --> Total execution time: 0.1092
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:14 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:14 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:40:57 --> Total execution time: 0.1214
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+ERROR - 2022-04-27 06:40:57 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:57 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:57 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:57 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:57 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:40:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:40:57 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:22 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:22 --> Total execution time: 0.0769
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:24 --> Total execution time: 0.1162
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:24 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:24 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:24 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:24 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:24 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:24 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:41 --> Total execution time: 0.1057
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:41 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:41 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:41 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:41 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:41 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:41 --> UTF-8 Support Enabled
+ERROR - 2022-04-27 06:41:41 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:42 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:48 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:48 --> Total execution time: 0.0776
+DEBUG - 2022-04-27 06:41:49 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:49 --> Total execution time: 0.0984
+DEBUG - 2022-04-27 06:41:49 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:49 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:49 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:49 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:49 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:49 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:49 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:50 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:50 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:50 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-04-27 06:41:50 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-04-27 06:41:54 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:54 --> Total execution time: 0.0824
+DEBUG - 2022-04-27 06:41:55 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:55 --> Total execution time: 0.1279
+DEBUG - 2022-04-27 06:41:55 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:55 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:55 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:55 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:55 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:41:55 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:55 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:41:55 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:41:58 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:41:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:41:58 --> Total execution time: 0.0953
+DEBUG - 2022-04-27 06:42:00 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:42:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 06:42:00 --> Total execution time: 0.1038
+DEBUG - 2022-04-27 06:42:00 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:42:00 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:42:00 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 06:42:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 06:42:00 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:42:00 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 06:42:00 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 06:42:00 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 06:42:00 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 07:00:42 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 07:00:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:42 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-04-27 07:00:43 --> Total execution time: 0.2013
+DEBUG - 2022-04-27 07:00:43 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 07:00:43 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 07:00:43 --> UTF-8 Support Enabled
+DEBUG - 2022-04-27 07:00:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-04-27 07:00:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 07:00:43 --> 404 Page Not Found: Master/assets
+ERROR - 2022-04-27 07:00:43 --> 404 Page Not Found: Master/assets
+DEBUG - 2022-04-27 07:00:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-04-27 07:00:43 --> 404 Page Not Found: Master/assets

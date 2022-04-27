@@ -329,12 +329,6 @@
     <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
     <script src='https://use.fontawesome.com/e8927eb029.js'></script>
     <script>
-        // $(document).on('keyup','.user_name', function(e) { 
-        //     var fname = $("#fname").val();
-        //     var mname = $("#mname").val();
-        //     var lname = $("#lname").val();
-        //     $("#user_name").val(fname+' '+mname+' '+lname);
-        // });
         function editdepartment(id){
             var depname = $("#depname_"+id).val();
             var depprefix = $("#depprefix_"+id).val();
