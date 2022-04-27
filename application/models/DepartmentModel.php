@@ -34,24 +34,6 @@ Class DepartmentModel extends CI_Model {
         { 
 			$user_data = $this->session->userdata('user_data');
             $lead_id = $user_data['lead_id'];         
-            // $this->db->select('user_id');
-            // $this->db->from('users');
-            // $this->db->order_by('user_id','desc');
-            // $this->db->limit(1); 
-            // $query = $this->db->get();
-            // $countop = $query->row();
-            // $useridcount = $countop->user_id + 1;
-
-            // $this->db->select('prefix');
-            // $this->db->from('leads');
-            // $this->db->where('lead_id',$lead_id);
-            // $query = $this->db->get();
-            // $leadop = $query->row();
-
-            // $leadingzeros = '00000';
-            // $no_reg = $leadop->prefix.(substr($leadingzeros, 0, (-strlen($useridcount))) . $useridcount);
-
-
 			// $data['code']		        = $no_reg;
 			$data['lead_id']		    = $user_data['lead_id'];
 			$data['created_by']		    = $user_data['user_id'];
@@ -86,6 +68,32 @@ Class DepartmentModel extends CI_Model {
 					$last_insert_id = $this->db->insert_id();
 					return true;
 				}
+			}
+			else
+            {
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return false;
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+    }	
+
+    function update($post_data,$token)
+    {					      
+		try 
+        { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];         
+			$id	                        = $post_data['department_id'];
+			$data['department']		    = $post_data['edit_department'];
+			$data['department_prefix']	= $post_data['edit_department_prefix'];
+			$data['department_brief']   = $post_data['edit_department_brief'];
+			$this->db->where('department_id', $id);
+            $this->db->update('department',$data);
+            if ($this->db->affected_rows() > 0)
+            {
+				return true;
 			}
 			else
             {

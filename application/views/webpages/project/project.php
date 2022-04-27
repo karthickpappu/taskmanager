@@ -181,7 +181,7 @@
 											<input type="checkbox" value="1" onclick="deleteproject(<?php echo $projectoutput->project_id; ?>)" class="custom-switch-input" checked>
 											<span class="custom-switch-indicator"></span>
 										</label>
-										<button type="button" class="ml-15 btn btn-primary" onclick="projectid(<?php echo $projectoutput->project_id;?>)"data-toggle="modal" data-target="#addmodule"><i class="fa fa-plus mr-2"></i>Add Module</button>										
+										<button type="button" class="ml-15 btn btn-primary" onclick="projectid(<?php echo $projectoutput->project_id;?>)" data-toggle="modal" data-target="#addmodule"><i class="fa fa-plus mr-2"></i>Add Module</button>										
 										<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
 									</div>
 								</div>
@@ -433,9 +433,7 @@
 		</div>            
 	</div>
 
-	<script src='https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js'></script>
-    <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
-    <script src='https://use.fontawesome.com/e8927eb029.js'></script>
+
 	<!-- Add New Module -->
 	<div class="modal fade" id="addmodule" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
@@ -467,6 +465,10 @@
 			</div>
 		</div>
 	</div>
+
+	<script src='https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js'></script>
+    <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
+    <script src='https://use.fontawesome.com/e8927eb029.js'></script>
 
 <script>
 	/* Multiple Item Picker */

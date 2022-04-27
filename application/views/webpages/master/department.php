@@ -201,6 +201,9 @@
                                         if($alldepartment){
                                         foreach($alldepartment as $output){
                                     ?>
+                                        <input type="hidden" id="depname_<?php echo $output->department_id;?>" value="<?php echo $output->department;?>">
+                                        <input type="hidden" id="depprefix_<?php echo $output->department_id;?>" value="<?php echo $output->department_prefix;?>">
+                                        <input type="hidden" id="depdesc_<?php echo $output->department_id;?>" value="<?php echo $output->department_brief;?>">
                                         <tr class="eachCard">
                                             <td class="width35 hidden-xs">
                                                 <a href="javascript:void(0);" class="mail-star"><i class="fa fa-star"></i></a>
@@ -213,7 +216,7 @@
                                                 <div class="text-muted"  style="display: inline-block;white-space: pre-line;width: 500px;"><?php echo $output->department_brief;?></div>
                                             </td>
                                             <td class="text-right">
-                                                <a class="btn btn-sm btn-link hidden-xs" data-type="confirm" href="javascript:void(0)" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-link" onclick="editdepartment(<?php echo $output->department_id;?>)" data-toggle="modal" data-target="#editdepartment" href="javascript:void(0)" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
                                                 <a class="btn btn-sm btn-link hidden-xs" onclick="deletedepartment(<?php echo $output->department_id;?>)" data-type="confirm" href="javascript:void(0)" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
@@ -256,17 +259,17 @@
                                         <div class="row clearfix">
                                             <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="fname" placeholder="Enter Department Name" name="department" required>
+                                                    <input type="text" class="form-control user_name" id="depname" placeholder="Enter Department Name" name="department" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="mname" placeholder="Enter Prefix Name (eg : AD ...)" name="department_prefix" >
+                                                    <input type="text" class="form-control user_name" id="depprefix" placeholder="Enter Prefix Name (eg : AD ...)" name="department_prefix" >
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="form-group">
-                                                    <textarea type="text" name="department_brief" class="form-control" rows="4">Enter Department Description</textarea>
+                                                    <textarea type="text" id="depdesc" name="department_brief" class="form-control" rows="4">Enter Department Description</textarea>
                                                 </div>
                                             </div>   
                                             <div class="col-lg-12 mt-3 text-right">
@@ -284,6 +287,44 @@
             </div>
         </div>
     </div>
+
+    <!-- Add New Module -->
+	<div class="modal fade" id="editdepartment" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="title" id="defaultModalLabel">Edit Department</h6>
+				</div>
+				<?php echo form_open_multipart('data/department/update','id="updatedepartment" name="updatedepartment" autocomplete="on" ');?>
+					<div class="modal-body">
+						<div class="row clearfix">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <input type="hidden" id="editdepid" name="department_id">
+                                    <input type="text" class="form-control user_name" id="editdepname" placeholder="Enter Department Name" name="edit_department" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control user_name" id="editdepprefix" placeholder="Enter Prefix Name (eg : AD ...)" name="edit_department_prefix" >
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <textarea type="text" id="editdepdesc" name="edit_department_brief" class="form-control" rows="4">Enter Department Description</textarea>
+                                </div>
+                            </div>                  
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" id="update" class="btn btn-primary">Update</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
     <script src='https://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js'></script>
     <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
     <script src='https://use.fontawesome.com/e8927eb029.js'></script>
@@ -294,6 +335,15 @@
         //     var lname = $("#lname").val();
         //     $("#user_name").val(fname+' '+mname+' '+lname);
         // });
+        function editdepartment(id){
+            var depname = $("#depname_"+id).val();
+            var depprefix = $("#depprefix_"+id).val();
+            var depdesc = $("#depdesc_"+id).val();
+            $("#editdepid").val(id);
+            $("#editdepname").val(depname);
+            $("#editdepprefix").val(depprefix);
+            $("#editdepdesc").val(depdesc);
+        }
 
         $(document).on('click','#submit', function(e) { 
             e.preventDefault();		
@@ -329,6 +379,39 @@
             }
         });
 
+        $(document).on('click','#update', function(e) { 
+            e.preventDefault();		
+            if($("#updatedepartment")[0].reportValidity()) 
+            {
+                var datastring =  new FormData($('#updatedepartment')[0]); 
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo $this->config->item("base_url");?>data/department/update',
+                    enctype: 'multipart/form-data',
+                    data: datastring,    
+                    contentType: false,
+                    processData:false,
+                    cache: false,
+                    dataType:"JSON",
+                    token: '<?php echo $this->security->get_csrf_hash();?>',
+                    success:function(data){
+                        console.log(data);
+                        $('#token').val(data.csrfHash);
+                        if(data.status == 1){				
+                            swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+                                window.location.reload();
+                            });
+                        }else{				
+                            swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                    timeout: 10000,
+                    async: false			
+                });
+            }
+        });
 
         function deletedepartment(id) { 
             $.ajax({
