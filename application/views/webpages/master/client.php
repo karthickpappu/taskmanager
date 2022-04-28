@@ -161,7 +161,7 @@
                                     <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li>
                                     <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
                                 </ul>
-                                <div class="d-flex align-items-center sort_stat">
+                                <!-- <div class="d-flex align-items-center sort_stat">
                                     <div class="d-flex">
                                         <span class="bh_income">2,5,1,8,3,6,7,5,3,6,7,5</span>
                                         <div class="ml-2">
@@ -176,7 +176,7 @@
                                             <h5 class="font-16 mb-0">53% Up</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="input-group mt-2">
                                 <input type="text" class="form-control search" placeholder="Search..." id="filter">
@@ -198,8 +198,8 @@
                                 <table class="table table-hover table-vcenter text-nowrap table_custom border-style list ">
                                     <tbody class="card-content">
                                     <?php 
-                                        if($allusers){
-                                        foreach($allusers as $output){
+                                        if($allclient){
+                                        foreach($allclient as $output){
                                     ?>
                                         <tr class="eachCard">
                                             <td class="width35 hidden-xs">
@@ -211,14 +211,17 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div><a href="javascript:void(0);"><?php echo $output->user_name;?></a></div>
+                                                <div><a href="javascript:void(0);"><?php echo $output->name;?></a></div>
                                                 <div class="text-muted">+<?php echo $output->phone;?></div>
                                             </td>
                                             <td class="hidden-xs">
                                                 <div class="text-muted"><?php echo $output->email;?></div>
                                             </td>
                                             <td class="hidden-sm">
-                                                <div class="text-muted">455 S. Airport St. Moncks Corner, SC 29461</div>                                                
+                                                <div class="text-muted" style="width: auto;white-space: normal;"><?php echo $output->address;?>,<?php echo $output->city;?><?php echo $output->state;?>,<?php echo $output->pincode;?>.</div>                                                
+                                            </td>
+                                            <td class="hidden-sm">
+                                                <div class="text-muted" data-toggle="tooltip" title="<?php echo $output->description;?>">Client Description</div>                                                
                                             </td>
                                             <td class="text-right">
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
@@ -268,26 +271,11 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <?php echo form_open_multipart('data/users/create','id="createuser" name="createuser" autocomplete="on" ');?>
+                                    <?php echo form_open_multipart('data/client/create','id="createclient" name="createclient" autocomplete="on" ');?>
                                         <div class="row clearfix">
                                             <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="fname" placeholder="Enter First Name" name="first_name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="mname" placeholder="Enter Middle Name" name="middle_name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="lname" placeholder="Enter Last Name" name="last_name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="User Name" id="user_name" name="user_name" readonly>
+                                                    <input type="text" class="form-control" placeholder="User Name" id="user_name" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-12">
@@ -300,52 +288,9 @@
                                                     <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
                                                 </div>
                                             </div>	
-                                            <div class="col-lg-4 col-md-4">
+                                            <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Role" name="role_id" required>
-                                                    <?php 
-                                                        if($allroles){
-                                                        foreach($allroles as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->roles;?>" value="<?php echo $output->role_id;?>"><?php echo $output->roles;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Department"  name="department_id" required >
-                                                    <?php 
-                                                        if($alldepartment){
-                                                        foreach($alldepartment as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->department;?>" value="<?php echo $output->department_id;?>"><?php echo $output->department;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Designation" name="designation_id" required>
-                                                    <?php 
-                                                        if($alldesignation){
-                                                        foreach($alldesignation as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->designation;?>" value="<?php echo $output->designation_id;?>"><?php echo $output->designation;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Reporting To" multiple="multiple" name="reporting_to[]" required>
-                                                    <?php 
-                                                        if($allusers){
-                                                        foreach($allusers as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
-                                                    <?php } } ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" placeholder="Enter GST" name="gst" required>
                                                 </div>
                                             </div>	
                                             <div class="col-lg-12 col-md-12">
@@ -374,7 +319,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <input type="file" class="dropify" name="user_pic">
+                                                <label>Logo</label>
+                                                <input type="file" class="dropify" name="client_logo">
                                             </div>
                                             <div class="col-lg-12 mt-3 text-right">
                                                 <button type="button" class="btn btn-default">Cancel</button>
@@ -404,12 +350,12 @@
 
         $(document).on('click','#submit', function(e) { 
             e.preventDefault();		
-            if($("#createuser")[0].reportValidity()) 
+            if($("#createclient")[0].reportValidity()) 
             {
-                var datastring =  new FormData($('#createuser')[0]); 
+                var datastring =  new FormData($('#createclient')[0]); 
                 $.ajax({
                     type:'POST',
-                    url:'<?php echo $this->config->item("base_url");?>data/users/create',
+                    url:'<?php echo $this->config->item("base_url");?>data/client/create',
                     enctype: 'multipart/form-data',
                     data: datastring,    
                     contentType: false,
