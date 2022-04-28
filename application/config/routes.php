@@ -50,6 +50,7 @@ $route['data/master/(:any)'] = 'MasterController/'.$segment_3;
 $route['data/department/(:any)'] = 'DepartmentController/'.$segment_3;
 $route['data/designation/(:any)'] = 'DesignationController/'.$segment_3;
 $route['data/client/(:any)'] = 'ClientController/'.$segment_3;
+$route['data/vendor/(:any)'] = 'VendorController/'.$segment_3;
 
 
 ?>

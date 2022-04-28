@@ -14,6 +14,7 @@ Class HeaderModel extends CI_Model {
 		$this->load->model('DesignationModel', 'designationmodel', TRUE);
 		$this->load->model('ModuleModel', 'modulemodel', TRUE);
 		$this->load->model('ClientModel', 'clientmodel', TRUE);
+		$this->load->model('VendorModel', 'vendormodel', TRUE);
 		$this->load->model('TaskModel', 'taskmodel', TRUE);
 	}
 	
@@ -30,6 +31,7 @@ Class HeaderModel extends CI_Model {
 		$headercontent['allusers'] 			= $this->usersmodel->getallusers();
 		$headercontent['allproject'] 		= $this->projectmodel->getallproject();
 		$headercontent['allclient'] 		= $this->clientmodel->getallclient();
+		$headercontent['allvendor'] 		= $this->vendormodel->getallvendor();
 		$headercontent['allmodule'] 		= $this->modulemodel->getallmodule();
 		$headercontent['alltask'] 			= $this->taskmodel->getalltask();
         return $headercontent;

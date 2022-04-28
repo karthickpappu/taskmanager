@@ -273,7 +273,7 @@
                                                 </div>
                                             </div>   
                                             <div class="col-lg-12 mt-3 text-right">
-                                                <button type="button" class="btn btn-default">Cancel</button>
+                                                <button type="button" onclick="addactive()" data-toggle="tab" href="#list" class="btn btn-default">Cancel</button>
                                                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                                             </div>
                                         </div>
@@ -318,7 +318,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="submit" id="update" class="btn btn-primary">Update</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" onclick="addactive()" data-toggle="tab" href="#list" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</form>
 			</div>
@@ -337,6 +337,13 @@
             $("#editdepname").val(depname);
             $("#editdepprefix").val(depprefix);
             $("#editdepdesc").val(depdesc);
+        }
+        
+        function addactive(){
+            $(".nav-link").removeClass('active');
+            $(".btn-link").removeClass('active');
+            $(".btn").removeClass('active');
+            $("#list-tab").addClass('active');
         }
 
         $(document).on('click','#submit', function(e) { 

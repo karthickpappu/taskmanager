@@ -470,170 +470,153 @@
     <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
     <script src='https://use.fontawesome.com/e8927eb029.js'></script>
 
-<script>
-	/* Multiple Item Picker */
-	$(document).ready(function() {
-		$('#example').DataTable();
-	} );
+	<script>
+		/* Multiple Item Picker */
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
 
-	function showclient(){
-		if($("#type").val() == 'External'){
-			$("#clientdiv").show();
-		}else{
-			$("#clientdiv").hide();
+		function showclient(){
+			if($("#type").val() == 'External'){
+				$("#clientdiv").show();
+			}else{
+				$("#clientdiv").hide();
+			}
 		}
-	}
 
-	function showbudget(){
-		if($("#budget_type").val() == 'Public'){
-			$("#budgetdiv").show();
-		}else{
-			$("#budgetdiv").hide();
+		function showbudget(){
+			if($("#budget_type").val() == 'Public'){
+				$("#budgetdiv").show();
+			}else{
+				$("#budgetdiv").hide();
+			}
 		}
-	}
 
-	function projectid(project_id){
-		$("#project_id").val(project_id);
-	}
+		function projectid(project_id){
+			$("#project_id").val(project_id);
+		}
 
-	$(document).ready(function(){
-		$(".datepicker").datepicker({
-			"format": "d-m-yyyy",
+		$(document).ready(function(){
+			$(".datepicker").datepicker({
+				"format": "d-m-yyyy",
+			});
 		});
-	});
 
-	$('.closebutton').click(function() {
-		$(this).removeClass('active');
-		$('#ongioingbutton').addClass('active');
-		$('#addprojectbutton').removeClass('active');
-	});
+		$('.closebutton').click(function() {
+			$(this).removeClass('active');
+			$('#ongioingbutton').addClass('active');
+			$('#addprojectbutton').removeClass('active');
+		});
 
-	$(document).on('click','#submit', function(e) { 
-		e.preventDefault();
-		// for (instance in CKEDITOR.instances) {
-			// CKEDITOR.instances[instance].updateElement();
-		// }
-		if($("#createproject")[0].reportValidity()) 
-		{
-			var datastring =  new FormData($('#createproject')[0]); 
-			$.ajax({
-				type:'POST',
-				url:'<?php echo $this->config->item("base_url");?>data/project/create',
-				enctype: 'multipart/form-data',
-				data: datastring,    
-				contentType: false,
-				processData:false,
-				cache: false,
-				dataType:"JSON",
-				token: '<?php echo $this->security->get_csrf_hash();?>',
-				success:function(data){
-					console.log(data);
-					$('#token').val(data.csrfHash);
-					if(data.status == 1){				
-						swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
-							window.location.reload();
-						});
-					}else{				
-						swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
-							window.location.reload();
-						});
-					}
-				},
-				timeout: 10000,
-				async: false			
+		$(document).on('click','#submit', function(e) { 
+			e.preventDefault();
+			// for (instance in CKEDITOR.instances) {
+				// CKEDITOR.instances[instance].updateElement();
+			// }
+			if($("#createproject")[0].reportValidity()) 
+			{
+				var datastring =  new FormData($('#createproject')[0]); 
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/project/create',
+					enctype: 'multipart/form-data',
+					data: datastring,    
+					contentType: false,
+					processData:false,
+					cache: false,
+					dataType:"JSON",
+					token: '<?php echo $this->security->get_csrf_hash();?>',
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
+			}
+		});
+
+
+		$(document).on('click','#submitmodule', function(e) { 
+			e.preventDefault();		
+			if($("#createmodule")[0].reportValidity()) 
+			{
+				var datastring =  new FormData($('#createmodule')[0]); 
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/project/createmodule',
+					enctype: 'multipart/form-data',
+					data: datastring,    
+					contentType: false,
+					processData:false,
+					cache: false,
+					dataType:"JSON",
+					token: '<?php echo $this->security->get_csrf_hash();?>',
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
+			}
+		});
+
+		function deleteproject(id) { 
+			swal({
+				title: "Are you sure to delete this  of ?",
+				text: "Delete Confirmation?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Delete",
+				closeOnConfirm: false
+			},function() {
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/project/delete',
+					enctype: 'multipart/form-data',
+					data: {id:id},    
+					// contentType: false,
+					// processData:false,
+					// cache: false,
+					dataType:"JSON",
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
 			});
 		}
-	});
-
-	function deletetask(){
-		swal({
-			title: "Are you sure to delete this  of ?",
-			text: "Delete Confirmation?",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Delete",
-			closeOnConfirm: false
-		},
-		function() {
-			$.ajax({
-				type: "post",
-				url: "url",
-				data: "data",
-				success: function(data) {}
-			})
-			.done(function(data) {
-				swal("Deleted!", "Data successfully Deleted!", "success");
-			})
-			.error(function(data) {
-				swal("Oops", "We couldn't connect to the server!", "error");
-			});
-		}
-		);
-	}
-
-
-	$(document).on('click','#submitmodule', function(e) { 
-		e.preventDefault();		
-		if($("#createmodule")[0].reportValidity()) 
-		{
-			var datastring =  new FormData($('#createmodule')[0]); 
-			$.ajax({
-				type:'POST',
-				url:'<?php echo $this->config->item("base_url");?>data/project/createmodule',
-				enctype: 'multipart/form-data',
-				data: datastring,    
-				contentType: false,
-				processData:false,
-				cache: false,
-				dataType:"JSON",
-				token: '<?php echo $this->security->get_csrf_hash();?>',
-				success:function(data){
-					console.log(data);
-					$('#token').val(data.csrfHash);
-					if(data.status == 1){				
-						swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
-							window.location.reload();
-						});
-					}else{				
-						swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
-							window.location.reload();
-						});
-					}
-				},
-				timeout: 10000,
-				async: false			
-			});
-		}
-	});
-
-	function deleteproject(id) { 
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $this->config->item("base_url");?>data/project/delete',
-                enctype: 'multipart/form-data',
-                data: {id:id},    
-                // contentType: false,
-                // processData:false,
-                // cache: false,
-                dataType:"JSON",
-                success:function(data){
-                    console.log(data);
-                    $('#token').val(data.csrfHash);
-                    if(data.status == 1){				
-                        swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
-                            window.location.reload();
-                        });
-                    }else{				
-                        swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
-                            window.location.reload();
-                        });
-                    }
-                },
-                timeout: 10000,
-                async: false			
-            });
-        }
 
 		function deletemodule(id) { 
             $.ajax({
@@ -692,4 +675,4 @@
                 async: false			
             });
         }
-</script>
+	</script>

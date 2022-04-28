@@ -1,4 +1,4 @@
-    <style>  
+<style>  
         .dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
             content: '\f0ee' !important;
             display: initial;
@@ -51,7 +51,7 @@
             //padding: 6px 14px;
             padding: .375rem .75rem;
         }
-        .input-client .show-tick{
+        .input-vendor .show-tick{
             width: 75% !important;
         }
 
@@ -161,7 +161,7 @@
                                     <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li>
                                     <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
                                 </ul>
-                                <div class="d-flex align-items-center sort_stat">
+                                <!-- <div class="d-flex align-items-center sort_stat">
                                     <div class="d-flex">
                                         <span class="bh_income">2,5,1,8,3,6,7,5,3,6,7,5</span>
                                         <div class="ml-2">
@@ -176,7 +176,7 @@
                                             <h5 class="font-16 mb-0">53% Up</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="input-group mt-2">
                                 <input type="text" class="form-control search" placeholder="Search..." id="filter">
@@ -198,32 +198,48 @@
                                 <table class="table table-hover table-vcenter text-nowrap table_custom border-style list ">
                                     <tbody class="card-content">
                                     <?php 
-                                        if($allusers){
-                                        foreach($allusers as $output){
+                                        if($allvendor){
+                                        foreach($allvendor as $output){
                                     ?>
+                                        <input type="hidden" class="name_<?php echo $output->vendor_id;?>" value="<?php echo $output->name;?>">
+                                        <input type="hidden" class="description_<?php echo $output->vendor_id;?>" value="<?php echo $output->description;?>">
+                                        <input type="hidden" class="email_<?php echo $output->vendor_id;?>" value="<?php echo $output->email;?>">
+                                        <input type="hidden" class="phone_<?php echo $output->vendor_id;?>" value="<?php echo $output->phone;?>">
+                                        <input type="hidden" class="gst_<?php echo $output->vendor_id;?>" value="<?php echo $output->gst;?>">
+                                        <input type="hidden" class="address_<?php echo $output->vendor_id;?>" value="<?php echo $output->address;?>">
+                                        <input type="hidden" class="city_<?php echo $output->vendor_id;?>" value="<?php echo $output->city;?>">
+                                        <input type="hidden" class="state_<?php echo $output->vendor_id;?>" value="<?php echo $output->state;?>">
+                                        <input type="hidden" class="pincode_<?php echo $output->vendor_id;?>" value="<?php echo $output->pincode;?>">
+                                        <input type="hidden" class="logo_<?php echo $output->vendor_id;?>" value="<?php echo $output->vendor_logo;?>">
                                         <tr class="eachCard">
                                             <td class="width35 hidden-xs">
                                                 <a href="javascript:void(0);" class="mail-star"><i class="fa fa-star"></i></a>
                                             </td>
                                             <td class="text-center width40">
                                                 <div class="avatar d-block">
-                                                    <img class="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/user.png" alt="avatar">
+                                                    <!-- <img class="avatar" alt="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/dummylogo.png" > -->
+                                                    <img class="avatar" alt="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/vendorlogo/<?php echo $output->vendor_logo;?>" onerror="this.onerror=null;this.src='<?php echo $this->config->item('base_url');?>assets/images/dummylogo.png';">
                                                 </div>
                                             </td>
                                             <td>
-                                                <div><a href="javascript:void(0);"><?php echo $output->user_name;?></a></div>
+                                                <div><a href="javascript:void(0);"><?php echo $output->name;?></a></div>
                                                 <div class="text-muted">+<?php echo $output->phone;?></div>
                                             </td>
                                             <td class="hidden-xs">
                                                 <div class="text-muted"><?php echo $output->email;?></div>
                                             </td>
                                             <td class="hidden-sm">
-                                                <div class="text-muted">455 S. Airport St. Moncks Corner, SC 29461</div>                                                
+                                                <div class="text-muted" style="width: auto;white-space: normal;"><?php echo $output->address;?>,<?php echo $output->city;?><?php echo $output->state;?>,<?php echo $output->pincode;?>.</div>                                                
+                                            </td>
+                                            <td class="hidden-sm">
+                                                <div class="text-muted" data-toggle="tooltip" title="<?php echo $output->description;?>">vendor Description</div>                                                
                                             </td>
                                             <td class="text-right">
-                                                <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
-                                                <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
-                                                <!--<a class="btn btn-sm btn-link hidden-xs js-sweetalert" data-type="confirm" href="javascript:void(0)" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>-->
+                                                <a class="btn btn-sm btn-link" href = "tel: <?php echo $output->phone;?>"  data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
+                                                <a class="btn btn-sm btn-link" href = "mailto: <?php echo $output->email;?>" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>                                               
+                                                <!-- <a class="btn btn-sm btn-link" href="#" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a> -->
+                                                <a class="btn btn-sm btn-link" href="#editvendor" onclick="editvendor(<?php echo $output->vendor_id;?>)" id="editvendor-tab" data-toggle="tab" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-link " data-type="confirm" href="#" data-toggle="tooltip" onclick="deletevendor(<?php echo $output->vendor_id;?>)" title="Delete"><i class="fa fa-trash"></i></a> 
                                             </td>
                                         </tr>
                                     <?php } } ?>                                           
@@ -263,31 +279,20 @@
                         <?php } } ?>        
                     </div>
                 </div>
+
                 <div class="tab-pane fade" id="addnew" role="tabpanel">
                     <div class="row clearfix">
                         <div class="col-lg-12">
                             <div class="card">
+                                <div class="card-header">
+									<h3 class="card-title">Create vendor</h3>
+								</div>
                                 <div class="card-body">
-                                    <?php echo form_open_multipart('data/users/create','id="createuser" name="createuser" autocomplete="on" ');?>
+                                    <?php echo form_open_multipart('data/vendor/create','id="createvendor" name="createvendor" autocomplete="on" ');?>
                                         <div class="row clearfix">
                                             <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="fname" placeholder="Enter First Name" name="first_name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="mname" placeholder="Enter Middle Name" name="middle_name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control user_name" id="lname" placeholder="Enter Last Name" name="last_name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="User Name" id="user_name" name="user_name" readonly>
+                                                    <input type="text" class="form-control" placeholder="User Name" id="user_name" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-12">
@@ -300,52 +305,9 @@
                                                     <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
                                                 </div>
                                             </div>	
-                                            <div class="col-lg-4 col-md-4">
+                                            <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Role" name="role_id" required>
-                                                    <?php 
-                                                        if($allroles){
-                                                        foreach($allroles as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->roles;?>" value="<?php echo $output->role_id;?>"><?php echo $output->roles;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Department"  name="department_id" required >
-                                                    <?php 
-                                                        if($alldepartment){
-                                                        foreach($alldepartment as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->department;?>" value="<?php echo $output->department_id;?>"><?php echo $output->department;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Designation" name="designation_id" required>
-                                                    <?php 
-                                                        if($alldesignation){
-                                                        foreach($alldesignation as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->designation;?>" value="<?php echo $output->designation_id;?>"><?php echo $output->designation;?></option>
-                                                    <?php } } ?>
-                                                    </select>
-                                                </div>
-                                            </div>	
-                                            <div class="col-lg-4 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Reporting To" multiple="multiple" name="reporting_to[]" required>
-                                                    <?php 
-                                                        if($allusers){
-                                                        foreach($allusers as $output){
-                                                    ?>
-                                                        <option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
-                                                    <?php } } ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" placeholder="Enter GST" name="gst" required>
                                                 </div>
                                             </div>	
                                             <div class="col-lg-12 col-md-12">
@@ -374,11 +336,85 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <input type="file" class="dropify" name="user_pic">
+                                                <label>Logo</label>
+                                                <input type="file" class="dropify" name="vendor_logo">
                                             </div>
                                             <div class="col-lg-12 mt-3 text-right">
-                                                <button type="button" class="btn btn-default">Cancel</button>
+                                                <button type="button" onclick="addactive()" data-toggle="tab" href="#list" class="btn btn-default">Cancel</button>
                                                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="editvendor" role="tabpanel">
+                    <div class="row clearfix">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+									<h3 class="card-title">Edit vendor</h3>
+								</div>
+                                <div class="card-body">
+                                    <?php echo form_open_multipart('data/vendor/update','id="updatevendor" name="updatevendor" autocomplete="on" ');?>
+                                        <input type="hidden" id="edit_id" name="edit_id">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="edit_name" class="form-control" placeholder="User Name" name="edit_name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="number" id="edit_phone" class="form-control" placeholder="Enter Number" name="edit_phone" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="email" id="edit_email" class="form-control" placeholder="Enter Email" name="edit_email" required>
+                                                </div>
+                                            </div>	
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="edit_gst" class="form-control" placeholder="Enter GST" name="edit_gst" required>
+                                                </div>
+                                            </div>	
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <textarea type="text" id="edit_description" name="edit_description" class="form-control" rows="4">Enter User Description</textarea>
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <textarea type="text" id="edit_address" name="edit_address" class="form-control" rows="4" >Enter your Address</textarea>
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="edit_state" class="form-control" placeholder="Enter State" name="edit_state" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="edit_city" class="form-control" placeholder="Enter City" name="edit_city" >
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="edit_pincode" class="form-control" placeholder="Enter Pincode" name="edit_pincode" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label>Logo</label>
+                                                <input type="file" class="dropify" name="edit_vendor_logo">
+                                                <input type="hidden" name="edit_vendor_logo_old" id="edit_vendor_logo_old">
+                                            </div>
+                                            <div class="col-lg-12 mt-3 text-right">
+                                                <button type="button" onclick="addactive()" data-toggle="tab" href="#list" class="btn btn-default">Cancel</button>
+                                                <button type="submit" class="btn btn-primary" id="update">Update</button>
                                             </div>
                                         </div>
                                     </form>
@@ -395,6 +431,31 @@
     <script src='https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
     <script src='https://use.fontawesome.com/e8927eb029.js'></script>
     <script>
+
+        function editvendor(id){
+            // alert(id);
+            $(".nav-link").removeClass('active');
+            $(".btn-link").removeClass('active');
+            $("#edit_id").val(id);	
+            $("#edit_name").val($('.name_'+id).val());	
+            $("#edit_email").val($('.email_'+id).val());	
+            $("#edit_phone").val($('.phone_'+id).val());	
+            $("#edit_gst").val($('.gst_'+id).val());	
+            $("#edit_description").val($('.description_'+id).val());	
+            $("#edit_city").val($('.city_'+id).val());	
+            $("#edit_address").val($('.address_'+id).val());	
+            $("#edit_state").val($('.state_'+id).val());	
+            $("#edit_pincode").val($('.pincode_'+id).val());
+            $("#edit_vendor_logo_old").val($('.logo_'+id).val());
+        }
+
+        function addactive(){
+            $(".nav-link").removeClass('active');
+            $(".btn-link").removeClass('active');
+            $(".btn").removeClass('active');
+            $("#list-tab").addClass('active');
+        }
+
         $(document).on('keyup','.user_name', function(e) { 
             var fname = $("#fname").val();
             var mname = $("#mname").val();
@@ -404,12 +465,12 @@
 
         $(document).on('click','#submit', function(e) { 
             e.preventDefault();		
-            if($("#createuser")[0].reportValidity()) 
+            if($("#createvendor")[0].reportValidity()) 
             {
-                var datastring =  new FormData($('#createuser')[0]); 
+                var datastring =  new FormData($('#createvendor')[0]);           
                 $.ajax({
                     type:'POST',
-                    url:'<?php echo $this->config->item("base_url");?>data/users/create',
+                    url:'<?php echo $this->config->item("base_url");?>data/vendor/create',
                     enctype: 'multipart/form-data',
                     data: datastring,    
                     contentType: false,
@@ -436,41 +497,71 @@
             }
         });
 
+        
+        $(document).on('click','#update', function(e) { 
+            e.preventDefault();		
+            if($("#updatevendor")[0].reportValidity()) 
+            {
+                var datastring =  new FormData($('#updatevendor')[0]); 
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo $this->config->item("base_url");?>data/vendor/update',
+                    enctype: 'multipart/form-data',
+                    data: datastring,    
+                    contentType: false,
+                    processData:false,
+                    cache: false,
+                    dataType:"JSON",
+                    token: '<?php echo $this->security->get_csrf_hash();?>',
+                    success:function(data){
+                        console.log(data);
+                        $('#token').val(data.csrfHash);
+                        if(data.status == 1){				
+                            swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+                                window.location.reload();
+                            });
+                        }else{				
+                            swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                    timeout: 10000,
+                    async: false			
+                });
+            }
+        });
+
+        
 
         $("#filter").keyup(function() 
         {
             // Retrieve the input field text and reset the count to zero
             var filter = $(this).val(),
             count = 0;
-
             // Loop through the comment list
-            $('#users tr').each(function() {
-
+            $('#users tr').each(function() 
+            {
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {
                     $(this).hide();  // MY CHANGE
-
                     // Show the list item if the phrase matches and increase the count by 1
                 } else {
                     $(this).show(); // MY CHANGE
                     count++;
                 }
-
             });
-            $('#usersdiv div').each(function() {
-
+            $('#usersdiv div').each(function() 
+            {
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {
                     $(this).hide();  // MY CHANGE
-
                     // Show the list item if the phrase matches and increase the count by 1
                 } else {
                     $(this).show(); // MY CHANGE
                     count++;
                 }
-
             });
-
         });
 
         $(function() {
@@ -538,6 +629,44 @@
 
             $(".previous-page").on("click", function(){
                 return showPage(currentPage - 1);
+            });
+        }
+        
+        function deletevendor(id){ 
+            swal({
+                title: "Are you sure to delete this  of ?",
+                text: "Delete Confirmation?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Delete",
+                closeOnConfirm: false
+            },function() {
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo $this->config->item("base_url");?>data/vendor/delete',
+                    enctype: 'multipart/form-data',
+                    data: {id:id},    
+                    // contentType: false,
+                    // processData:false,
+                    // cache: false,
+                    dataType:"JSON",
+                    success:function(data){
+                        console.log(data);
+                        $('#token').val(data.csrfHash);
+                        if(data.status == 1){				
+                            swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+                                window.location.reload();
+                            });
+                        }else{				
+                            swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                    timeout: 10000,
+                    async: false			
+                });
             });
         }
     </script>
