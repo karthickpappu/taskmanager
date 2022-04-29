@@ -384,9 +384,9 @@
                 <li  class="<?php if($title =='access') echo 'active';?>">
                     <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-lock"></i><span>Roles & Permissions</span></a>
                     <ul>
-                        <li class="<?php if($page =='modules') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/modules">Modules & Roles</a></li>
-                        <li class="<?php if($page =='role') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/role">Role Based Access</a></li>
-                        <li class="<?php if($page =='user') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user">User Based Access</a></li>
+                        <li class="<?php if($page =='modules') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/modules">Modules</a></li>
+                        <li class="<?php if($page =='role-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/role-based-access">Role Based Access</a></li>
+                        <li class="<?php if($page =='user-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user-based-access">User Based Access</a></li>
                     </ul>
                 </li>
                 <!--<li class="g_heading">Support</li>

@@ -20,9 +20,9 @@
             <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <ul class="nav nav-tabs page-header-tab">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Project-OnGoing" id="ongioingbutton">OnGoing</a></li>
-                        <!--<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-UpComing">UpComing</a></li>-->
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-add" id="addprojectbutton">Add Project</a></li>
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Project-OnGoing" id="ongioingbutton">Task Manager Modules</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-UpComing">UpComing</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-add" id="addprojectbutton">Add Project</a></li> -->
                     </ul>
                     <div class="header-action d-md-flex">
                         <div class="input-group mr-2">
@@ -34,10 +34,11 @@
         </div>
     </div>
 </div>
+
 <div class="section-body mt-4">
     <div class="container-fluid">
         <div class="row clearfix">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Modules</h3>
@@ -48,7 +49,7 @@
                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="padding:0px">
                         <table  id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
@@ -67,48 +68,6 @@
                                     <td>	
                                         <label class="custom-switch m-0">
                                             <input type="checkbox" onclick="deletemodule(<?php echo $moutput->module_id; ?>)" value="1" class="custom-switch-input" checked>
-                                            <span class="custom-switch-indicator"></span>
-                                        </label>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Roles</h3>
-                        <div class="card-options">
-                            <button type="button" class="ml-15 btn btn-primary" data-toggle="modal" data-target="#addrole"><i class="fa fa-plus mr-2"></i>Add Role</button>
-                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
-                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fa fa-window-maximize"></i></a>
-                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table  id="example" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th width="30%">Name</th>
-                                    <th width="10%">Prefix</th>
-                                    <th width="60%">Desc</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php 	
-                                foreach($allroles as $routput){
-                            ?>
-                                <tr>
-                                    <td><?php echo $routput->role;?></td>
-                                    <td><?php echo $routput->role_prefix;?></td>
-                                    <td><?php echo $routput->role_brief;?></td>
-                                    <td>	
-                                        <label class="custom-switch m-0">
-                                            <input type="checkbox" onclick="deleterole(<?php echo $routput->role_id; ?>)" value="1" class="custom-switch-input" checked>
                                             <span class="custom-switch-indicator"></span>
                                         </label>
                                     </td>
@@ -148,44 +107,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="submitmodule" class="btn btn-primary">Add</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Add New Module -->
-<div class="modal fade" id="addrole" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="title" id="defaultModalLabel">Add New Role</h6>
-            </div>
-            <?php echo form_open_multipart('data/role/create','id="createrole" name="createrole" autocomplete="on" ');?>
-                <div class="modal-body">
-                    <div class="row clearfix">
-                        <div class="col-12">
-                            <div class="form-group">                                   
-                                <input type="hidden" id="project_id" name="project_id" >
-                                <input type="text" class="form-control" placeholder="Role" name="role" required>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">                                   
-                                <input type="hidden" id="project_id" name="project_id" >
-                                <input type="text" class="form-control" placeholder="Prefix" name="role_prefix" required>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Description" name="role_brief" required></textarea>
-                            </div>
-                        </div>                   
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="submitrole" class="btn btn-primary">Add</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </form>
