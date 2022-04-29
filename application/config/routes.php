@@ -51,6 +51,11 @@ $route['data/department/(:any)'] = 'DepartmentController/'.$segment_3;
 $route['data/designation/(:any)'] = 'DesignationController/'.$segment_3;
 $route['data/client/(:any)'] = 'ClientController/'.$segment_3;
 $route['data/vendor/(:any)'] = 'VendorController/'.$segment_3;
+$route['data/module/(:any)'] = 'ModuleController/'.$segment_3;
+$route['data/role/(:any)'] = 'RoleController/'.$segment_3;
 
+$route['access'] = 'AccessController/index/$1';
+$route['access/(:any)'] = 'AccessController/pages/$1';
+$route['data/access/(:any)'] = 'AccessController/'.$segment_3;
 
 ?>

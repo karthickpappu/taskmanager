@@ -275,7 +275,7 @@
 												</thead>
 												<tbody>
 												<?php 	
-													foreach($allmodule as $moutput){
+													foreach($allprojectmodule as $moutput){
 													if($projectoutput->project_id == $moutput->project_id){
 												?>
 													<tr>
@@ -545,41 +545,6 @@
 			}
 		});
 
-
-		$(document).on('click','#submitmodule', function(e) { 
-			e.preventDefault();		
-			if($("#createmodule")[0].reportValidity()) 
-			{
-				var datastring =  new FormData($('#createmodule')[0]); 
-				$.ajax({
-					type:'POST',
-					url:'<?php echo $this->config->item("base_url");?>data/project/createmodule',
-					enctype: 'multipart/form-data',
-					data: datastring,    
-					contentType: false,
-					processData:false,
-					cache: false,
-					dataType:"JSON",
-					token: '<?php echo $this->security->get_csrf_hash();?>',
-					success:function(data){
-						console.log(data);
-						$('#token').val(data.csrfHash);
-						if(data.status == 1){				
-							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
-								window.location.reload();
-							});
-						}else{				
-							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
-								window.location.reload();
-							});
-						}
-					},
-					timeout: 10000,
-					async: false			
-				});
-			}
-		});
-
 		function deleteproject(id) { 
 			swal({
 				title: "Are you sure to delete this  of ?",
@@ -617,6 +582,41 @@
 				});
 			});
 		}
+
+		$(document).on('click','#submitmodule', function(e) { 
+			e.preventDefault();		
+			if($("#createmodule")[0].reportValidity()) 
+			{
+				var datastring =  new FormData($('#createmodule')[0]); 
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/project/createmodule',
+					enctype: 'multipart/form-data',
+					data: datastring,    
+					contentType: false,
+					processData:false,
+					cache: false,
+					dataType:"JSON",
+					token: '<?php echo $this->security->get_csrf_hash();?>',
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
+			}
+		});
+
 
 		function deletemodule(id) { 
             $.ajax({

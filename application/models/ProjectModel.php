@@ -26,7 +26,27 @@ Class ProjectModel extends CI_Model {
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
-    }   
+    } 
+
+    function getallprojectmodule()
+    {
+        try { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];   
+            $status = '1';      
+            $sql = "SELECT * FROM project_modules WHERE lead_id = ?  AND status = ? ";
+            $query = $this->db->query($sql, [$lead_id,$status]);
+            $result = $query->result();
+            if($result){
+                return $result;
+            }else{
+                return FALSE;
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    } 
+    
     function create($post_data,$token)
     {					      
 		try 
@@ -161,7 +181,7 @@ Class ProjectModel extends CI_Model {
 			$data['project_id']		        = $post_data['project_id'];
 			$data['module']		            = $post_data['module'];
 			$data['module_description']     = $post_data['module_description'];
-			if($this->db->insert('modules',$data))
+			if($this->db->insert('project_modules',$data))
 			{
 				if($this->db->affected_rows() == 1)
 				{	
@@ -187,7 +207,7 @@ Class ProjectModel extends CI_Model {
             $id             = $post_data['id'];   
             $data['status'] = 0;
 			$this->db->where('module_id', $id);
-            $this->db->update('modules',$data);
+            $this->db->update('project_modules',$data);
             if ($this->db->affected_rows() > 0)
             {
 				return true;

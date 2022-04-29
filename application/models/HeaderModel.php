@@ -30,6 +30,7 @@ Class HeaderModel extends CI_Model {
 		$headercontent['alldesignation'] 	= $this->designationmodel->getalldesignation();
 		$headercontent['allusers'] 			= $this->usersmodel->getallusers();
 		$headercontent['allproject'] 		= $this->projectmodel->getallproject();
+		$headercontent['allprojectmodule'] 	= $this->projectmodel->getallprojectmodule();
 		$headercontent['allclient'] 		= $this->clientmodel->getallclient();
 		$headercontent['allvendor'] 		= $this->vendormodel->getallvendor();
 		$headercontent['allmodule'] 		= $this->modulemodel->getallmodule();
