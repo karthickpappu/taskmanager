@@ -35,6 +35,7 @@ Class HeaderModel extends CI_Model {
 		$headercontent['allvendor'] 		= $this->vendormodel->getallvendor();
 		$headercontent['allmodule'] 		= $this->modulemodel->getallmodule();
 		$headercontent['alltask'] 			= $this->taskmodel->getalltask();
+		$headercontent['alltasktodo'] 		= $this->taskmodel->getalltasktodo();
         return $headercontent;
     }  
 	  

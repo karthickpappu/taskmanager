@@ -1,141 +1,84 @@
-		
+	<style>	
+        .userul{
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+	
+        .team-info li+li {
+            margin-left: 0px;
+        }
+        .team-info li {
+            margin-top: 5px;
+        }
+        .table td, .table th {
+            padding: 0.25rem;
+        }
+        .fa-list-check:before, .fa-tasks:before {
+            content: "\f0ae";
+        }
+    </style>
         <div class="section-body mt-3">
             <div class="container-fluid">
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="card c_grid c_yellow">  
-							<div class="card-header">
-								<h3 class="card-title">Created By</h3>
-							</div>
-                            <div class="card-body text-center">
-							<?php 
-									foreach($allusers as $uoutput){
-										if($uoutput->user_id == $taskbyid->created_by){
-											$cname = $uoutput->user_name;
-											$cemail = $uoutput->email;
-											$cphone = $uoutput->phone;
-										}
-									}
-								?>
-                                <div class="circle">
-                                    <img style="width:50%;" class="rounded-circle" src="<?php echo $this->config->item("base_url");?>assets/images/user.png" alt="">
-                                </div>							
-                                <h6 class="mt-3 mb-0"><?php echo $cname;?></h6>
-                                <span><?php echo $cemail;?></span>
-                                <ul class="mt-3 list-unstyled d-flex justify-content-center">
-                                    <li><a class="p-3" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="p-3" target="_blank" href="#"><i class="fa fa-slack"></i></a></li>
-                                    <li><a class="p-3" target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                                <button type="button" class="btn btn-default btn-sm">Follow</button>
-                                <button class="btn btn-default btn-sm">Message</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Task Details</h3>
-                                <div class="card-options">
-                                    <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
-                                    <div class="item-action dropdown ml-2">
-                                        <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p><?php echo $taskbyid->title;?></p>
-                                <span><?php echo $taskbyid->description;?></span>
-                            </div>                        
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Task Info</h3>
-                                <div class="card-options">
-                                    <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
-                                    <div class="item-action dropdown ml-2">
-                                        <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <small class="text-muted">Team: </small>
-                                        <p class="mb-0">
-											<?php 
-												$tags = explode(',',$taskbyid->assign_to);
-												$taskteam = '';
-												foreach($tags as $key) { 
-													foreach($allusers as $uoutput){
-														if($uoutput->user_id == $key){
-															$taskteam .= '<li><img src="'.$this->config->item("base_url").'assets/images/user.png" data-toggle="tooltip" data-placement="top" title="'.$uoutput->user_name.'" alt="Avatar">'.$uoutput->user_name.'</li>';
-														}
-													}
-												}
-											?> 
-											<ul class="list-unstyled team-info">
-												<?php echo $taskteam;?>
-											</ul>
-										</p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <small class="text-muted">Followers: </small>
-                                        <p  class="mb-0">
-											<?php 
-												$followerstag = explode(',',$taskbyid->followers);
-												$followers = '';
-												foreach($followerstag as $fkey) { 
-													foreach($allusers as $uoutput){
-														if($uoutput->user_id == $fkey){
-															$followers .= '<li><img src="'.$this->config->item("base_url").'assets/images/user.png" data-toggle="tooltip" data-placement="top" title="'.$uoutput->user_name.'" alt="Avatar">'.$uoutput->user_name.'</li>';
-														}
-													}
-												}
-											?>
-											<ul class="list-unstyled team-info">
-												<?php echo $followers; ?>
-											</ul>
-										</p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <small class="text-muted">Start Date: </small>
-                                        <p  class="mb-0">07 Feb 2019</p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <small class="text-muted">End Date: </small>
-                                        <p  class="mb-0">07 Feb 2019</p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div><?php echo $taskbyid->task_status;?></div>
-                                        <div class="progress progress-xs mb-0">
-                                            <div class="progress-bar bg-info" style="width: 50%"></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row clearfix">                  
 					
                     <div class="col-lg-8 col-md-12">
+                        <div class="card c_grid c_yellow">  
+							<div class="card-header">
+								<h3 class="card-title">Task Details</h3>
+							</div>
+                            <div class="card-body text-left">
+                                <p>Title : <?php echo $taskbyid->title;?></p>
+                                <span>Description : <?php echo $taskbyid->description;?></span>
+                            </div>
+                        </div>
+                        <div class="card c_grid c_yellow">  
+							<div class="card-header">
+								<h3 class="card-title">Task Details</h3>
+							</div>
+                            <div class="card-body text-left">
+                                <div class="table-responsive todo_list">
+                                    <table class="table table-hover table-striped table-vcenter mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:30%;" class="text-left">Title</th>
+                                                <th class="">Description</th>
+                                                <th style="width:5%;" class=""></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+											<?php 
+												if($alltasktodo){
+												$a=1;
+												foreach($alltasktodo as $tasktodooutput){
+												$b=$a++;
+											?>
+                                            <tr>
+                                                <td>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input onclick="changetasktodostatus(<?php echo $tasktodooutput->task_todo_id;?>)" type="checkbox" class="custom-control-input" name="example-checkbox1" value="<?php echo $tasktodooutput->task_todo_id;?>">
+                                                        <span class="custom-control-label"><?php echo $tasktodooutput->title;?></span>
+                                                    </label>
+                                                </td>
+                                                <td><?php echo $tasktodooutput->description;?></td>
+                                                <td>
+                                                    <div class="item-action dropdown ml-2">
+                                                        <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-edit"></i> </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fas fa-list-check fa-lg"></i> Completed </a>
+                                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-calendar-check"></i> Pending </a>
+                                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-calendar-check"></i> Clarity Needed</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+											<?php } } ?>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <div class="summernote">
@@ -270,6 +213,107 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card c_grid c_yellow">  
+							<div class="card-header">
+								<h3 class="card-title">Created By</h3>
+							</div>
+                            <div class="card-body text-left">
+                                <ul class="list-unstyled team-info">
+                                    <?php 
+                                        foreach($allusers as $uoutput){
+                                            if($uoutput->user_id == $taskbyid->created_by){
+                                                $cname = $uoutput->user_name;
+                                                $cemail = $uoutput->email;
+                                                $cphone = $uoutput->phone;
+                                            }
+                                        }
+                                    ?>
+                                    <li><img src="<?php echo $this->config->item("base_url");?>assets/images/user.png" data-toggle="tooltip" data-placement="top" title="<?php echo $cemail;?>" alt="Avatar"><?php echo $cname;?></li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Task Info</h3>
+                                <div class="card-options">
+                                    <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
+                                    <div class="item-action dropdown ml-2">
+                                        <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+                                            <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <small class="text-muted">Team: </small>
+                                        <p class="mb-0">
+											<?php 
+												$tags = explode(',',$taskbyid->assign_to);
+												$taskteam = '';
+												foreach($tags as $key) { 
+													foreach($allusers as $uoutput){
+														if($uoutput->user_id == $key){
+															$taskteam .= '<li><img src="'.$this->config->item("base_url").'assets/images/user.png" data-toggle="tooltip" data-placement="top" title="'.$uoutput->email.'" alt="Avatar">'.$uoutput->user_name.'</li>';
+														}
+													}
+												}
+											?> 
+											<ul class="list-unstyled team-info userul">
+												<?php echo $taskteam;?>
+											</ul>
+										</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <small class="text-muted">Followers: </small>
+                                        <p  class="mb-0">
+											<?php 
+												$followerstag = explode(',',$taskbyid->followers);
+												$followers = '';
+												foreach($followerstag as $fkey) { 
+													foreach($allusers as $uoutput){
+														if($uoutput->user_id == $fkey){
+															$followers .= '<li><img src="'.$this->config->item("base_url").'assets/images/user.png" data-toggle="tooltip" data-placement="top" title="'.$uoutput->email.'" alt="Avatar">'.$uoutput->user_name.'</li>';
+														}
+													}
+												}
+											?>
+											<ul class="list-unstyled team-info userul">
+												<?php echo $followers; ?>
+											</ul>
+										</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <small class="text-muted">Start Date: </small>
+                                        <p  class="mb-0">07 Feb 2019</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <small class="text-muted">Due Date: </small>
+                                        <p  class="mb-0">07 Feb 2019</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div><?php echo $taskbyid->task_status;?></div>
+                                        <div class="progress progress-xs mb-0">
+                                            <div class="progress-bar bg-info" style="width: 50%"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

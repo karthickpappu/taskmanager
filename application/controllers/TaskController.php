@@ -25,12 +25,28 @@ class TaskController extends CI_Controller {
     }
 	
 	public function pages() {
-		$page = strtolower($this->uri->segment(2));	
-		$id = $this->uri->segment(3);
-		$page_content['alltask'] = $this->taskmodel->getalltask();
-		$page_content['mytask'] = $this->taskmodel->getmytask();
-		$page_content['taskbyid'] = $this->taskmodel->gettaskbyid($id);
-		$headercontent = $this->headermodel->headerdata();
+		$page 						= strtolower($this->uri->segment(2));	
+		$id 						= $this->uri->segment(3);
+		$page_content['alltask'] 	= $this->taskmodel->getalltask();
+		$page_content['mytask'] 	= $this->taskmodel->getmytask();
+		$page_content['taskbyid'] 	= $this->taskmodel->gettaskbyid($id);
+		$headercontent 				= $this->headermodel->headerdata();
+        if ($this->validation->user_in()) {   
+			$this->load->view('template/header',$headercontent);
+            $this->load->view('webpages/task/'.$page,$page_content);
+            $this->load->view('template/footer');
+        } else {        
+            redirect('login','refresh'); 
+        }
+    }
+
+	public function contentpages() {
+		$page 						= strtolower($this->uri->segment(2));	
+		$id 						= $this->uri->segment(3);
+		$page_content['alltask'] 	= $this->taskmodel->getalltask();
+		$page_content['mytask'] 	= $this->taskmodel->getmytask();
+		$page_content['taskbyid'] 	= $this->taskmodel->gettaskbyid($id);
+		$headercontent 				= $this->headermodel->headerdata();
         if ($this->validation->user_in()) {   
 			$this->load->view('template/header',$headercontent);
             $this->load->view('webpages/task/'.$page,$page_content);

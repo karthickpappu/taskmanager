@@ -46,69 +46,20 @@
                     <div class="col-md-12">
                         <div class="d-md-flex justify-content-between align-items-center">
                             <ul class="nav nav-tabs page-header-tab">
-                                <li class="nav-item"><a class="nav-link active" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-list">List View</a></li> 
+                                <li class="nav-item"><a class="nav-link active" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-list">All Task View</a></li> 
 								<li class="nav-item"><a class="nav-link" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-mylist">My Task View</a></li>
-                                <li class="nav-item"><a class="nav-link" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-grid">Grid View</a></li>
+                                <!-- <li class="nav-item"><a class="nav-link" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-grid">Grid View</a></li> -->
+                                <li class="nav-item"><a class="nav-link" id="TaskBoard-tab" data-toggle="tab" href="#TaskBoard-add">Add Task</a></li>
                             </ul>
                             <div class="header-action d-flex">
                                 <div class="input-group mr-2">
                                     <input type="text" class="form-control" placeholder="Search...">
                                 </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addtask"><i class="fa fa-plus mr-2"></i>Add</button>
                             </div>
                         </div>
                     </div>
                 </div>
-				
-                <div class="row clearfix mt-2">
-					<?php 					
-						$planned = array_filter($alltask, function($product) {
-							// condition which makes a result belong to div2.
-							return ($product->task_status) == 'Planned';
-						});
-						$progress = array_filter($alltask, function($product) {
-							// condition which makes a result belong to div2.
-							return ($product->task_status) == 'In Progress';
-						});
-						$completed = array_filter($alltask, function($product) {
-							// condition which makes a result belong to div2.
-							return ($product->task_status) == 'Completed';
-						});
-					?>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h6>Planned</h6>
-                                <input type="text" class="knob" value="<?php echo count($planned);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h6>In Progress</h6>
-                                <input type="text" class="knob" value="<?php echo count($progress);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h6>Completed</h6>
-                                <input type="text" class="knob" value="<?php echo count($completed);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h6>In Completed</h6>
-                                <input type="text" class="knob" value="0" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
+				               
             </div>
         </div>
 		
@@ -117,6 +68,54 @@
                 <div class="tab-content taskboard">
 				
                     <div class="tab-pane fade show active" id="TaskBoard-list" role="tabpanel">
+						<div class="row clearfix mt-2">
+							<?php 					
+								$planned = array_filter($alltask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'Planned';
+								});
+								$progress = array_filter($alltask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'In Progress';
+								});
+								$completed = array_filter($alltask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'Completed';
+								});
+							?>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>Planned</h6>
+										<input type="text" class="knob" value="<?php echo count($planned);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>In Progress</h6>
+										<input type="text" class="knob" value="<?php echo count($progress);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>Completed</h6>
+										<input type="text" class="knob" value="<?php echo count($completed);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>In Completed</h6>
+										<input type="text" class="knob" value="0" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+						</div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="table-responsive">
@@ -197,7 +196,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo $this->config->item("base_url");?>task/details/<?php echo $taskoutput->task_id;?>" class="tag tag-blue">View</a>
+                                                    <a href="<?php echo $this->config->item("base_url");?>task/details/<?php echo $taskoutput->task_id;?>/<?php echo md5($mytaskoutput->task_id);?>" class="tag tag-blue">View</a>
                                                 </td>
                                             </tr>
 											<?php } } else {?>  
@@ -212,6 +211,54 @@
 					
 									
                     <div class="tab-pane fade" id="TaskBoard-mylist" role="tabpanel">
+						<div class="row clearfix mt-2">
+							<?php 					
+								$planned = array_filter($mytask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'Planned';
+								});
+								$progress = array_filter($mytask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'In Progress';
+								});
+								$completed = array_filter($mytask, function($product) {
+									// condition which makes a result belong to div2.
+									return ($product->task_status) == 'Completed';
+								});
+							?>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>Planned</h6>
+										<input type="text" class="knob" value="<?php echo count($planned);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>In Progress</h6>
+										<input type="text" class="knob" value="<?php echo count($progress);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>Completed</h6>
+										<input type="text" class="knob" value="<?php echo count($completed);?>" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<div class="card-body text-center">
+										<h6>In Completed</h6>
+										<input type="text" class="knob" value="0" data-width="90" data-height="90" data-thickness="0.1" data-fgColor="#6e7687">
+									</div>
+								</div>
+							</div>
+						</div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="table-responsive">
@@ -292,7 +339,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo $this->config->item("base_url");?>task/details/<?php echo $mytaskoutput->task_id;?>" class="tag tag-blue">View</a>
+                                                    <a href="<?php echo $this->config->item("base_url");?>task/details/<?php echo $mytaskoutput->task_id;?>/<?php echo md5($mytaskoutput->task_id);?>" class="tag tag-blue">View</a>
                                                 </td>
                                             </tr>
 											<?php } } else {?>  
@@ -549,93 +596,162 @@
                             </div>
                         </div>
                     </div>
+
+					<div class="tab-pane fade" id="TaskBoard-add" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card planned_task">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Create Task</h3>
+                                        <div class="card-options">
+                                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
+                                            <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fa fa-expand"></i></a>
+                                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
+                                            <div class="item-action dropdown ml-2">
+                                                <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>                                            
+													<div class="dropdown-divider"></div>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
+													<a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+										<?php echo form_open_multipart('data/task/create','id="createtask" name="createtask" autocomplete="on" ');?>
+											<div class="modal-body">
+												<div class="row clearfix">
+													<div class="col-lg-4">
+														<div class="form-group">
+															<select class="selectpicker show-menu-arrow" onchange="selectprojectmodule(this.value)" data-style="form-control" data-live-search="true" title="Select Project" id="project_id" name="project_id" required>
+															<?php 
+																if($allproject){
+																$a=1;
+																foreach($allproject as $projectoutput){
+																$b=$a++;
+															?>
+																<option data-tokens="<?php echo $projectoutput->project_id;?>" value="<?php echo $projectoutput->project_id;?>"><?php echo $projectoutput->title;?></option>
+															<?php } } ?>
+																<option data-tokens="Others" value="Others">Others</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-lg-4">
+														<div class="form-group">
+															<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Project Module" name="project_module_id" id="project_module_id"  required>
+															<?php 
+																if($allprojectmodule){
+																$a=1;
+																foreach($allprojectmodule as $projectmoduleoutput){
+																$b=$a++;
+															?>
+																<option style="display:none;" class="projectmoduleoption projectmodule_<?php echo $projectmoduleoutput->project_id;?>" data-tokens="<?php echo $projectmoduleoutput->module_id;?>" value="<?php echo $projectmoduleoutput->module_id;?>"><?php echo $projectmoduleoutput->module;?></option>
+															<?php } } ?>
+																<option class="projectmodule_Others" data-tokens="Others" value="Others">Others</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-lg-8">
+														<div class="form-group">                                   
+															<input type="text" class="form-control" placeholder="Title" name="title" required>
+														</div>
+													</div>
+													<div class="col-lg-4">
+														<div class="form-group">
+															<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Priority" name="priority" required>
+																<option data-tokens="Low" value="Low">Low</option>
+																<option data-tokens="Medium" value="Medium">Medium</option>
+																<option data-tokens="High"value="High">High</option>
+															</select>
+														</div>
+													</div>     
+													<div class="col-lg-12">
+														<div class="form-group">
+															<textarea class="form-control" placeholder="Description" name="description" required></textarea>
+														</div>
+													</div>
+													<div class="col-lg-6">
+														<div class="form-group">
+															<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Team" multiple="multiple"name="assign_to[]" required>
+															<?php 
+																if($allusers){
+																foreach($allusers as $output){
+															?>
+																<option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
+															<?php } } ?>
+															</select>
+														</div>
+													</div>					
+													<div class="col-lg-6">
+														<div class="form-group">
+															<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Followers" multiple="multiple" name="followers[]" required>
+															<?php 
+																if($allusers){
+																foreach($allusers as $output){
+															?>
+																<option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
+															<?php } } ?>
+															</select>
+														</div>
+													</div>  
+												</div> 
+												<div class="row">
+													<div class="col-lg-4">
+														<label>Task Start/Due Date</label>
+														<div class="input-daterange input-group" data-provide="datepicker">
+															<input type="text" class="form-control" name="date_from" autocomplete="off" value="<?php echo date('d-m-Y');?>" required>
+															<span class="input-group-addon"> to </span>
+															<input type="text" class="form-control" name="date_to" autocomplete="off" value="<?php echo date('d-m-Y');?>"required>
+														</div>
+													</div>                
+												</div>
+												<div class="row mt-15">
+													<div class="col-lg-4">
+														<input type="file" class="dropify" name="task_attachment">
+													</div>                 
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" id="submit" class="btn btn-primary">Add</button>
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 					
                 </div>                
             </div>
         </div>
 
-
-<!-- Add New Task -->
-<div class="modal fade" id="addtask" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="title" id="defaultModalLabel">Add New Task</h6>
-            </div>
-			<?php echo form_open_multipart('data/task/create','id="createtask" name="createtask" autocomplete="on" ');?>
-				<div class="modal-body">
-					<div class="row clearfix">
-						<div class="col-12">
-							<div class="form-group">                                   
-								<input type="text" class="form-control" placeholder="Title" name="title" required>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="form-group">
-								<textarea class="form-control" placeholder="Description" name="description" required></textarea>
-							</div>
-						</div>  
-						<div class="col-12">
-							<div class="form-group">
-								<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Priority" name="priority" required>
-									<option data-tokens="Low" value="Low">Low</option>
-									<option data-tokens="Medium" value="Medium">Medium</option>
-									<option data-tokens="High"value="High">High</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="form-group">
-								<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Team" multiple="multiple"name="assign_to[]" required>
-								<?php 
-									if($allusers){
-									foreach($allusers as $output){
-								?>
-									<option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
-								<?php } } ?>
-								</select>
-							</div>
-						</div>					
-						<div class="col-12">
-							<div class="form-group">
-								<select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Followers" multiple="multiple" name="followers[]" required>
-								<?php 
-									if($allusers){
-									foreach($allusers as $output){
-								?>
-									<option data-tokens="<?php echo $output->user_name;?>" value="<?php echo $output->user_id;?>"><?php echo $output->user_name;?></option>
-								<?php } } ?>
-								</select>
-							</div>
-						</div>
-						<div class="col-12">
-							<label>Duration</label>
-							<div class="input-daterange input-group" data-provide="datepicker">
-								<input type="text" class="form-control" name="date_from" autocomplete="off" required>
-								<span class="input-group-addon"> to </span>
-								<input type="text" class="form-control" name="date_to"autocomplete="off" required>
-							</div>
-						</div>                    
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" id="submit" class="btn btn-primary">Add</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</form>
-        </div>
-    </div>
-</div>
-
 <script>
 /* Multiple Item Picker */
+function selectprojectmodule(value){
+	$(".projectmoduleoption").hide();
+	$(".projectmodule_"+value).show();
+    $('.selectpicker').selectpicker('refresh');
+}
+
+$(document).ready(function(){
+	$(".datepicker").datepicker({
+		"format": "d-m-yyyy",
+	});
+});
 
 $(document).on('click','#submit', function(e) { 
 	e.preventDefault();		
 	// for (instance in CKEDITOR.instances) {
         // CKEDITOR.instances[instance].updateElement();
     // }
-	if($("#createtask")[0].checkValidity()) 
+	if($("#createtask")[0].reportValidity()) 
 	{
 		var datastring =  new FormData($('#createtask')[0]); 
 		$.ajax({

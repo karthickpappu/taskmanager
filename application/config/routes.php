@@ -30,6 +30,7 @@ $route['data/project/(:any)'] = 'ProjectController/'.$segment_3;
 $route['task'] = 'TaskController/index/$1';
 $route['task/(:any)'] = 'TaskController/pages/$1';
 $route['task/(:any)/(:any)'] = 'TaskController/pages/$1';
+$route['task/(:any)/(:any)/(:any)'] = 'TaskController/contentpages/$1';
 $route['data/task/(:any)'] = 'TaskController/'.$segment_3;
 
 $route['todo'] = 'TodoController/index/$1';
