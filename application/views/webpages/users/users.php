@@ -224,7 +224,7 @@
                                                 <div class="text-muted"><?php echo $output->email;?></div>
                                             </td>
                                             <td class="hidden-xs">
-                                                <div class="text-muted">
+                                                <div class="text-muted" style="width: auto;white-space: normal;">
                                                     <?php
                                                     foreach($alldepartment as $depoutput){
                                                         if($depoutput->department_id == $output->department_id){
@@ -234,7 +234,7 @@
                                                 </div>
                                             </td>
                                             <td class="hidden-xs">
-                                                <div class="text-muted">
+                                                <div class="text-muted" style="width: auto;white-space: normal;">
                                                     <?php
                                                     foreach($alldesignation as $doutput){
                                                         if($doutput->designation_id == $output->designation_id){
@@ -244,7 +244,9 @@
                                                 </div>
                                             </td>
                                             <td class="hidden-sm">
-                                                <div class="text-muted"><?php echo $output->address;?> <?php echo $output->city;?> <?php echo $output->state;?> <?php echo $output->pincode;?></div>                                                
+                                                <div class="text-muted" style="width: auto;white-space: normal;" >
+                                                    <?php echo $output->address;?> <?php echo $output->city;?> <?php echo $output->state;?> <?php echo $output->pincode;?>
+                                                </div>                                                
                                             </td>  
                                             <?php if($userwrite){ ?>
                                             <td class="text-right">
