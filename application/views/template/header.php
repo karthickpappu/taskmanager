@@ -354,7 +354,7 @@
             <ul class="metismenu">
                 <li class="g_heading">Project</li>
                 <?php                 
-		            $this->load->model('HeaderModel', 'headermodel', TRUE);
+		            // $this->load->model('HeaderModel', 'headermodel', TRUE);
                     $dashboardread 	        = $this->rolemodel->getpermission('dashboard','read');
                     $projectread 	        = $this->rolemodel->getpermission('project','read');
                     $taskboardread 	        = $this->rolemodel->getpermission('taskboard','read');

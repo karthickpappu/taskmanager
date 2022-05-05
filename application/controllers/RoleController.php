@@ -56,7 +56,7 @@ class RoleController extends CI_Controller
 		echo json_encode($message);
 	} 
 
-	function addpermission() {					
+	public function addpermission() {					
 		$token 		= openssl_random_pseudo_bytes(16);
 		$token 		= bin2hex($token);
 		$post_data 	= $this->input->post();

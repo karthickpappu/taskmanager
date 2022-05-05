@@ -32,28 +32,42 @@ Class RoleModel extends CI_Model {
     {
         try 
         { 
-			$user_data = $this->session->userdata('user_data'); 
-            $lead_id = $user_data['lead_id']; 
-            $role_id = $user_data['role_id']; 
-            $role_id = $user_data['role_id']; 
-            $this->db->where('role_id',$code);
+			$user_data  = $this->session->userdata('user_data'); 
+            $lead_id    = $user_data['lead_id']; 
+            $role_id    = $user_data['role_id']; 
+            $access_id  = $user_data['access_id']; 
+            $this->db->where('role_id',$access_id);
             $this->db->where('module',$module);
             $this->db->where($action,'1');
             $codebased = $this->db->get('permissions');    
             if ( $codebased->num_rows() > 0 ) 
             {
                 return 1;
-            }else{                
-                $this->db->where('role_id',$role_id);
-                $this->db->where('module',$module);
-                $this->db->where($action,'1');
-                $roleidbased = $this->db->get('permissions');  
-                if ( $roleidbased->num_rows() > 0 ) 
-                {
-                    return 1;
-                }else{                    
-                    return 0;
-                }
+            }else{                  
+                return 0;
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
+
+    
+    function getpermissionbyrole($module,$roleid,$action)
+    {
+        try 
+        { 
+			$user_data = $this->session->userdata('user_data'); 
+            $lead_id = $user_data['lead_id']; 
+            $role_id = $user_data['role_id']; 
+            $role_id = $user_data['role_id']; 
+            $this->db->where('role_id',$roleid);
+            $this->db->where('module',$module);
+            $this->db->where($action,'1');
+            $codebased = $this->db->get('permissions');    
+            if ( $codebased->num_rows() > 0 ){
+                return 1;
+            }else{                       
+                return 0;
             }
         } catch (Exception $e) {
             var_dump($e->getMessage());
@@ -90,19 +104,29 @@ Class RoleModel extends CI_Model {
 		}
     }	
     
-    function addpermission($post_data,$token)
+    public function addpermission($post_data,$token)
     {					      
 		try 
         { 
-			$user_data = $this->session->userdata('user_data');
-            $lead_id = $user_data['lead_id'];         
-			// $data['code']		        = $no_reg;
-            foreach($post_data['module_id'] as $key => $value)
+			$user_data  = $this->session->userdata('user_data');
+            $lead_id    = $user_data['lead_id'];
+            $arraycount = count( $post_data['module_id'] );
+
+            $this->db->where('code',$post_data['role_id']);
+            $useraccessid = $this->db->get('users');
+            if ( $useraccessid->num_rows() > 0 ) 
             {
-                $data['lead_id']		        = $user_data['lead_id'];
-                $data['created_by']		        = $user_data['user_id'];
-                $data['role_id']		        = $post_data['role_id'];
-                $data['module_id']		        = $value;
+                $userdata['access_id '] = $post_data['role_id'];
+                $this->db->where('code',$post_data['role_id']);
+                $this->db->update('users',$userdata);
+            }
+
+            for($key=1;$key<=$arraycount;$key++)
+            {
+                $value                  = $post_data['module_id'][$key];
+                $data['lead_id']	    = $user_data['lead_id'];
+                $data['created_by']     = $user_data['user_id'];
+                $data['module_id']      = $value;
             
                 if (empty($post_data['module'][$key])) {
                     $data['module'] = '0';
@@ -143,19 +167,21 @@ Class RoleModel extends CI_Model {
                 $this->db->where('role_id',$post_data['role_id']);
                 $this->db->where('module_id',$value);
                 $q = $this->db->get('permissions');
-             
+
+                $this->db->trans_start();
                 if ( $q->num_rows() > 0 ) 
                 {
                     $this->db->where('role_id',$post_data['role_id']);
                     $this->db->where('module_id',$value);
                     $this->db->update('permissions',$data);
                 }else{
+                    $data['role_id']		        = $post_data['role_id'];
                     $this->db->insert('permissions',$data);
                 }
+                $this->db->trans_complete();
             }
-            if($this->db->affected_rows() == 1)
+            if($this->db->trans_status() === true)
             {	
-                $last_insert_id = $this->db->insert_id();
                 return true;
             }
 			else

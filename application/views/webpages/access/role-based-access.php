@@ -94,7 +94,7 @@
                                                     </label>
                                                 </td>
                                                 <td>	
-                                                    <a href="#addaccess" onclick="addroleid(<?php echo $routput->role_id;?>)" class=" btn btn-primary btn-sm" data-toggle="tab" data-target="#addaccess"><i class="fa fa-plus mr-2"></i> Add </a>
+                                                    <a href="#addaccess" onclick="addroleid(<?php echo $routput->role_id;?>,'<?php echo $routput->role;?>')" class=" btn btn-primary btn-sm" data-toggle="tab" data-target="#addaccess"><i class="fa fa-plus mr-2"></i> Add </a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -111,7 +111,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Roles &amp; Permissions</h3>
+                                    <h3 class="card-title">Roles &amp; Permissions [<?php echo $_GET['role'];?>]</h3>
                                     <div class="card-options">
                                         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
                                         <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fa fa-window-maximize"></i></a>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                                 <?php echo form_open_multipart('data/role/addpermission','id="addpermission" name="addpermission" autocomplete="on" ');?>
-                                <input type="text" name="role_id" id="role_id" value="<?php echo $_GET['roleid'];?>">
+                                <input type="hidden" name="role_id" id="role_id" value="<?php echo $_GET['roleid'];?>">
                                     <div class="card-body">
                                         <!-- <ul class="list-group mb-3 tp-setting">
                                             <li class="list-group-item">
@@ -175,130 +175,95 @@
                                                 <tbody>
                                                     <tr style="background: darkseagreen;"> 
                                                         <td colspan="2" >Select All</td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_read" id="module_read" type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_write" id="module_write"  type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_create" id="module_create" type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_delete" id="module_delete" type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_import" id="module_import" type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <label class="custom-control custom-checkbox">
                                                             <input onclick="selectall(this.value)" value="module_export" id="module_export" type="checkbox" class="custom-control-input">
                                                             <span class="custom-control-label">&nbsp;</span>
                                                             </label>
                                                         </td>
                                                     </tr>
-                                                <?php 	
-                                                    foreach($allmodule as $moutput){
-                                                ?>
-                                                    <tr> 
-                                                        <input type="hidden" name="module[]" id="module" value="<?php echo $moutput->module;?>">
-                                                        <?php if( $moutput->main_module_id == '0' ){ ?>
-                                                            <input type="hidden" name="module_id[]" id="role_id" value="<?php echo $moutput->module_id;?>">
-                                                            <td colspan="2" ><?php echo $moutput->module;?></td>
-                                                            <td>
+                                                    <?php 	
+                                                        $a=1;
+                                                        foreach($allmodule as $moutput){
+                                                            $b = $a++
+                                                    ?>
+                                                        <tr> 
+                                                            <input type="hidden" name="module[<?php echo $b;?>]" id="module" value="<?php echo $moutput->module;?>">
+                                                            <input type="hidden" name="module_id[<?php echo $b;?>]" id="module_id" value="<?php echo $moutput->module_id;?>">
+                                                            <?php if( $moutput->main_module_id == '0' ){ ?>
+                                                                <td colspan="2" ><?php echo $moutput->module;?></td>
+                                                            <?php } else { ?>
+                                                                <td></td>
+                                                                <td><?php echo $moutput->module;?></td>
+                                                            <?php } ?>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_read[]" type="checkbox" class="custom-control-input module_read" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'read')){ echo 'checked'; } ?> name="module_read[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_read" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_write[]" type="checkbox" class="custom-control-input module_write" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'write')){ echo 'checked'; } ?> name="module_write[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_write" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_create[]" type="checkbox" class="custom-control-input module_create" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'create')){ echo 'checked'; } ?> name="module_create[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_create" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_delete[]" type="checkbox" class="custom-control-input module_delete" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'delete')){ echo 'checked'; } ?> name="module_delete[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_delete" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_import[]" type="checkbox" class="custom-control-input module_import" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'import')){ echo 'checked'; } ?> name="module_import[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_import" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
                                                             </td>
-                                                            <td>
+                                                            <td style="text-align: center;">
                                                                 <label class="custom-control custom-checkbox">
-                                                                <input name="module_export[]" type="checkbox" class="custom-control-input module_export" value="1">
+                                                                <input <?php if($this->rolemodel->getpermissionbyrole($moutput->module,$_GET['roleid'],'export')){ echo 'checked'; } ?> name="module_export[<?php echo $b;?>]" type="checkbox" class="custom-control-input module_export" value="1">
                                                                 <span class="custom-control-label">&nbsp;</span>
                                                                 </label>
-                                                            </td>
-                                                        <?php } else { ?>
-                                                            <input type="hidden" name="module_id[]" id="role_id" value="<?php echo $moutput->module_id;?>">
-                                                            <td></td>
-                                                            <td><?php echo $moutput->module;?></td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_read[]" type="checkbox" class="custom-control-input module_read" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_write[]" type="checkbox" class="custom-control-input module_write" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_create[]" type="checkbox" class="custom-control-input module_create" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_delete[]" type="checkbox" class="custom-control-input module_delete" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_import[]" type="checkbox" class="custom-control-input module_import" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <label class="custom-control custom-checkbox">
-                                                                <input name="module_export[]" type="checkbox" class="custom-control-input module_export" value="1">
-                                                                <span class="custom-control-label">&nbsp;</span>
-                                                                </label>
-                                                            </td>
-                                                        <?php } ?>
-                                                    </tr>
-                                                <?php } ?>
+                                                            </td>                                                            
+                                                        </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
 
@@ -359,10 +324,11 @@
 
     <script>
             
-        function addroleid(value){
+        function addroleid(value,role){
             $("#role_id").val(value);
             var nextURL = '<?php echo $this->config->item('base_url');?>access/role-based-access';
-            history.pushState({}, null, nextURL+'?roleid='+value);
+            history.pushState({}, null, nextURL+'?roleid='+value+'&role='+role);
+            window.location.reload();
         }
         
         function selectall(value){

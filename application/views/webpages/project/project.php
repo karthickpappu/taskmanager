@@ -140,8 +140,20 @@
 	.dropa:hover {
 		color: #222222
 	}
-	</style>      
-   <div class="section-body">
+	.table td, .table th {
+   		vertical-align: middle;
+	}
+	</style>     
+	
+	<?php                 
+		$projectread 	= $this->rolemodel->getpermission('project','read');                   
+		$projectwrite 	= $this->rolemodel->getpermission('project','write');                   
+		$projectdelete	= $this->rolemodel->getpermission('project','delete');                   
+		$projectcreate	= $this->rolemodel->getpermission('project','create');                   
+		$projectimport	= $this->rolemodel->getpermission('project','import');                   
+		$projectexport 	= $this->rolemodel->getpermission('project','export');                   
+	?>
+   	<div class="section-body">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
@@ -149,7 +161,10 @@
 						<ul class="nav nav-tabs page-header-tab">
 							<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Project-OnGoing" id="ongioingbutton">OnGoing</a></li>
 							<!--<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-UpComing">UpComing</a></li>-->
+							
+							<?php if($projectcreate){ ?>
 							<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Project-add" id="addprojectbutton">Add Project</a></li>
+							<?php } ?>
 						</ul>
 						<div class="header-action d-md-flex">
 							<div class="input-group mr-2">
@@ -178,11 +193,15 @@
 								<div class="card-header">
 									<h3 class="card-title"><?php echo $projectoutput->title;?></h3>
 									<div class="card-options">
+										<?php if($projectdelete){?>
 										<label class="custom-switch m-0">
 											<input type="checkbox" value="1" onclick="deleteproject(<?php echo $projectoutput->project_id; ?>)" class="custom-switch-input" checked>
 											<span class="custom-switch-indicator"></span>
 										</label>
-										<button type="button" class="ml-15 btn btn-primary" onclick="projectid(<?php echo $projectoutput->project_id;?>)" data-toggle="modal" data-target="#addmodule"><i class="fa fa-plus mr-2"></i>Add Module</button>										
+										<?php } ?>
+										<?php if($projectcreate){?>
+										<button type="button" class="ml-15 btn btn-primary" onclick="projectid(<?php echo $projectoutput->project_id;?>)" data-toggle="modal" data-target="#addmodule"><i class="fa fa-plus mr-2"></i>Add Module</button>	
+										<?php } ?>									
 										<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
 									</div>
 								</div>
@@ -190,6 +209,7 @@
 									<span class="tag tag-blue mb-3"><?php echo $projectoutput->scope;?></span>
 									<p align="justify"><?php echo $projectoutput->description;?></p>
 									<div class="row">
+										<?php if($projectwrite){?>
 										<div class="col-lg-12 text-right">
 											<label class="dropdown">
 												<div class="dd-button">
@@ -206,6 +226,7 @@
 												</ul>										
 											</label>
 										</div>
+										<?php } ?>
 										<div class="col-4 py-1"><strong>Client :</strong></div>
 										<div class="col-8 py-1">
 											<?php 
@@ -271,7 +292,9 @@
 													<tr>
 														<th width="30%">Name</th>
 														<th width="60%">Desc</th>
-														<th>Action</th>
+														<?php if($projectwrite){ ?>
+															<th>Action</th>
+														<?php } ?>
 													</tr>
 												</thead>
 												<tbody>
@@ -282,12 +305,14 @@
 													<tr>
 														<td><?php echo $moutput->module;?></td>
 														<td><?php echo $moutput->module_description;?></td>
+														<?php if($projectwrite){ ?>
 														<td>	
 															<label class="custom-switch m-0">
 																<input type="checkbox" onclick="deletemodule(<?php echo $moutput->module_id; ?>)" value="1" class="custom-switch-input" checked>
 																<span class="custom-switch-indicator"></span>
 															</label>
 														</td>
+														<?php } ?>
 													</tr>
 												<?php } } ?>
 												</tbody>

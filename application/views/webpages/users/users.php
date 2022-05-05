@@ -143,6 +143,16 @@
             text-align: left;
         }
     </style>
+
+    <?php                 
+		$userread 		= $this->rolemodel->getpermission('User','read');                   
+		$userwrite 	    = $this->rolemodel->getpermission('User','write');                   
+		$userdelete	    = $this->rolemodel->getpermission('User','delete');                   
+		$usercreate	    = $this->rolemodel->getpermission('User','create');                   
+		$userimport	    = $this->rolemodel->getpermission('User','import');                   
+		$userexport 	= $this->rolemodel->getpermission('User','export');                   
+	?>
+
 	<div class="section-body mt-3">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -153,7 +163,9 @@
                                 <ul class="nav nav-tabs b-none">
                                     <li class="nav-item"><a class="nav-link active" id="list-tab" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> List</a></li>
                                     <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li>
+                                    <?php if($usercreate){ ?>
                                     <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
+                                    <?php } ?>
                                 </ul>
                                 <!-- <div class="d-flex align-items-center sort_stat">
                                     <div class="d-flex">
@@ -211,15 +223,37 @@
                                             <td class="hidden-xs">
                                                 <div class="text-muted"><?php echo $output->email;?></div>
                                             </td>
-                                            <td class="hidden-sm">
-                                                <div class="text-muted">455 S. Airport St. Moncks Corner, SC 29461</div>                                                
+                                            <td class="hidden-xs">
+                                                <div class="text-muted">
+                                                    <?php
+                                                    foreach($alldepartment as $depoutput){
+                                                        if($depoutput->department_id == $output->department_id){
+                                                    ?>
+                                                        <?php echo $depoutput->department;?>
+                                                    <?php } }?>
+                                                </div>
                                             </td>
+                                            <td class="hidden-xs">
+                                                <div class="text-muted">
+                                                    <?php
+                                                    foreach($alldesignation as $doutput){
+                                                        if($doutput->designation_id == $output->designation_id){
+                                                    ?>
+                                                        <?php echo $doutput->designation;?>
+                                                    <?php } }?>
+                                                </div>
+                                            </td>
+                                            <td class="hidden-sm">
+                                                <div class="text-muted"><?php echo $output->address;?> <?php echo $output->city;?> <?php echo $output->state;?> <?php echo $output->pincode;?></div>                                                
+                                            </td>  
+                                            <?php if($userwrite){ ?>
                                             <td class="text-right">
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
                                                 <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/view" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
                                                 <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/edit" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
                                             </td>
+                                            <?php } ?>
                                         </tr>
                                     <?php } } ?>                                           
                                     </tbody>
