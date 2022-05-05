@@ -182,6 +182,7 @@ Class TaskModel extends CI_Model {
 			$data['task_todo_code']		= $no_reg;
 			$data['lead_id']		    = $user_data['lead_id'];
 			$data['created_by']		    = $user_data['user_id'];
+			$data['task_id']		    = $user_data['task_id'];
 			$data['title']		 	    = $post_data['title'];
 			$data['description']        = $post_data['description'];
             if(strlen($_FILES['task_todo_attachment']['name']) > 0){
@@ -220,5 +221,53 @@ Class TaskModel extends CI_Model {
 			var_dump($e->getMessage());
 		}
     }
+
+
+    function changetaskstatus($post_data,$token)
+    {					      
+		try 
+        { 
+			$user_data = $this->session->userdata('user_data');
+            $id                     = $post_data['id'];   
+            $data['task_status']    = $post_data['task_status'];   
+			$this->db->where('task_id ', $id);
+            $this->db->update('task',$data);
+            if ($this->db->affected_rows() > 0)
+            {
+				return true;
+			}
+			else
+            {
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return false;
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+    }	
+
+    function changetasktodostatus($post_data,$token)
+    {					      
+		try 
+        { 
+			$user_data = $this->session->userdata('user_data');
+            $id                         = $post_data['id'];   
+            $data['tasktodo_status']    = $post_data['tasktodo_status'];   
+			$this->db->where('task_todo_id ', $id);
+            $this->db->update('task_todo',$data);
+            if ($this->db->affected_rows() > 0)
+            {
+				return true;
+			}
+			else
+            {
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return false;
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+    }	
+
 }
 ?>

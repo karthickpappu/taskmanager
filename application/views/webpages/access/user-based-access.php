@@ -12,6 +12,25 @@
         user-select: none;
         cursor: pointer;
     }
+
+    .table td, .table th {
+        padding: 0.2rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+    }
+    .custom-checkbox .custom-control-label:before {
+        border: 1px solid rgb(143 188 143);
+        background-color: #ffffff;
+        background-size: 0.5rem;
+        top: 0.1rem;
+    }
+    .table-responsive>.table-bordered {
+        border: 1px solid #e8e9e9;
+    }
+    
+    .custom-control {
+        padding-left: 2rem;
+    }
 </style>
     <div class="section-body">
         <div class="container-fluid">
@@ -52,34 +71,31 @@
                                 </div>
                                 <div class="card-body" style="padding:0px">
                                     <table  id="example" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
+                                        <thead style="background: cornsilk;">
                                             <tr>
                                                 <th width="20%">Name</th>
-                                                <th width="10%">Prefix</th>
-                                                <th width="45%">Desc</th>
-                                                <th width="10%">Action</th>
-                                                <th width="15%">Access</th>
+                                                <th width="70%">Designation</th>
+                                                <th width="10%">Access</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 	
-                                            foreach($allroles as $routput){
+                                        <?php 
+                                            if($allusers){
+                                            foreach($allusers as $uoutput){
                                         ?>
                                             <tr>
-                                                <td><?php echo $routput->role;?></td>
-                                                <td><?php echo $routput->role_prefix;?></td>
-                                                <td><?php echo $routput->role_brief;?></td>
+                                                <td><?php echo $uoutput->user_name;?></td>
+                                                <?php
+                                                foreach($alldesignation as $doutput){
+                                                    if($doutput->designation_id == $uoutput->designation_id){
+                                                ?>
+                                                <td><?php echo $doutput->designation;?></td>
+                                                <?php } }?>
                                                 <td>	
-                                                    <label class="custom-switch m-0">
-                                                        <input type="checkbox" onclick="deleterole(<?php echo $routput->role_id; ?>)" value="1" class="custom-switch-input" checked>
-                                                        <span class="custom-switch-indicator"></span>
-                                                    </label>
-                                                </td>
-                                                <td>	
-                                                    <a href="#addaccess" class=" btn btn-primary" data-toggle="tab" data-target="#addaccess"><i class="fa fa-plus mr-2"></i> Add Access</a>
+                                                    <a href="#addaccess" onclick="addroleid('<?php echo $uoutput->code;?>')" class=" btn btn-primary btn-sm" data-toggle="tab" data-target="#addaccess"><i class="fa fa-plus mr-2"></i> Add</a>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php } } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -100,223 +116,197 @@
                                         <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <ul class="list-group mb-3 tp-setting">
-                                        <li class="list-group-item">
-                                            Anyone seeing my profile page
-                                            <div class="float-right">
-                                                <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Anyone send me a message
-                                            <div class="float-right">
-                                                <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Anyone posts a comment on my post
-                                            <div class="float-right">
-                                                <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Anyone invite me to group
-                                            <div class="float-right">
-                                                <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" checked="">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Module Permission</th>
-                                                    <th>Read</th>
-                                                    <th>Write</th>
-                                                    <th>Create</th>
-                                                    <th>Delete</th>
-                                                    <th>Import</th>
-                                                    <th>Export</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Employee</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Holidays</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Leave Request</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Events</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" checked="">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <?php echo form_open_multipart('data/role/addpermission','id="addpermission" name="addpermission" autocomplete="on" ');?>
+                                <input type="hidden" name="role_id" id="role_id">
+                                    <div class="card-body">
+                                        <!-- <ul class="list-group mb-3 tp-setting">
+                                            <li class="list-group-item">
+                                                Anyone seeing my profile page
+                                                <div class="float-right">
+                                                    <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-label">&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                Anyone send me a message
+                                                <div class="float-right">
+                                                    <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-label">&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                Anyone posts a comment on my post
+                                                <div class="float-right">
+                                                    <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-label">&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                Anyone invite me to group
+                                                <div class="float-right">
+                                                    <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" checked="">
+                                                    <span class="custom-control-label">&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul> -->
+                                        <div class="table-responsive">
+                                            <table  id="example" class="table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2" >Module Permission</th>
+                                                        <th>Read</th>
+                                                        <th>Write</th>
+                                                        <th>Create</th>
+                                                        <th>Delete</th>
+                                                        <th>Import</th>
+                                                        <th>Export</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="background: darkseagreen;"> 
+                                                        <td colspan="2" >Select All</td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_read" id="module_read" type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_write" id="module_write"  type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_create" id="module_create" type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_delete" id="module_delete" type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_import" id="module_import" type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <label class="custom-control custom-checkbox">
+                                                            <input onclick="selectall(this.value)" value="module_export" id="module_export" type="checkbox" class="custom-control-input">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                <?php 	
+                                                    foreach($allmodule as $moutput){
+                                                ?>
+                                                    <tr>
+                                                        <input type="hidden" name="module[]" id="module" value="<?php echo $moutput->module;?>">
+                                                        <?php if( $moutput->main_module_id == '0' ){ ?>
+                                                            <input type="hidden" name="module_id[]" id="role_id" value="<?php echo $moutput->module_id;?>">
+                                                            <td colspan="2" ><?php echo $moutput->module;?></td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_read[]" type="checkbox" class="custom-control-input module_read" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_write[]" type="checkbox" class="custom-control-input module_write" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_create[]" type="checkbox" class="custom-control-input module_create" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_delete[]" type="checkbox" class="custom-control-input module_delete" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_import[]" type="checkbox" class="custom-control-input module_import" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_export[]" type="checkbox" class="custom-control-input module_export" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                        <?php } else { ?>
+                                                            <input type="hidden" name="module_id[]" id="role_id" value="<?php echo $moutput->module_id;?>">
+                                                            <td></td>
+                                                            <td><?php echo $moutput->module;?></td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_read[]" type="checkbox" class="custom-control-input module_read" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_write[]" type="checkbox" class="custom-control-input module_write" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_create[]" type="checkbox" class="custom-control-input module_create" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_delete[]" type="checkbox" class="custom-control-input module_delete" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_import[]" type="checkbox" class="custom-control-input module_import" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <label class="custom-control custom-checkbox">
+                                                                <input name="module_export[]" type="checkbox" class="custom-control-input module_export" value="1">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                                </label>
+                                                            </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                <?php } ?>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body text-right">
-                                    <a href="#roles" class="ml-15 btn btn-primary" data-toggle="tab" data-target="#roles"><i class="fa fa-plus mr-2"></i> Close</a>
-                                    <a href="#addaccess" class="ml-15 btn btn-primary" data-toggle="tab" data-target="#addaccess"><i class="fa fa-plus mr-2"></i> Submit</a>
-                                </div>
+                                    <div class="card-body text-right">
+                                        <a href="#roles" class="ml-15 btn btn-primary closebutton" data-toggle="tab" data-target="#roles">Close</a>
+                                        <button type="submit" id="submitaccess" class="ml-15 btn btn-primary" data-toggle="tab" data-target="#addaccess">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -365,23 +355,73 @@
         </div>
     </div>
 
-<script>
+    <script>
+            
+        function addroleid(value){
+            $("#role_id").val(value);
+        }
+        
+        function selectall(value){
+            let isChecked = $('#'+value).is(':checked');
+            console.log(isChecked);
+            if( isChecked ){
+                $('.'+value).attr("checked",true);
+            }else{
+                $('.'+value).attr("checked",false);
+            }
+        }
 
-    $(document).on('click','#submitrole', function(e) { 
-        e.preventDefault();		
-        if($("#createrole")[0].reportValidity()) 
-        {
-            var datastring =  new FormData($('#createrole')[0]); 
+        $('.closebutton').click(function() {
+            $(this).removeClass('active');
+            $('#ongioingbutton').addClass('active');
+            $('#addprojectbutton').removeClass('active');
+            $('.btn').removeClass('active');
+        });
+
+        $(document).on('click','#submitrole', function(e) { 
+            e.preventDefault();		
+            if($("#createrole")[0].reportValidity()) 
+            {
+                var datastring =  new FormData($('#createrole')[0]); 
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo $this->config->item("base_url");?>data/role/create',
+                    enctype: 'multipart/form-data',
+                    data: datastring,    
+                    contentType: false,
+                    processData:false,
+                    cache: false,
+                    dataType:"JSON",
+                    token: '<?php echo $this->security->get_csrf_hash();?>',
+                    success:function(data){
+                        console.log(data);
+                        $('#token').val(data.csrfHash);
+                        if(data.status == 1){				
+                            swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+                                window.location.reload();
+                            });
+                        }else{				
+                            swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                    timeout: 10000,
+                    async: false			
+                });
+            }
+        });
+
+        function deleterole(id) { 
             $.ajax({
                 type:'POST',
-                url:'<?php echo $this->config->item("base_url");?>data/role/create',
+                url:'<?php echo $this->config->item("base_url");?>data/role/delete',
                 enctype: 'multipart/form-data',
-                data: datastring,    
-                contentType: false,
-                processData:false,
-                cache: false,
+                data: {id:id},    
+                // contentType: false,
+                // processData:false,
+                // cache: false,
                 dataType:"JSON",
-                token: '<?php echo $this->security->get_csrf_hash();?>',
                 success:function(data){
                     console.log(data);
                     $('#token').val(data.csrfHash);
@@ -399,33 +439,38 @@
                 async: false			
             });
         }
-    });
-
-    function deleterole(id) { 
-        $.ajax({
-            type:'POST',
-            url:'<?php echo $this->config->item("base_url");?>data/role/delete',
-            enctype: 'multipart/form-data',
-            data: {id:id},    
-            // contentType: false,
-            // processData:false,
-            // cache: false,
-            dataType:"JSON",
-            success:function(data){
-                console.log(data);
-                $('#token').val(data.csrfHash);
-                if(data.status == 1){				
-                    swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
-                        window.location.reload();
-                    });
-                }else{				
-                    swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
-                        window.location.reload();
-                    });
-                }
-            },
-            timeout: 10000,
-            async: false			
+        
+        $(document).on('click','#submitaccess', function(e) { 
+            e.preventDefault();		
+            if($("#addpermission")[0].reportValidity()) 
+            {
+                var datastring =  new FormData($('#addpermission')[0]); 
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo $this->config->item("base_url");?>data/role/addpermission',
+                    enctype: 'multipart/form-data',
+                    data: datastring,    
+                    contentType: false,
+                    processData:false,
+                    cache: false,
+                    dataType:"JSON",
+                    token: '<?php echo $this->security->get_csrf_hash();?>',
+                    success:function(data){
+                        console.log(data);
+                        $('#token').val(data.csrfHash);
+                        if(data.status == 1){				
+                            swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+                                window.location.reload();
+                            });
+                        }else{				
+                            swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                    timeout: 10000,
+                    async: false			
+                });
+            }
         });
-    }
-</script>
+    </script>

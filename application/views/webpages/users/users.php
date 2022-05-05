@@ -315,7 +315,7 @@
                                                         if($allroles){
                                                         foreach($allroles as $output){
                                                     ?>
-                                                        <option data-tokens="<?php echo $output->roles;?>" value="<?php echo $output->role_id;?>"><?php echo $output->roles;?></option>
+                                                        <option data-tokens="<?php echo $output->role;?>" value="<?php echo $output->role_id;?>"><?php echo $output->role;?></option>
                                                     <?php } } ?>
                                                     </select>
                                                 </div>

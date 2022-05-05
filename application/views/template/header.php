@@ -353,9 +353,32 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul class="metismenu">
                 <li class="g_heading">Project</li>
-                <li class="<?php if($title =='home') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>home"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <?php                 
+		            $this->load->model('HeaderModel', 'headermodel', TRUE);
+                    $dashboardread 	        = $this->rolemodel->getpermission('dashboard','read');
+                    $projectread 	        = $this->rolemodel->getpermission('project','read');
+                    $taskboardread 	        = $this->rolemodel->getpermission('taskboard','read');
+                    $userread 	            = $this->rolemodel->getpermission('user','read');
+                    $todoread 	            = $this->rolemodel->getpermission('todo list','read');
+                    $masterread 	        = $this->rolemodel->getpermission('master','read');
+                    $departmentread         = $this->rolemodel->getpermission('department','read');
+                    $designationread 	    = $this->rolemodel->getpermission('designation','read');
+                    $clientread 	        = $this->rolemodel->getpermission('client','read');
+                    $vendorread 	        = $this->rolemodel->getpermission('vendor','read');
+                    $rolesread 	            = $this->rolemodel->getpermission('roles','read');
+                    $modulesread 	        = $this->rolemodel->getpermission('modules','read');
+                    $roleaccessread 	    = $this->rolemodel->getpermission('role based access','read');
+                    $useraccessread 	    = $this->rolemodel->getpermission('user based access','read');                    
+                ?>
+                <?php if($dashboardread){?>
+                    <li class="<?php if($title =='dashboard') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <?php } ?>
+                <?php if($projectread){?>
 				<li class="<?php if($title =='project') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>project"><i class="fa fa-list-ol"></i><span>Project list</span></a></li>
-                <li class="<?php if($title =='task') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>task"><i class="fa fa-calendar-check-o"></i><span>Taskboard</span></a></li>
+                <?php } ?>
+                <?php if($taskboardread){?>
+                <li class="<?php if($title =='taskboard') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>taskboard"><i class="fa fa-calendar-check-o"></i><span>Taskboard</span></a></li>
+                <?php } ?>
 				<!--<li class="<?php if($title =='ticket') echo 'active';?>">
                     <a href="javascript:void(0)" class="has-arrow arrow-c"aria-expanded="<?php if($title =='ticket') echo 'true';?>"><i class="fa fa-tag"></i><span>Ticket</span></a>
                     <ul>
@@ -363,8 +386,12 @@
                         <li><a href="<?php echo $this->config->item('base_url');?>ticket/details">Ticket Details</a></li>
                     </ul>
                 </li>-->
+                <?php if($userread){?>
                 <li class="<?php if($title =='user') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>user"><i class="fa fa-user"></i><span>user</span></a></li>
-                <li class="<?php if($title =='todo') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>todo"><i class="fa fa-check-square-o"></i><span>Todo List</span></a></li>
+                <?php } ?>
+                <?php if($todoread){?>
+                <li class="<?php if($title =='todo-list') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>todo-list"><i class="fa fa-check-square-o"></i><span>Todo List</span></a></li>
+                <?php } ?>
                 <!--<li class="g_heading">App</li>
                 <li><a href="app-calendar.html"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
                 <li><a href="app-chat.html"><i class="fa fa-comments"></i><span>Chat</span></a></li>
@@ -372,23 +399,41 @@
                 <li><a href="app-filemanager.html"><i class="fa fa-folder"></i><span>FileManager</span></a></li>
                 <li><a href="app-setting.html"><i class="fa fa-gear"></i><span>Setting</span></a></li>
                 <li><a href="page-gallery.html"><i class="fa fa-photo"></i><span>Gallery</span></a></li>-->
+                <?php if($masterread){?>
                 <li  class="<?php if($title =='master') echo 'active';?>">
                     <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-lock"></i><span>Master</span></a>
                     <ul>
+                        <?php if($departmentread){?>
                         <li class="<?php if($page =='department') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>master/department">Department</a></li>
+                        <?php } ?>
+                        <?php if($designationread){?>
                         <li class="<?php if($page =='designation') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>master/designation">Designation</a></li>
+                        <?php } ?>
+                        <?php if($clientread){?>
                         <li class="<?php if($page =='client') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>master/client">Client</a></li>
+                        <?php } ?>
+                        <?php if($vendorread){?>
                         <li class="<?php if($page =='vendor') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>master/vendor">Vendor</a></li>
+                        <?php } ?>
                     </ul>
                 </li> 
+                <?php } ?>
+                <?php if($rolesread){?>
                 <li  class="<?php if($title =='access') echo 'active';?>">
-                    <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-lock"></i><span>Roles & Permissions</span></a>
+                    <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-lock"></i><span>Roles</span></a>
                     <ul>
+                        <?php if($modulesread){?>
                         <li class="<?php if($page =='modules') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/modules">Modules</a></li>
+                        <?php } ?>
+                        <?php if($roleaccessread){?>
                         <li class="<?php if($page =='role-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/role-based-access">Role Based Access</a></li>
-                        <li class="<?php if($page =='user-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user-based-access">User Based Access</a></li>
+                        <?php } ?>
+                        <?php if($useraccessread){?>
+                            <li class="<?php if($page =='user-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user-based-access">User Based Access</a></li>
+                        <?php } ?>
                     </ul>
                 </li>
+                <?php } ?>
                 <!--<li class="g_heading">Support</li>
                 <li><a href="javascript:void(0)"><i class="fa fa-support"></i><span>Need Help?</span></a></li>
                 <li><a href="javascript:void(0)"><i class="fa fa-tag"></i><span>ContactUs</span></a></li>-->

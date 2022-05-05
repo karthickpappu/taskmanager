@@ -4497,3 +4497,174 @@ DEBUG - 2022-05-03 11:24:25 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2022-05-03 11:24:25 --> Global POST, GET and COOKIE data sanitized
 ERROR - 2022-05-03 11:24:25 --> 404 Page Not Found: Assets/plugins
 ERROR - 2022-05-03 11:24:25 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-05-03 16:35:32 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:35:32 --> No URI present. Default controller set.
+DEBUG - 2022-05-03 16:35:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:33 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:35:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:34 --> Total execution time: 0.5964
+DEBUG - 2022-05-03 16:35:38 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:35:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:38 --> Total execution time: 0.3177
+DEBUG - 2022-05-03 16:35:46 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:35:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:35:46 --> Total execution time: 0.3643
+DEBUG - 2022-05-03 16:36:23 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:36:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:36:23 --> Total execution time: 0.3139
+DEBUG - 2022-05-03 16:36:44 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:36:44 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:36:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:36:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-05-03 16:36:44 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-03 16:36:44 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-05-03 16:56:59 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:56:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:01 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 16:57:01 --> Total execution time: 2.2556
+DEBUG - 2022-05-03 16:57:01 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:57:01 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 16:57:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 16:57:01 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2022-05-03 16:57:01 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-03 16:57:01 --> 404 Page Not Found: Assets/plugins
+DEBUG - 2022-05-03 17:20:00 --> UTF-8 Support Enabled
+DEBUG - 2022-05-03 17:20:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Crypt class already loaded. Second attempt ignored.
+DEBUG - 2022-05-03 17:20:00 --> Total execution time: 0.2667

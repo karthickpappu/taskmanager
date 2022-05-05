@@ -53,7 +53,7 @@
                         <table  id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th width="30%">Name</th>
+                                    <th colspan="2" width="30%">Name</th>
                                     <th width="60%">Desc</th>
                                     <th>Action</th>
                                 </tr>
@@ -63,16 +63,28 @@
                                 foreach($allmodule as $moutput){
                             ?>
                                 <tr>
-                                    <td><?php echo $moutput->module;?></td>
-                                    <td><?php echo $moutput->module_description;?></td>
-                                    <td>	
-                                        <label class="custom-switch m-0">
-                                            <input type="checkbox" onclick="deletemodule(<?php echo $moutput->module_id; ?>)" value="1" class="custom-switch-input" checked>
-                                            <span class="custom-switch-indicator"></span>
-                                        </label>
-                                    </td>
+                                    <?php if( $moutput->main_module_id == '0' ){ ?>
+                                        <td colspan="2" ><?php echo $moutput->module;?></td>
+                                        <td><?php echo $moutput->module_description;?></td>
+                                        <td>	
+                                            <label class="custom-switch m-0">
+                                                <input type="checkbox" onclick="deletemodule(<?php echo $moutput->module_id; ?>)" value="1" class="custom-switch-input" checked>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                    <?php } else { ?>
+                                        <td></td>
+                                        <td><?php echo $moutput->module;?></td>
+                                        <td><?php echo $moutput->module_description;?></td>
+                                        <td>	
+                                            <label class="custom-switch m-0">
+                                                <input type="checkbox" onclick="deletemodule(<?php echo $moutput->module_id; ?>)" value="1" class="custom-switch-input" checked>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                     <?php } ?>
                                 </tr>
-                            <?php } ?>
+                             <?php } ?>
                             </tbody>
                         </table>
                     </div>

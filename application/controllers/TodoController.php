@@ -15,7 +15,7 @@ class TodoController extends CI_Controller {
 		$page_content['alltodo'] = $this->todomodel->getalltodo();
         if ($this->validation->user_in()) {   
 			$this->load->view('template/header',$headercontent);
-            $this->load->view('webpages/todo/index',$page_content);
+            $this->load->view('webpages/todo/todo-list',$page_content);
             $this->load->view('template/footer');
         } else {        
             redirect('login','refresh'); 

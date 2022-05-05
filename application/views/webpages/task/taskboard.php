@@ -704,9 +704,9 @@
 													<div class="col-lg-4">
 														<label>Task Start/Due Date</label>
 														<div class="input-daterange input-group" data-provide="datepicker">
-															<input type="text" class="form-control" name="date_from" autocomplete="off" value="<?php echo date('d-m-Y');?>" required>
+															<input type="text" class="form-control datepicker" id="fdatepicker" name="date_from" autocomplete="off" value="<?php echo date('d-m-Y');?>" required>
 															<span class="input-group-addon"> to </span>
-															<input type="text" class="form-control" name="date_to" autocomplete="off" value="<?php echo date('d-m-Y');?>"required>
+															<input type="text" class="form-control" id="ddatepicker"  name="date_to" autocomplete="off" value="<?php echo date('d-m-Y');?>"required>
 														</div>
 													</div>                
 												</div>
@@ -741,7 +741,10 @@ function selectprojectmodule(value){
 }
 
 $(document).ready(function(){
-	$(".datepicker").datepicker({
+	$("#fdatepicker").datepicker({
+		"format": "d-m-yyyy",
+	});
+	$("#ddatepicker").datepicker({
 		"format": "d-m-yyyy",
 	});
 });
@@ -809,4 +812,6 @@ function deletetask(){
 	  }
 	);
 }
+
+
 </script>

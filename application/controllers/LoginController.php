@@ -13,7 +13,7 @@ class LoginController extends CI_Controller {
 
     public function index() {
         if ($this->validation->user_in()) {
-            redirect('home','refresh');
+            redirect('dashboard','refresh');
         } else {        
 			$this->load->helper(array('form'));
             $this->load->view('login');
@@ -36,7 +36,7 @@ class LoginController extends CI_Controller {
 		$check = $this->loginmodel->checkuser($post_data,$token);
 		if($check){			
 			$this->session->set_userdata('user_data',(array)$check);
-			redirect('home', 'refresh');
+			redirect('dashboard', 'refresh');
 		}else{
 			redirect('login/Wrong-credentials', 'refresh');
 		}		
