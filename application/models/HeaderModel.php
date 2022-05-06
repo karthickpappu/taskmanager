@@ -36,6 +36,8 @@ Class HeaderModel extends CI_Model {
 		$headercontent['allmodule'] 		= $this->modulemodel->getallmodule();
 		$headercontent['alltask'] 			= $this->taskmodel->getalltask();
 		$headercontent['alltasktodo'] 		= $this->taskmodel->getalltasktodo();
+		$headercontent['alltaskcomment'] 	= $this->taskmodel->getalltaskcomment();
+		$headercontent['alltaskreplay'] 	= $this->taskmodel->getalltaskreplay();
         return $headercontent;
     }  
 	  

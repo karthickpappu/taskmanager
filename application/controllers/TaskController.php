@@ -107,6 +107,32 @@ class TaskController extends CI_Controller {
 		}
 		echo json_encode($message);
 	} 
+
+	function createtaskcomment() {					
+		$token = openssl_random_pseudo_bytes(16);
+		$token = bin2hex($token);
+		$post_data = $this->input->post();
+		$creation = $this->taskmodel->createtaskcomment($post_data,$token);
+		if($creation){
+			$message =array('status'=>'1','msg'=>'Task comment submitted successfully.','icon'=>'success',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}else{
+			$message =array('status'=>'0','msg'=>'Somthing Went Wrong.','icon'=>'danger',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}
+		echo json_encode($message);
+	} 
+
+	function createtaskrelaycomment() {					
+		$token = openssl_random_pseudo_bytes(16);
+		$token = bin2hex($token);
+		$post_data = $this->input->post();
+		$creation = $this->taskmodel->createtaskrelaycomment($post_data,$token);
+		if($creation){
+			$message =array('status'=>'1','msg'=>'Task comment replay submitted successfully.','icon'=>'success',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}else{
+			$message =array('status'=>'0','msg'=>'Somthing Went Wrong.','icon'=>'danger',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}
+		echo json_encode($message);
+	} 
 	
 	function getalltask() {					
 		$token = openssl_random_pseudo_bytes(16);

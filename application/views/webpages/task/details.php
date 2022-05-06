@@ -131,6 +131,13 @@
         background-color: #e2e2e2;
     }
 
+    .fa-ellipsis-v:before, .fa-ellipsis-vertical:before {
+        content: "\f142";
+    }
+
+    #cke_1_contents{
+        height:150px !important;
+    }
     </style>
 
 	<?php                 
@@ -155,8 +162,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                            
+            </div>                            
         </div>
     </div>
 
@@ -190,16 +196,16 @@
                             <div class="card-options">
                                 <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
                                 <div class="item-action dropdown ml-2">
-                                    <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+                                    <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-vertical"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
+                                        <!-- <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
                                         <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
                                         <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
                                         <div class="dropdown-divider"></div>
                                         <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
                                         <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
                                         <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -346,142 +352,103 @@
                         </div>
                     </div>
 
-                    <!-- <div class="card">
+                    <div class="card">
                         <div class="card-body">
-                            <div class="summernote">
-                                Hi there,
-                                <br/>
-                                <p>The toolbar can be customized and it also supports various callbacks such as <code>oninit</code>, <code>onfocus</code>, <code>onpaste</code> and many more.</p>
-                                <br/>
-                                <p>Thank you!</p>
-                                <h6>Summer Note</h6>
-                            </div>
-                            <div class="mt-4 text-right">
-                                <button class="btn btn-warning"><i class="fa fa-link"></i></button>
-                                <button class="btn btn-warning"><i class="fa fa-camera"></i></button>
-                                <button class="btn btn-primary">Post</button>
-                            </div>
-                        </div>
-                    </div> -->
-                    
-                    <!-- <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Task Replies</h3>
-                            <div class="card-options">
-                                <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
-                                <div class="item-action dropdown ml-2">
-                                    <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-more-vertical"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-eye"></i> View Details </a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-share-alt"></i> Share </a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-cloud-download"></i> Download</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-copy"></i> Copy to</a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-folder"></i> Move to</a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-edit"></i> Rename</a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+				            <?php echo form_open_multipart('data/task/taskcomment','id="taskcomment" name="taskcomment" autocomplete="on" ');?>
+                                <div class="col-lg-12" style="padding: 0rem;">
+                                    <div class="form-group" style="margin-bottom: 0rem;">
+                                        <label>Task Comment</label>
+                                        <textarea cols="50" id="editor1" name="task_comment" rows="3"></textarea>
+                                        <input type="hidden" name="task_id" value="<?php echo $this->uri->segment(3);?>" /> 
                                     </div>
                                 </div>
+                                <!-- <div class="summernote"> </div> -->
+                                <div class="mt-2 text-right">
+                                    <a tye="button" id="OpenImgUpload" class="btn btn-warning"><i class="fa fa-camera" id="filename"> </i></a>
+                                    <input type="file" name="comment_attachment" id="imgupload" onchange="fileSelect(this.id)" style="display:none"/> 
+                                    <script>$('#OpenImgUpload').click(function(){ $('#imgupload').trigger('click');  });function fileSelect(id){ var file = $('#'+id)[0].files[0]; $("#filename").html(' '+file.name); }</script>
+                                    <button class="btn btn-primary" type="submit" id="submittaskcomment" >Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Task Comments</h3>
+                            <div class="card-options">
+                                <a href="javascript:void(0)" class="card-options-remove" data-toggle="card-remove"><i class="fa fa-close"></i></a>
                             </div>
                         </div>
                         <div class="card-body">
+                            <?php
+                                foreach($alltaskcomment as $tcoutput){ 
+                                    if($tcoutput->task_id == $this->uri->segment(3)){
+                            ?>
                             <div class="timeline_item ">
-                                <img class="tl_avatar" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar1.jpg" alt="">
-                                <span><a href="javascript:void(0);">Elisse Joson</a> San Francisco, CA <small class="float-right text-right">20-April-2019 - Today</small></span>
+                                <img class="tl_avatar" src="<?php echo $this->config->item("base_url");?>assets/images/user.png" alt="">
+                                <span><a href="javascript:void(0);">Elisse Joson</a> San Francisco, CA 
+                                    <small class="float-right text-right">20-April-2019 - Today 
+                                        <div class="item-action dropdown ml-2 ">
+                                            <a href="javascript:void(0)" data-toggle="dropdown"><i class="fa fa-ellipsis-vertical"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </small> 
+                                </span>
                                 <h6 class="font600">Hello, 'Im a single div responsive timeline without media Queries!</h6>
                                 <div class="msg">
-                                    <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things. I write the best placeholder text, and I'm the biggest developer on the web card she has is the Lorem card.</p>
-                                    <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 12 Love</a>
-                                    <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-comments"></i> 1 Comment</a>
-                                    <div class="collapse p-4 section-gray mt-2" id="collapseExample">
-                                        <form class="well">
+                                    <?php echo $tcoutput->comment;?>
+                                    <!-- <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 12 Love</a> -->
+                                    <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample_<?php echo $tcoutput->task_comment_id?>" aria-expanded="false" aria-controls="collapseExample_<?php echo $tcoutput->task_comment_id?>"><i class="fa fa-comments"></i>
+                                    <?php  
+                                        $a = 1;
+                                        $b = 0;
+                                        foreach($alltaskreplay as $tcrcoutput){ 
+                                            if($tcrcoutput->task_id == $this->uri->segment(3) && $tcoutput->task_comment_id  == $tcrcoutput->comment_replay_id){
+                                                $b = $a++;
+                                            }
+                                        }
+                                        echo $b;
+                                    ?> Replie</a>
+                                    <div class="collapse p-4 section-gray mt-2" id="collapseExample_<?php echo $tcoutput->task_comment_id?>">                                       
+				                        <?php echo form_open_multipart('data/task/createtaskrelaycomment','id="taskrelaycomment" name="taskrelaycomment" autocomplete="on" ');?>
                                             <div class="form-group">
-                                                <textarea rows="2" class="form-control no-resize" placeholder="Enter here for tweet..."></textarea>
+                                                <textarea rows="2" class="form-control no-resize" name="replay_comment" placeholder="Enter here for tweet..."></textarea>
+                                                <input type="hidden" name="reply_task_id" value="<?php echo $this->uri->segment(3);?>" />
+                                                <input type="hidden" name="comment_replay" value="1" />
+                                                <input type="hidden" name="comment_replay_id" value="<?php echo $tcoutput->task_comment_id?>" />
                                             </div>
-                                            <button class="btn btn-primary">Submit</button>
+                                            <div class="col-lg-12 text-right" style="padding:0px;">
+                                                <button class="btn btn-primary" type="submit" id="submittaskreplaycomment" >Submit</button>
+                                            </div>
                                         </form>
                                         <ul class="recent_comments list-unstyled mt-4 mb-0">
-                                            <li>
-                                                <div class="avatar_img">
-                                                    <img class="rounded img-fluid" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar4.jpg" alt="">
-                                                </div>
-                                                <div class="comment_body">
-                                                    <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
-                                                    <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
-                                                </div>
-                                            </li>
+                                            <?php
+                                                foreach($alltaskreplay as $tcroutput){ 
+                                                    if($tcroutput->task_id == $this->uri->segment(3) && $tcoutput->task_comment_id  == $tcroutput->comment_replay_id){
+                                            ?>
+                                                <li>
+                                                    <div class="avatar_img">
+                                                        <img style="width: 30px;" class="rounded img-fluid" src="<?php echo $this->config->item("base_url");?>assets/images/user.png" alt="">
+                                                    </div>
+                                                    <div class="comment_body">
+                                                        <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
+                                                        <?php echo $tcroutput->comment;?>
+                                                    </div>
+                                                </li>
+                                            <?php } } ?>
                                         </ul>
                                     </div>
                                 </div>                                
                             </div>
-                            <div class="timeline_item ">
-                                <img class="tl_avatar" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar4.jpg" alt="">
-                                <span><a href="javascript:void(0);" title="">Dessie Parks</a> Oakland, CA <small class="float-right text-right">19-April-2019 - Yesterday</small></span>
-                                <h6 class="font600">Oeehhh, that's awesome.. Me too!</h6>
-                                <div class="msg">
-                                    <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things. on the web by far... While that's mock-ups and this is politics, are they really so different? I think the only card she has is the Lorem card.</p>
-                                    <div class="timeline_img mb-20">
-                                        <img class="width100" src="<?php echo $this->config->item("base_url");?>assets/images/gallery/1.jpg" alt="Awesome Image">
-                                        <img class="width100" src="<?php echo $this->config->item("base_url");?>assets/images/gallery/2.jpg" alt="Awesome Image">
-                                    </div>
-                                    <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 23 Love</a>
-                                    <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa fa-comments"></i> 2 Comment</a>
-                                    <div class="collapse p-4 section-gray mt-2" id="collapseExample1">
-                                        <form class="well">
-                                            <div class="form-group">
-                                                <textarea rows="2" class="form-control no-resize" placeholder="Enter here for tweet..."></textarea>
-                                            </div>
-                                            <button class="btn btn-primary">Submit</button>
-                                        </form>
-                                        <ul class="recent_comments list-unstyled mt-4 mb-0">
-                                            <li>
-                                                <div class="avatar_img">
-                                                    <img class="rounded img-fluid" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar4.jpg" alt="">
-                                                </div>
-                                                <div class="comment_body">
-                                                    <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
-                                                    <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
-                                                    <div class="timeline_img mb-20">
-                                                        <img class="width150" src="<?php echo $this->config->item("base_url");?>assets/images/gallery/7.jpg" alt="Awesome Image">
-                                                        <img class="width150" src="<?php echo $this->config->item("base_url");?>assets/images/gallery/8.jpg" alt="Awesome Image">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="avatar_img">
-                                                    <img class="rounded img-fluid" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar3.jpg" alt="">
-                                                </div>
-                                                <div class="comment_body">
-                                                    <h5>Dessie Parks <small class="float-right font-14">1min ago</small></h5>
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>                                    
-                                </div>
-                            </div>
-                            <div class="timeline_item ">
-                                <img class="tl_avatar" src="<?php echo $this->config->item("base_url");?>assets/images/xs/avatar7.jpg" alt="">
-                                <span><a href="javascript:void(0);" title="">Rochelle Barton</a> San Francisco, CA <small class="float-right text-right">12-April-2019</small></span>
-                                <h6 class="font600">An Engineer Explains Why You Should Always Order the Larger Pizza</h6>
-                                <div class="msg">
-                                    <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things. I write the best placeholder text, and I'm the biggest developer on the web by far... While that's mock-ups and this is politics, is the Lorem card.</p>
-                                    <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 7 Love</a>
-                                    <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"><i class="fa fa-comments"></i> 1 Comment</a>
-                                    <div class="collapse p-4 section-gray mt-2" id="collapseExample2">
-                                        <form class="well">
-                                            <div class="form-group">
-                                                <textarea rows="2" class="form-control no-resize" placeholder="Enter here for tweet..."></textarea>
-                                            </div>
-                                            <button class="btn btn-primary">Submit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>                  
+                            <?php } } ?>
 
+                        </div>
+                    </div>
+
+                </div>                  
             </div>
         </div>
     </div>
@@ -525,7 +492,8 @@
 	</div>
 
     <script>
-        
+        CKEDITOR.replace('editor1');
+
 		function taskid(task_id){
 			$("#task_id").val(task_id);
 		}
@@ -624,4 +592,77 @@
             });
         }
 
+        $(document).on('click','#submittaskcomment', function(e) { 
+			e.preventDefault();		
+			if($("#taskcomment")[0].reportValidity()) 
+			{
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
+				var datastring =  new FormData($('#taskcomment')[0]); 
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/task/createtaskcomment',
+					enctype: 'multipart/form-data',
+					data: datastring,    
+					contentType: false,
+					processData:false,
+					cache: false,
+					dataType:"JSON",
+					token: '<?php echo $this->security->get_csrf_hash();?>',
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
+			}
+		});
+
+        $(document).on('click','#submittaskreplaycomment', function(e) { 
+			e.preventDefault();		
+			if($("#taskrelaycomment")[0].reportValidity()) 
+			{
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
+				var datastring =  new FormData($('#taskrelaycomment')[0]); 
+				$.ajax({
+					type:'POST',
+					url:'<?php echo $this->config->item("base_url");?>data/task/createtaskrelaycomment',
+					enctype: 'multipart/form-data',
+					data: datastring,    
+					contentType: false,
+					processData:false,
+					cache: false,
+					dataType:"JSON",
+					token: '<?php echo $this->security->get_csrf_hash();?>',
+					success:function(data){
+						console.log(data);
+						$('#token').val(data.csrfHash);
+						if(data.status == 1){				
+							swal({title: 'Action Update!',text: data.msg,type: 'success'},function() {
+								window.location.reload();
+							});
+						}else{				
+							swal({title: 'Action Update!',text: data.msg,type: 'error'},function() {
+								window.location.reload();
+							});
+						}
+					},
+					timeout: 10000,
+					async: false			
+				});
+			}
+		});
 	</script>

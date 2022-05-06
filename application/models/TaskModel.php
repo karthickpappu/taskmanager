@@ -27,6 +27,46 @@ Class TaskModel extends CI_Model {
             var_dump($e->getMessage());
         }
     }  
+
+    function getalltaskcomment()
+    {
+        try { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];   
+            $status = '1';  
+            $comment_replay = '0';      
+            $sql = "SELECT * FROM task_comments WHERE lead_id = ? AND comment_replay = ? AND status = ? order by task_comment_id desc";
+            $query = $this->db->query($sql, [$lead_id,$comment_replay,$status]);
+            $result = $query->result();
+            if($result){
+                return $result;
+            }else{
+                return FALSE;
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
+
+    function getalltaskreplay()
+    {
+        try { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];   
+            $status = '1';      
+            $comment_replay = '0';      
+            $sql = "SELECT * FROM task_comments WHERE lead_id = ? AND comment_replay != ? AND status = ? order by task_comment_id desc";
+            $query = $this->db->query($sql, [$lead_id,$comment_replay,$status]);
+            $result = $query->result();
+            if($result){
+                return $result;
+            }else{
+                return FALSE;
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
 	
 	function getmytask()
     {
@@ -222,6 +262,82 @@ Class TaskModel extends CI_Model {
 		}
     }
 
+    function createtaskcomment($post_data,$token)
+    {					      
+		try 
+        { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];     
+			$data['lead_id']		    = $user_data['lead_id'];
+			$data['commented_by']		= $user_data['user_id'];
+			$data['task_id']		    = $post_data['task_id'];
+			$data['comment']		    = $post_data['task_comment'];
+            if(strlen($_FILES['comment_attachment']['name']) > 0){
+                $_FILES['file']['name'] 			= $_FILES["comment_attachment"]['name'];
+                $_FILES['file']['type'] 			= $_FILES["comment_attachment"]['type'];
+                $_FILES['file']['tmp_name'] 		= $_FILES["comment_attachment"]['tmp_name'];
+                $_FILES['file']['error'] 			= $_FILES["comment_attachment"]['error'];
+                $_FILES['file']['size'] 			= $_FILES["comment_attachment"]['size'];
+                $new_name 							= time().'_'.(str_replace(' ','_',$_FILES["comment_attachment"]['name']));
+                $new_file_name 						= preg_replace('/[^A-Za-z0-9\-.]/', '',$new_name);
+                $config['upload_path']   			= './assets/images/task_comment/';
+                $config['allowed_types'] 			= 'pdf|pptx|docx|doc|jpg|jpeg|png';
+                $config['max_size']      			= '8388608';
+                $config['file_name']	 			= $new_file_name;	
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                $this->upload->do_upload('file');
+                $data['comment_attachment'] 				= $new_file_name;	
+            }else{
+                $data['comment_attachment'] 				= '';	
+            }
+			if($this->db->insert('task_comments',$data))
+			{
+				if($this->db->affected_rows() == 1)
+				{	
+					$last_insert_id = $this->db->insert_id();
+					return true;
+				}
+			}
+			else
+            {
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return false;
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+    }
+
+    function createtaskrelaycomment($post_data,$token)
+    {					      
+		try 
+        { 
+			$user_data = $this->session->userdata('user_data');
+            $lead_id = $user_data['lead_id'];     
+			$data['lead_id']		    = $user_data['lead_id'];
+			$data['commented_by']		= $user_data['user_id'];
+			$data['task_id']		    = $post_data['reply_task_id'];
+			$data['comment_replay']		= $post_data['comment_replay'];
+			$data['comment_replay_id']  = $post_data['comment_replay_id'];
+			$data['comment']		    = $post_data['replay_comment'];
+			if($this->db->insert('task_comments',$data))
+			{
+				if($this->db->affected_rows() == 1)
+				{	
+					$last_insert_id = $this->db->insert_id();
+					return true;
+				}
+			}
+			else
+            {
+                $this->msg = "UNKNOWN ERROR: Couldn't insert data";
+                return false;
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+    }
 
     function changetaskstatus($post_data,$token)
     {					      

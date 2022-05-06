@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>assets/css/theme1.css"/>
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>assets/css/fonts.css">
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>assets/css/font-awesome.min.css">
+	<script src="<?php echo $this->config->item('base_url');?>assets/ckeditor/ckeditor.js"></script>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css'>
 	<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 	<!-- Core css -->
