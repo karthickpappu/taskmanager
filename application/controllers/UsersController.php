@@ -54,6 +54,35 @@ class UsersController extends CI_Controller {
 		echo json_encode($message);
 	} 
 	
+    function update() {					
+		$token = openssl_random_pseudo_bytes(16);
+		$token = bin2hex($token);
+		$post_data = $this->input->post();
+		$creation = $this->usersmodel->update($post_data,$token);
+		if($creation){
+			$this->session->set_userdata('user_data',(array)$creation);
+			$message =array('status'=>'1','msg'=>'User details updated successfully.','icon'=>'success',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}else{
+			$message =array('status'=>'0','msg'=>'Somthing Went Wrong.','icon'=>'danger',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}
+		echo json_encode($message);
+	} 
+
+	function updatepassword() {					
+		$token = openssl_random_pseudo_bytes(16);
+		$token = bin2hex($token);
+		$post_data = $this->input->post();
+		$delection = $this->usersmodel->updatepassword($post_data,$token);
+		if($delection == '1'){
+			$message =array('status'=>'1','msg'=>'Password updated successfully.','icon'=>'success',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}elseif($delection == '2'){
+			$message =array('status'=>'0','msg'=>'Old password not matched!.','icon'=>'danger',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}else{
+			$message =array('status'=>'0','msg'=>'Somthing Went Wrong.','icon'=>'danger',"csrfTokenName" => $this->security->get_csrf_token_name(), "csrfHash" => $this->security->get_csrf_hash());
+		}
+		echo json_encode($message);
+	}
+
 	function delete() {					
 		$token = openssl_random_pseudo_bytes(16);
 		$token = bin2hex($token);

@@ -213,7 +213,7 @@
                                             </td>
                                             <td class="text-center width40">
                                                 <div class="avatar d-block">
-                                                    <img class="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/user.png" alt="avatar">
+                                                    <img class="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/profile/<?php echo $output->user_pic;?>" alt="avatar" onerror="this.onerror=null;this.src='<?php echo $this->config->item('base_url');?>assets/images/user.png';">
                                                 </div>
                                             </td>
                                             <td>
@@ -249,11 +249,11 @@
                                                 </div>                                                
                                             </td>  
                                             <?php if($userwrite){ ?>
-                                            <td class="text-right">
+                                            <td class="hidden-sm" style="width:5px;">
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
                                                 <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
                                                 <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/view" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/edit" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <!-- <a class="btn btn-sm btn-link" href="<?php echo $this->config->item('base_url');?>user/edit" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a> -->
                                             </td>
                                             <?php } ?>
                                         </tr>
@@ -276,17 +276,22 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="card-status bg-blue"></div>
-                                    <div class="mb-3"> <img src="<?php echo $this->config->item('base_url');?>assets/images/user.png" class="rounded-circle w100" alt=""> </div>
+                                    <div class="mb-3"> <img  src="<?php echo $this->config->item('base_url');?>assets/images/profile/<?php echo $output->user_pic;?>" alt="avatar" onerror="this.onerror=null;this.src='<?php echo $this->config->item('base_url');?>assets/images/user.png';" data-toggle="tooltip" title="<?php echo $output->user_name;?>" class="rounded-circle w100" alt="" style="height: 100px;"> </div>
                                     <div class="mb-2">
                                         <h5 class="mb-0"><?php echo $output->user_name;?></h5>
                                         <p class="text-muted"><?php echo $output->email;?></p>
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt</span>
+                                        <span><?php echo $output->description;?></span>
                                     </div>
-                                    <span class="font-12 text-muted">Common Contact</span>
+                                    <span class="font-12 text-muted">Reporting To</span>
                                     <ul class="list-unstyled team-info margin-0 pt-2">
-                                        <li><img src="assets/images/xs/avatar1.jpg" alt="Avatar"></li>
-                                        <li><img src="assets/images/xs/avatar8.jpg" alt="Avatar"></li>
-                                        <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
+                                        <?php 
+                                            $people = explode(',',$output->reporting_to); 
+                                            if($allusers){
+                                            foreach($allusers as $routput){
+                                                if (in_array( $routput->user_id, $people )){ 
+                                        ?>
+                                            <li><img class="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/profile/<?php echo $routput->user_pic;?>" alt="avatar" onerror="this.onerror=null;this.src='<?php echo $this->config->item('base_url');?>assets/images/user.png';" data-toggle="tooltip" title="<?php echo $routput->user_name;?>" ></li>
+                                        <?php } } } ?>
                                     </ul>
                                 </div>
                             </div>

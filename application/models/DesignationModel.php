@@ -36,6 +36,7 @@ Class DesignationModel extends CI_Model {
             $lead_id = $user_data['lead_id'];         
 			$data['lead_id']		        = $user_data['lead_id'];
 			$data['created_by']		        = $user_data['user_id'];
+			$data['department_id']		    = $post_data['department_id'];
 			$data['designation']		    = $post_data['designation'];
 			$data['designation_prefix']	    = $post_data['designation_prefix'];
 			$data['designation_brief']      = $post_data['designation_brief'];

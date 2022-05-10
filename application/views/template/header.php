@@ -79,6 +79,12 @@
             font-size: inherit;
             text-rendering: auto;
         }   
+        .card-fullscreen .card-options-fullscreen i:before {
+            content: '\f2d1';
+        }
+        .card-collapsed .card-options-collapse i:before {
+            content: '\f078';
+        }
 	</style>
 </head>
 <body class="font-montserrat">
@@ -274,7 +280,7 @@
     <div class="user_div">
         <h5 class="brand-name mb-4">I-STEM Task Manager<a href="javascript:void(0)" class="user_btn"><i class="fa fa-close"></i></a></h5>
         <div class="card-body">
-            <a href="page-profile.html"><img class="card-profile-img" src="<?php echo $this->config->item('base_url');?>assets/images/profile/sanjeev.png" alt=""></a>
+            <a href="<?php echo $this->config->item('base_url');?>profile"><img class="card-profile-img" src="<?php echo $this->config->item('base_url');?>assets/images/profile/sanjeev.png" alt=""></a>
             <h6 class="mb-0"><?php echo $user_data['user_name'];?></h6>
             <span><?php echo $user_data['email'];?></span>
             <div class="d-flex align-items-baseline mt-3">
@@ -368,8 +374,8 @@
                     $vendorread 	        = $this->rolemodel->getpermission('vendor','read');
                     $rolesread 	            = $this->rolemodel->getpermission('roles','read');
                     $modulesread 	        = $this->rolemodel->getpermission('modules','read');
-                    $roleaccessread 	    = $this->rolemodel->getpermission('role based access','read');
-                    $useraccessread 	    = $this->rolemodel->getpermission('user based access','read');                    
+                    $roleaccessread 	    = $this->rolemodel->getpermission('role access','read');
+                    $useraccessread 	    = $this->rolemodel->getpermission('user access','read');                    
                 ?>
                 <?php if($dashboardread){?>
                     <li class="<?php if($title =='dashboard') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
@@ -427,10 +433,10 @@
                         <li class="<?php if($page =='modules') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/modules">Modules</a></li>
                         <?php } ?>
                         <?php if($roleaccessread){?>
-                        <li class="<?php if($page =='role-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/role-based-access">Role Based Access</a></li>
+                        <li class="<?php if($page =='role-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/role-access">Role Access</a></li>
                         <?php } ?>
                         <?php if($useraccessread){?>
-                            <li class="<?php if($page =='user-based-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user-based-access">User Based Access</a></li>
+                            <li class="<?php if($page =='user-access') echo 'active';?>"><a href="<?php echo $this->config->item('base_url');?>access/user-access">User Access</a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -566,7 +572,7 @@
                             <div class="dropdown d-flex">
                                 <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-user"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fa fa-user"></i> Profile</a>
+                                    <a class="dropdown-item" href="<?php echo $this->config->item('base_url');?>profile"><i class="dropdown-icon fa fa-user"></i> Profile</a>
                                     <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fa fa-gear"></i> Settings</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fa fa-inbox"></i> Inbox</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fa fa-send"></i> Message</a>

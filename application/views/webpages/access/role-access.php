@@ -326,7 +326,7 @@
             
         function addroleid(value,role){
             $("#role_id").val(value);
-            var nextURL = '<?php echo $this->config->item('base_url');?>access/role-based-access';
+            var nextURL = '<?php echo $this->config->item('base_url');?>access/role-access';
             history.pushState({}, null, nextURL+'?roleid='+value+'&role='+role);
             window.location.reload();
         }
@@ -342,7 +342,7 @@
         }
 
         $('.closebutton').click(function() {
-            var nextURL = '<?php echo $this->config->item('base_url');?>access/role-based-access';
+            var nextURL = '<?php echo $this->config->item('base_url');?>access/role-access';
             history.pushState({}, null, nextURL);
             $(this).removeClass('active');
             $('#ongioingbutton').addClass('active');

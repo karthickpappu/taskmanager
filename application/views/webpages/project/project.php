@@ -276,12 +276,14 @@
 													foreach($tags as $key) { 
 														foreach($allusers as $uoutput){
 															if($uoutput->user_id == $key){
-																$team .= ' <img class="avatar avatar-sm" src="assets/images/user.png" data-toggle="tooltip" title="'.$uoutput->user_name.'" data-original-title="Avatar Name"/>';
+												?>
+																<img class="avatar" src="<?php echo $this->config->item('base_url');?>assets/images/profile/<?php echo $uoutput->user_pic;?>" alt="avatar" onerror="this.onerror=null;this.src='<?php echo $this->config->item('base_url');?>assets/images/user.png';" data-toggle="tooltip" title="<?php echo $uoutput->user_name;?>">';
+
+												<?php 
 															}
 														}
 													}
 												?>
-												<?php echo $team;?>
 												<!--<span class="avatar avatar-sm">+8</span>-->
 											</div>
 										</div>	

@@ -148,6 +148,9 @@
             margin-bottom: 1rem!important;
             display: block !important;
         }
+        .text-nowrap {
+            white-space: normal;
+        }
     </style>
 	<div class="section-body mt-3">
         <div class="container-fluid">
@@ -158,10 +161,10 @@
                             <div class="d-md-flex justify-content-between">
                                 <ul class="nav nav-tabs b-none">
                                     <li class="nav-item"><a class="nav-link active" id="list-tab" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> List</a></li>
-                                    <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li>
+                                    <!-- <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li> -->
                                     <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
                                 </ul>
-                                <div class="d-flex align-items-center sort_stat">
+                                <!-- <div class="d-flex align-items-center sort_stat">
                                     <div class="d-flex">
                                         <span class="bh_income">2,5,1,8,3,6,7,5,3,6,7,5</span>
                                         <div class="ml-2">
@@ -176,7 +179,7 @@
                                             <h5 class="font-16 mb-0">53% Up</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="input-group mt-2">
                                 <input type="text" class="form-control search" placeholder="Search..." id="filter">
@@ -210,9 +213,9 @@
                                             </td>
                                             <td>
                                                 <div><a href="javascript:void(0);"><?php echo $output->designation;?></a></div>
-                                                <div class="text-muted">+<?php echo $output->designation_prefix;?></div>
+                                                <div class="text-muted"><?php echo $output->designation_prefix;?></div>
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td class="hidden-xs" style="width: auto;white-space: normal;">
                                                 <div class="text-muted"><?php echo $output->designation_brief;?></div>
                                             </td>
                                             <td class="text-right">
@@ -230,31 +233,7 @@
                 </div>
                 
                 <div class="tab-pane fade" id="grid" role="tabpanel">
-                    <div class="row row-deck userdivcontent" id="usersdiv">
-                        <?php 
-                            if($allusers){
-                            foreach($allusers as $output){
-                        ?>
-                        <div class="col-lg-3 col-md-6 col-sm-12 userdivcontentsub">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-status bg-blue"></div>
-                                    <div class="mb-3"> <img src="<?php echo $this->config->item('base_url');?>assets/images/user.png" class="rounded-circle w100" alt=""> </div>
-                                    <div class="mb-2">
-                                        <h5 class="mb-0"><?php echo $output->user_name;?></h5>
-                                        <p class="text-muted"><?php echo $output->email;?></p>
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt</span>
-                                    </div>
-                                    <span class="font-12 text-muted">Common Contact</span>
-                                    <ul class="list-unstyled team-info margin-0 pt-2">
-                                        <li><img src="assets/images/xs/avatar1.jpg" alt="Avatar"></li>
-                                        <li><img src="assets/images/xs/avatar8.jpg" alt="Avatar"></li>
-                                        <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <?php } } ?>        
+                    <div class="row row-deck userdivcontent" id="usersdiv">       
                     </div>
                 </div>
 
@@ -265,6 +244,18 @@
                                 <div class="card-body">
                                     <?php echo form_open_multipart('data/designation/create','id="designation" name="designation" autocomplete="on" ');?>
                                         <div class="row clearfix">
+                                            <div class="col-lg-4 col-md-4">
+                                                <div class="form-group">
+                                                    <select class="selectpicker show-menu-arrow" data-style="form-control" data-live-search="true" title="Select Department"  name="department_id" required >
+                                                    <?php 
+                                                        if($alldepartment){
+                                                        foreach($alldepartment as $output){
+                                                    ?>
+                                                        <option data-tokens="<?php echo $output->department;?>" value="<?php echo $output->department_id;?>"><?php echo $output->department;?></option>
+                                                    <?php } } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control user_name" id="fname" placeholder="Enter Designation Name" name="designation" required>

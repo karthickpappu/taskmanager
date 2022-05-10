@@ -1,6 +1,6 @@
 <?php
 
-class WebsiteController extends CI_Controller {
+class SettingController extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -15,7 +15,7 @@ class WebsiteController extends CI_Controller {
 		$page_content['title'] = $title;
         if ($this->validation->user_in()) {   
 			$this->load->view('template/header',$headercontent);
-            $this->load->view('webpages/dashboard',$page_content);
+            $this->load->view('webpages/settings/profile',$page_content);
             $this->load->view('template/footer');
         } else {        
             redirect('login','refresh'); 

@@ -161,7 +161,7 @@
                                     <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li>
                                     <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
                                 </ul>
-                                <div class="d-flex align-items-center sort_stat">
+                                <!-- <div class="d-flex align-items-center sort_stat">
                                     <div class="d-flex">
                                         <span class="bh_income">2,5,1,8,3,6,7,5,3,6,7,5</span>
                                         <div class="ml-2">
@@ -176,7 +176,7 @@
                                             <h5 class="font-16 mb-0">53% Up</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="input-group mt-2">
                                 <input type="text" class="form-control search" placeholder="Search..." id="filter">
@@ -213,7 +213,7 @@
                                                 <div class="text-muted">+<?php echo $output->department_prefix;?></div>
                                             </td>
                                             <td class="hidden-xs">
-                                                <div class="text-muted"  style="display: inline-block;white-space: pre-line;width: 500px;"><?php echo $output->department_brief;?></div>
+                                                <div class="text-muted"  style="white-space: normal;width: auto;"><?php echo $output->department_brief;?></div>
                                             </td>
                                             <td class="text-right">
                                                 <a class="btn btn-sm btn-link" onclick="editdepartment(<?php echo $output->department_id;?>)" data-toggle="modal" data-target="#editdepartment" href="javascript:void(0)" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>

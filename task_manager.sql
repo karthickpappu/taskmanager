@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2022 at 05:55 AM
+-- Generation Time: May 10, 2022 at 12:03 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -40,14 +40,6 @@ CREATE TABLE `accesspoint` (
   `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Organisational Entities/Hierarchy';
 
---
--- Dumping data for table `accesspoint`
---
-
-INSERT INTO `accesspoint` (`accesspoint_id`, `lead_id`, `division_id`, `department_id`, `accesspoint_type`, `accesspoint_name`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, '2', '8', 'No Department', 'Main Access', 'D Gate', 1, '2', '2021-05-05 10:23:47', '2021-05-05 10:23:47'),
-(2, '2', '4', '4', 'Department Access', 'Room 405', 1, '2', '2021-05-05 11:45:40', '2021-05-05 11:45:40');
-
 -- --------------------------------------------------------
 
 --
@@ -66,11 +58,7 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('4qoggovjc3je4r68mpdcf46bhokphb44', '127.0.0.1', 1651722708, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635313732323730383b757365725f646174617c613a32383a7b733a373a22757365725f6964223b733a313a2234223b733a373a226c6561645f6964223b733a313a2232223b733a343a22636f6465223b733a31303a22495354454d3030303034223b733a373a22726f6c655f6964223b733a323a223131223b733a31333a226465706172746d656e745f6964223b733a313a2235223b733a31343a2264657369676e6174696f6e5f6964223b733a313a2234223b733a31303a2266697273745f6e616d65223b733a383a224b6172746869636b223b733a31313a226d6964646c655f6e616d65223b733a303a22223b733a393a226c6173745f6e616d65223b733a363a2252616d657368223b733a393a22757365725f6e616d65223b733a31363a224b6172746869636b202052616d657368223b733a31313a226465736372697074696f6e223b733a32303a2246756c6c20537461636b20446576656c6f706572223b733a353a22656d61696c223b733a32303a226b6172746869636b7240696973632e61632e696e223b733a353a2270686f6e65223b733a31303a2239383736353433323130223b733a383a22656d705f74797065223b733a383a22436f6e7472616374223b733a31343a22656d705f73746172745f64617465223b733a393a2231382d362d32303231223b733a31323a22656d705f656e645f64617465223b733a393a2233312d332d32303233223b733a31323a226a6f696e696e675f64617465223b733a393a2231382d312d32303231223b733a383a2270617373636f6465223b733a3132383a226635616433656635323963626632666363666130643731656466663233653536393263666238633566613061313261633735633930663562623764343962303238323966353538393535353461333033646363633938366432333164616465636363383237386562343733653230626634633331616436353734396235653038223b733a373a2261646472657373223b733a393a2242616e67616c6f7265223b733a343a2263697479223b733a393a2242616e67616c6f7265223b733a353a227374617465223b733a393a224b61726e6174616b61223b733a373a2270696e636f6465223b733a363a22353630303130223b733a31323a227265706f7274696e675f746f223b733a333a22322c33223b733a383a22757365725f706963223b733a33313a2231363530393638333034494d4732303232303130323133303232352e6a7067223b733a31333a22757365725f646f63756d656e74223b4e3b733a363a22737461747573223b733a313a2231223b733a31323a22637265617465645f64617465223b733a31393a22323032322d30342d32362031353a34383a3234223b733a31333a226d6f6469666965645f64617465223b733a31393a22323032322d30342d32362032303a33353a3431223b7d),
-('gvthedfiu2fprp4trcbe78crm3qikvnl', '::1', 1651591200, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635313539313230303b757365725f646174617c613a32383a7b733a373a22757365725f6964223b733a313a2234223b733a373a226c6561645f6964223b733a313a2232223b733a343a22636f6465223b733a31303a22495354454d3030303034223b733a373a22726f6c655f6964223b733a323a223131223b733a31333a226465706172746d656e745f6964223b733a313a2235223b733a31343a2264657369676e6174696f6e5f6964223b733a313a2234223b733a31303a2266697273745f6e616d65223b733a383a224b6172746869636b223b733a31313a226d6964646c655f6e616d65223b733a303a22223b733a393a226c6173745f6e616d65223b733a363a2252616d657368223b733a393a22757365725f6e616d65223b733a31363a224b6172746869636b202052616d657368223b733a31313a226465736372697074696f6e223b733a32303a2246756c6c20537461636b20446576656c6f706572223b733a353a22656d61696c223b733a32303a226b6172746869636b7240696973632e61632e696e223b733a353a2270686f6e65223b733a31303a2239383736353433323130223b733a383a22656d705f74797065223b733a383a22436f6e7472616374223b733a31343a22656d705f73746172745f64617465223b733a393a2231382d362d32303231223b733a31323a22656d705f656e645f64617465223b733a393a2233312d332d32303233223b733a31323a226a6f696e696e675f64617465223b733a393a2231382d312d32303231223b733a383a2270617373636f6465223b733a3132383a226635616433656635323963626632666363666130643731656466663233653536393263666238633566613061313261633735633930663562623764343962303238323966353538393535353461333033646363633938366432333164616465636363383237386562343733653230626634633331616436353734396235653038223b733a373a2261646472657373223b733a393a2242616e67616c6f7265223b733a343a2263697479223b733a393a2242616e67616c6f7265223b733a353a227374617465223b733a393a224b61726e6174616b61223b733a373a2270696e636f6465223b733a363a22353630303130223b733a31323a227265706f7274696e675f746f223b733a333a22322c33223b733a383a22757365725f706963223b733a33313a2231363530393638333034494d4732303232303130323133303232352e6a7067223b733a31333a22757365725f646f63756d656e74223b4e3b733a363a22737461747573223b733a313a2231223b733a31323a22637265617465645f64617465223b733a31393a22323032322d30342d32362031353a34383a3234223b733a31333a226d6f6469666965645f64617465223b733a31393a22323032322d30342d32362032303a33353a3431223b7d),
-('hamrmanna9f7dfb2qq0hlb0du89naoeb', '::1', 1651553501, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635313535333530313b),
-('ngadv96kk1c3v4dq6c1qb8nmdjchqj26', '::1', 1651676350, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635313637363335303b),
-('qvlaun8ucno2793qfqgnoovaaeu3340u', '::1', 1651685743, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635313638353436303b757365725f646174617c613a32383a7b733a373a22757365725f6964223b733a313a2234223b733a373a226c6561645f6964223b733a313a2232223b733a343a22636f6465223b733a31303a22495354454d3030303034223b733a373a22726f6c655f6964223b733a323a223131223b733a31333a226465706172746d656e745f6964223b733a313a2235223b733a31343a2264657369676e6174696f6e5f6964223b733a313a2234223b733a31303a2266697273745f6e616d65223b733a383a224b6172746869636b223b733a31313a226d6964646c655f6e616d65223b733a303a22223b733a393a226c6173745f6e616d65223b733a363a2252616d657368223b733a393a22757365725f6e616d65223b733a31363a224b6172746869636b202052616d657368223b733a31313a226465736372697074696f6e223b733a32303a2246756c6c20537461636b20446576656c6f706572223b733a353a22656d61696c223b733a32303a226b6172746869636b7240696973632e61632e696e223b733a353a2270686f6e65223b733a31303a2239383736353433323130223b733a383a22656d705f74797065223b733a383a22436f6e7472616374223b733a31343a22656d705f73746172745f64617465223b733a393a2231382d362d32303231223b733a31323a22656d705f656e645f64617465223b733a393a2233312d332d32303233223b733a31323a226a6f696e696e675f64617465223b733a393a2231382d312d32303231223b733a383a2270617373636f6465223b733a3132383a226635616433656635323963626632666363666130643731656466663233653536393263666238633566613061313261633735633930663562623764343962303238323966353538393535353461333033646363633938366432333164616465636363383237386562343733653230626634633331616436353734396235653038223b733a373a2261646472657373223b733a393a2242616e67616c6f7265223b733a343a2263697479223b733a393a2242616e67616c6f7265223b733a353a227374617465223b733a393a224b61726e6174616b61223b733a373a2270696e636f6465223b733a363a22353630303130223b733a31323a227265706f7274696e675f746f223b733a333a22322c33223b733a383a22757365725f706963223b733a33313a2231363530393638333034494d4732303232303130323133303232352e6a7067223b733a31333a22757365725f646f63756d656e74223b4e3b733a363a22737461747573223b733a313a2231223b733a31323a22637265617465645f64617465223b733a31393a22323032322d30342d32362031353a34383a3234223b733a31333a226d6f6469666965645f64617465223b733a31393a22323032322d30342d32362032303a33353a3431223b7d);
+('6mljom3jan0mrir4bk2k69ckfsmq8vkh', '::1', 1652176977, 0x5f5f63695f6c6173745f726567656e65726174657c693a313635323137363737383b757365725f646174617c613a32393a7b733a373a22757365725f6964223b733a313a2238223b733a373a226c6561645f6964223b733a313a2232223b733a343a22636f6465223b733a31303a22495354454d3030303038223b733a373a22726f6c655f6964223b733a313a2234223b733a393a226163636573735f6964223b733a313a2234223b733a31333a226465706172746d656e745f6964223b733a313a2237223b733a31343a2264657369676e6174696f6e5f6964223b733a323a223135223b733a31303a2266697273745f6e616d65223b733a383a224b6172746869636b223b733a31313a226d6964646c655f6e616d65223b733a303a22223b733a393a226c6173745f6e616d65223b733a363a2252616d657368223b733a393a22757365725f6e616d65223b733a31363a224b6172746869636b202052616d657368223b733a31313a226465736372697074696f6e223b733a32383a2253656e696f7220466163696c69747920546563686e6f6c6f67697374223b733a353a22656d61696c223b733a32303a226b6172746869636b7240696973632e61632e696e223b733a353a2270686f6e65223b733a31303a2239303437383337373031223b733a383a22656d705f74797065223b733a383a22436f6e7472616374223b733a31343a22656d705f73746172745f64617465223b733a31303a2231302d30352d32303232223b733a31323a22656d705f656e645f64617465223b733a31303a2231302d30352d32303232223b733a31323a226a6f696e696e675f64617465223b733a383a22312d352d32303233223b733a383a2270617373636f6465223b733a3132383a223262363234363065306661323337366366613330393738323336353734303763323336373539663561643439643731323834383361643565653061396434306230613062323233376431383366386337666233643938316266656233323738613564613064343538383234663037616638366338363366303166653832666464223b733a373a2261646472657373223b733a393a2242656e67616c6f7265223b733a343a2263697479223b733a393a2242656e67616c6f7265223b733a353a227374617465223b733a393a224b61726e6174616b61223b733a373a2270696e636f6465223b733a363a22353630303130223b733a31323a227265706f7274696e675f746f223b733a333a22322c33223b733a383a22757365725f706963223b733a33313a2231363532313734303131494d4732303232303130323133303033362e6a7067223b733a31333a22757365725f646f63756d656e74223b4e3b733a363a22737461747573223b733a313a2231223b733a31323a22637265617465645f64617465223b733a31393a22323032322d30352d31302031343a34333a3331223b733a31333a226d6f6469666965645f64617465223b733a31393a22323032322d30352d31302031353a31393a3437223b7d);
 
 -- --------------------------------------------------------
 
@@ -98,13 +86,6 @@ CREATE TABLE `clients` (
   `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `clients`
---
-
-INSERT INTO `clients` (`client_id`, `client_code`, `lead_id`, `name`, `description`, `email`, `phone`, `gst`, `address`, `city`, `state`, `pincode`, `client_logo`, `created_by`, `status`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEMC00005', '2', 'Karthick Ramesh', 'Enter User Descriptio', 'karthick@gmail.co', '9047837701', 'GST123', 'Enter your Addres', 'Bangalor', 'Karnatak', '56001', '1651142365job.jpg', '4', 1, '2022-04-28 10:25:49', '2022-04-28 11:10:48');
-
 -- --------------------------------------------------------
 
 --
@@ -129,13 +110,13 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`department_id`, `lead_id`, `division_id`, `department`, `department_prefix`, `department_brief`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, '2', '4', 'Management Department', 'MD', 'Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff\r\n', 1, '2', '2021-05-04 10:12:58', '2022-04-21 17:36:48'),
-(2, '2', '4', 'Admin Department (Accounts and Finance)', 'AD', 'Test Desc', 1, '2', '2021-05-04 11:05:57', '2022-04-27 04:08:44'),
-(3, '2', '4', 'Human Resource', 'HR', 'Test Desc', 1, '2', '2021-05-04 11:06:11', '2022-04-27 04:08:54'),
-(4, '2', '4', 'Sales and Marketing (Business development)', 'SM', 'Test Desc', 1, '2', '2021-05-04 11:06:23', '2022-04-27 04:11:17'),
-(5, '2', '4', 'Technical Department (Research and development)', 'TD', 'Test Desc', 1, '2', '2021-05-04 11:06:35', '2022-04-27 04:09:03'),
-(6, '2', '4', 'Non Technical Department', 'NTD', 'Test Desc', 1, '2', '2021-05-04 11:06:52', '2022-04-27 04:09:15'),
-(7, '2', '4', 'IT services', 'IT', NULL, 0, '2', '2021-05-04 11:07:18', '2022-04-26 11:32:14');
+(1, '2', NULL, 'Board of Directors', 'BD', 'This is an operational center of the software company. It’s here where C-level managers handle the strategic decisions in the organization. Usually they report to the captain of the ship - Managing Director.', 1, '2', '2022-05-10 06:52:46', '2022-05-10 06:52:46'),
+(2, '2', NULL, 'Administration', 'AD', 'This department mostly takes care of every financial aspect among the company. Also their aim is to control document flow and all settlements with partners.', 1, '2', '2022-05-10 06:53:16', '2022-05-10 08:05:35'),
+(3, '2', NULL, 'HR Department', 'HR', 'Their main objective is to create the best possible team of dedicated and reliable employees as possible. Not only to recruit the most relevant new ones, but also to train the ones already employed. They are also aimed at staff development programs, improvement of staff efficiency and career pathing. Moreover, the HR department plays an important role in creating and implementing health and safety regulations within the company.', 1, '2', '2022-05-10 06:53:32', '2022-05-10 06:53:32'),
+(4, '2', NULL, 'Marketing Department', 'SALES-MD', '\r\nLong story short they are responsible for creating the company\'s image on the market. Starting from the design of the website, through advertising, presence on industry portals and press releases. The main task of the marketing department is to make the company visible to a potentially interested customer.\r\n\r\nCurious what else does marketing department in the software house? For example - they develop a content marketing strategy! You can see the video explaining it\'s importance in the video below (ENG subtitles available).', 1, '2', '2022-05-10 06:54:48', '2022-05-10 06:54:48'),
+(5, '2', NULL, 'Business Development Department', 'BD', 'Usually it is the Business Manager who is the first to have contact with the potential customer. If you meet the representative of the company at trade fairs and industry events, there’s a big chance it’s him/her. This person is responsible for the entire client’s life cycle within the company. Starting from initial contact, through presentation of the offer, sales negotiations, as well as support during the implementation phase. Within some business departments there are dedicated specialists, Account Managers, who are responsible only for current clients. Business development department is not only responsible for ongoing customer service, but also for creating and implementing the company’s sales strategy, choosing the right tools and shaping sales processes.\r\n', 1, '2', '2022-05-10 06:55:14', '2022-05-10 06:55:14'),
+(6, '2', NULL, 'UX/UI Department', 'FD', 'It’s here where the graphic part of the project is created. Graphic Designers develop artworks and wireframes based on data collected through meticulous sociological and psychological research. As a result they design the whole application and its individual components. While creating the product, they work closely with the IT Department.', 1, '2', '2022-05-10 06:55:34', '2022-05-10 06:55:34'),
+(7, '2', NULL, 'IT Department', 'IT', 'It’s the core of every software house company. It’s created by the group of professionals who are doing the actual technical part of the project. Usually duties within this department are divided among Developers, Project Managers and QA specialists.', 1, '2', '2022-05-10 06:55:50', '2022-05-10 06:55:50');
 
 -- --------------------------------------------------------
 
@@ -161,11 +142,22 @@ CREATE TABLE `designation` (
 --
 
 INSERT INTO `designation` (`designation_id`, `lead_id`, `department_id`, `designation`, `designation_prefix`, `designation_brief`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, '2', '', 'Managing Director', 'MD', 'Test Desc', 1, '2', '2021-05-05 06:10:19', '2022-04-27 04:41:22'),
-(2, '2', '', 'Admin Staff', 'AS', 'Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff Admin Staff', 1, '2', '2021-05-05 06:10:19', '2022-04-21 17:36:19'),
-(3, '2', '', 'Facility Technologist', 'FT', 'Test Desc', 1, '2', '2021-05-05 06:10:19', '2022-04-27 04:41:48'),
-(4, '2', '', 'Senior Facility Technologist', 'SFT', 'Test Desc', 1, '2', '2021-05-05 06:10:19', '2022-04-27 04:41:54'),
-(5, '2', '', 'HR Manager', 'HRM', 'Test Desc', 1, '2', '2021-05-05 06:10:19', '2022-04-27 04:41:58');
+(1, '2', '1', 'Chief Executive Officer', 'CEO', 'The CEO is the head of the executive team and manages the day to day operations of the organisation, its people and resources. The CEO implements the strategy approved by the board and ensures that the organisation\'s structure and processes meet the ', 1, '2', '2022-05-10 07:04:35', '2022-05-10 07:04:35'),
+(2, '2', '1', 'Executive Director', 'ED', 'An Executive Director is the working director of an organization whom we can say a full-time employee. It is also known as inside or internal director. Generally, it has a specified role in finance director, marketing operations etc on regular basis', 1, '2', '2022-05-10 07:09:10', '2022-05-10 07:09:10'),
+(3, '2', '1', ' Non-Executive Director', 'NED', ' Adjective [ADJECTIVE noun] Someone who has a non-executive position in a company or organization gives advice but is not responsible for making decisions or ensuring that decisions are carried out.', 1, '2', '2022-05-10 07:10:46', '2022-05-10 07:10:46'),
+(4, '2', '1', 'Chief Operating Officer', 'COO', 'What Is a Chief Operating Officer (COO)? The chief operating officer (COO) is a senior executive tasked with overseeing the day-to-day administrative and operational functions of a business. The COO typically reports directly to the chief executive o', 1, '2', '2022-05-10 07:25:54', '2022-05-10 07:25:54'),
+(5, '2', '2', 'Admin', 'AD', 'Admin', 1, '2', '2022-05-10 07:29:07', '2022-05-10 07:29:07'),
+(6, '2', '2', 'Admin Assistant', 'ADA', 'Secretaries and administrative assistants maintain databases and filing systems. Secretaries and administrative assistants do routine clerical and organizational tasks. They arrange files, prepare documents, schedule appointments, and support other s', 1, '2', '2022-05-10 07:41:37', '2022-05-10 07:41:37'),
+(7, '2', '3', 'Recruiter', 'HR', 'What does a Recruiter do? Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is look', 1, '2', '2022-05-10 07:45:59', '2022-05-10 07:45:59'),
+(8, '2', '3', 'Corporate Recruiter', 'CR', 'Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is looking for.', 1, '2', '2022-05-10 07:46:28', '2022-05-10 07:46:28'),
+(9, '2', '3', 'HR Manager', 'HRM', 'Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is looking for.', 1, '2', '2022-05-10 07:46:51', '2022-05-10 07:46:51'),
+(10, '2', '3', 'Human Resources Director', 'HRD', 'Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is looking for.', 1, '2', '2022-05-10 07:53:16', '2022-05-10 07:53:16'),
+(11, '2', '3', 'HR Coordinator', 'HRC', 'Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is looking for.', 1, '2', '2022-05-10 07:53:37', '2022-05-10 07:53:37'),
+(12, '2', '3', 'Headhunter', 'HDH', 'Recruiters find and attract qualified applicants for open positions. They review resumes, focusing on skills matching up best to the requirements at hand and interview candidates until they find just what an employer is looking for.', 1, '2', '2022-05-10 07:54:01', '2022-05-10 07:54:01'),
+(13, '2', '7', 'IT Head', 'ITH', 'IT managers are information technology professionals who plan, direct and oversee activities dealing with a company\'s computer and information systems. The IT manager coordinates jobs related to the hardware, software and network that the business us', 1, '2', '2022-05-10 07:55:30', '2022-05-10 07:55:30'),
+(14, '2', '7', 'Technology manager', 'TM', 'Technology managers help an organization with the oversight, direction, and maintenance of their technological systems. This role can be specialized into numerous areas: cybersecurity, industrial automation, cloud computing, the internet of things (I', 1, '2', '2022-05-10 07:56:26', '2022-05-10 07:56:26'),
+(15, '2', '7', 'Senior Facility Technologist', 'SFT', 'Also known as a software engineer, a senior developer performs various development duties, such as coding and web development. Senior developers may specialize in a specific area, oversee projects, and manage junior developers.', 1, '2', '2022-05-10 07:59:59', '2022-05-10 07:59:59'),
+(16, '2', '7', 'Facility Technologist', 'FT', 'Also known as a software engineer, a senior developer performs various development duties, such as coding and web development. Senior developers may specialize in a specific area, oversee projects, and manage junior developers.', 1, '2', '2022-05-10 08:00:24', '2022-05-10 08:00:24');
 
 -- --------------------------------------------------------
 
@@ -185,20 +177,6 @@ CREATE TABLE `division` (
   `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Organisational Entities/Hierarchy';
 
---
--- Dumping data for table `division`
---
-
-INSERT INTO `division` (`division_id`, `lead_id`, `division`, `division_prefix`, `division_brief`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, '2', 'Division of Biological Sciences', 'DBS', NULL, 1, NULL, '2021-05-04 05:32:54', '2021-05-04 05:33:24'),
-(2, '2', 'Division of Chemical Sciences', 'DCS', NULL, 1, NULL, '2021-05-04 05:32:57', '2021-05-04 05:33:53'),
-(3, '2', 'Division of Electrical, Electronics, and Computer Science (EECS)', 'DEECS', NULL, 1, '2', '2021-05-04 05:33:00', '2021-05-04 05:51:39'),
-(4, '2', 'Division of Interdisciplinary Sciences', 'DIS', NULL, 1, NULL, '2021-05-04 05:33:03', '2021-05-04 05:34:22'),
-(5, '2', 'Division of Mechanical Sciences', 'DMS', NULL, 1, NULL, '2021-05-04 05:33:05', '2021-05-04 05:34:33'),
-(6, '2', 'Division of Physical and Mathematical Sciences', 'DPMS', NULL, 1, NULL, '2021-05-04 05:33:07', '2021-05-04 05:34:51'),
-(7, '2', 'Centres under the Director', 'CUD', NULL, 1, NULL, '2021-05-04 05:33:11', '2021-05-04 05:35:07'),
-(8, '2', 'Autonomous Societies / Centres', 'ASC', NULL, 1, '2', '2021-05-04 05:33:11', '2021-05-04 05:51:48');
-
 -- --------------------------------------------------------
 
 --
@@ -216,22 +194,6 @@ CREATE TABLE `istem_user_roles` (
   `created_date` timestamp NULL DEFAULT current_timestamp(),
   `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Organisational Entities/Hierarchy';
-
---
--- Dumping data for table `istem_user_roles`
---
-
-INSERT INTO `istem_user_roles` (`role_id`, `roles`, `roles_to`, `roles_prefix`, `role_brief`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEM', 'Self', 'IS', 'Super Admin Entity for Overall Administration/Control', 1, NULL, NULL, '2021-04-21 09:15:50'),
-(2, 'REGIONAL CENTRE', 'Self', 'ND', 'Nodal Agencies to Control/Monitor ISTEM', 1, NULL, NULL, '2021-04-21 09:15:52'),
-(3, 'INSTITUTE', 'Institution', 'IN', 'Institue which is the provider of Equipments/facilities', 1, NULL, NULL, '2021-04-21 09:16:02'),
-(4, 'DEPARTMENT', 'Users', 'DP', 'Department inside the Institute', 1, NULL, NULL, '2021-04-21 09:16:13'),
-(5, 'FACILITIES', 'Users', 'FC', 'Facilities inside the Institute', 1, NULL, NULL, '2021-04-21 09:16:14'),
-(6, 'FACULTY', 'Users', 'FL', 'Faculties', 1, NULL, NULL, '2021-04-21 09:16:16'),
-(7, 'FACILITY INCHARGE', 'Users', 'FI', 'Facility Incharges', 1, NULL, NULL, '2021-04-21 09:16:19'),
-(8, 'OPERATOR', 'Users', 'OP', 'Equipment Operators', 1, NULL, NULL, '2021-04-21 09:16:17'),
-(9, 'EQUIPMENT', 'Users', 'EQ', 'Equipments', 1, NULL, NULL, '2021-04-21 09:16:20'),
-(10, 'FUNDING AGENCY REPRESENTATIVE', 'Users', 'FA', 'FUNDING AGENCY REPRESENTATIVE', 1, NULL, NULL, '2021-04-21 09:16:21');
 
 -- --------------------------------------------------------
 
@@ -320,10 +282,10 @@ INSERT INTO `modules` (`module_id`, `sub_module`, `main_module_id`, `lead_id`, `
 (8, 0, 6, '2', 'Designation', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:46:48'),
 (9, 0, 6, '2', 'Client', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 13:55:51'),
 (10, 0, 6, '2', 'Vendor', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:46:48'),
-(11, 1, 0, '2', 'Roles & Permissions', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:52:10'),
+(11, 1, 0, '2', 'Roles', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-05 05:59:38'),
 (12, 0, 11, '2', 'Modules', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:53:01'),
-(13, 0, 11, '2', 'Role Based Access', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:53:08'),
-(14, 0, 11, '2', 'User Based Access', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-04 06:53:13');
+(13, 0, 11, '2', 'Role Access', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-10 08:10:16'),
+(14, 0, 11, '2', 'User Access', 'All the user task will be maintained here', '4', 1, '2022-04-29 12:21:45', '2022-05-10 08:10:18');
 
 -- --------------------------------------------------------
 
@@ -336,12 +298,13 @@ CREATE TABLE `permissions` (
   `lead_id` varchar(30) DEFAULT NULL,
   `role_id` varchar(30) DEFAULT NULL,
   `module_id` varchar(30) DEFAULT NULL,
-  `module_read` int(11) DEFAULT 0,
-  `module_write` int(11) DEFAULT 0,
-  `module_delete` int(11) DEFAULT 0,
-  `module_create` int(11) DEFAULT 0,
-  `module_import` int(11) DEFAULT 0,
-  `module_export` int(11) DEFAULT 0,
+  `module` text DEFAULT NULL,
+  `read` int(11) DEFAULT 0,
+  `write` int(11) DEFAULT 0,
+  `delete` int(11) DEFAULT 0,
+  `create` int(11) DEFAULT 0,
+  `import` int(11) DEFAULT 0,
+  `export` int(11) DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_by` varchar(30) DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -352,21 +315,49 @@ CREATE TABLE `permissions` (
 -- Dumping data for table `permissions`
 --
 
-INSERT INTO `permissions` (`permission_id`, `lead_id`, `role_id`, `module_id`, `module_read`, `module_write`, `module_delete`, `module_create`, `module_import`, `module_export`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
-(1, '2', '2', '1', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(2, '2', '2', '2', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(3, '2', '2', '3', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(4, '2', '2', '4', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(5, '2', '2', '5', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(6, '2', '2', '6', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(7, '2', '2', '7', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(8, '2', '2', '8', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(9, '2', '2', '9', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(10, '2', '2', '10', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(11, '2', '2', '11', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(12, '2', '2', '12', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(13, '2', '2', '13', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41'),
-(14, '2', '2', '14', 0, 1, 0, 1, 1, 0, 1, '4', '2022-05-04 17:35:13', '2022-05-04 17:35:41');
+INSERT INTO `permissions` (`permission_id`, `lead_id`, `role_id`, `module_id`, `module`, `read`, `write`, `delete`, `create`, `import`, `export`, `status`, `created_by`, `created_date`, `modified_date`) VALUES
+(1, '2', '2', '1', 'Dashboard', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(2, '2', '2', '2', 'Project', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(3, '2', '2', '3', 'Taskboard', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(4, '2', '2', '4', 'User', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(5, '2', '2', '5', 'Todo List', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(6, '2', '2', '6', 'Master', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(7, '2', '2', '7', 'Department', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(8, '2', '2', '8', 'Designation', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(9, '2', '2', '9', 'Client', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(10, '2', '2', '10', 'Vendor', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(11, '2', '2', '11', 'Roles', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(12, '2', '2', '12', 'Modules', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 05:48:01'),
+(13, '2', '2', '13', 'Role Access', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 08:10:25'),
+(14, '2', '2', '14', 'User Access', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 05:48:01', '2022-05-10 08:10:28'),
+(15, '2', '4', '1', 'Dashboard', 1, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(16, '2', '4', '2', 'Project', 1, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(17, '2', '4', '3', 'Taskboard', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(18, '2', '4', '4', 'User', 1, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(19, '2', '4', '5', 'Todo List', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(20, '2', '4', '6', 'Master', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(21, '2', '4', '7', 'Department', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(22, '2', '4', '8', 'Designation', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(23, '2', '4', '9', 'Client', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(24, '2', '4', '10', 'Vendor', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(25, '2', '4', '11', 'Roles', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(26, '2', '4', '12', 'Modules', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(27, '2', '4', '13', 'Role Access', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(28, '2', '4', '14', 'User Access', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:25:42', '2022-05-10 09:25:42'),
+(29, '2', '3', '1', 'Dashboard', 1, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(30, '2', '3', '2', 'Project', 1, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(31, '2', '3', '3', 'Taskboard', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(32, '2', '3', '4', 'User', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(33, '2', '3', '5', 'Todo List', 1, 1, 1, 1, 1, 1, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(34, '2', '3', '6', 'Master', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(35, '2', '3', '7', 'Department', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(36, '2', '3', '8', 'Designation', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(37, '2', '3', '9', 'Client', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(38, '2', '3', '10', 'Vendor', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(39, '2', '3', '11', 'Roles', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(40, '2', '3', '12', 'Modules', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(41, '2', '3', '13', 'Role Access', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13'),
+(42, '2', '3', '14', 'User Access', 0, 0, 0, 0, 0, 0, 1, '2', '2022-05-10 09:51:13', '2022-05-10 09:51:13');
 
 -- --------------------------------------------------------
 
@@ -402,7 +393,7 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`project_id`, `project_code`, `lead_id`, `title`, `scope`, `description`, `project_type`, `client`, `team`, `signed_on`, `start_date`, `handover_date`, `budget_type`, `budget_amount`, `attachment`, `project_status`, `created_by`, `status`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEMP00001', '2', 'I-STEM', 'Dynamic and interactive national portal, which hosts various scientific programs,', 'Indian Science, Technology and Engineering facilities Map (I-STEM) is a dynamic and interactive national portal, which hosts various scientific programs, initiated by office of the Principal Scientific Adviser, Govt. of India. The main objective of having this portal (developed using public fund) is to provide support to needy researchers in different ways and strengthen the R&D ecosystem to fulfil the necessity of people of the country. The supports planned through these programs through this unique portal are designed in such a way that every researcher inculcate the concept of the Aatma Nirbhar Bharat in their mind, nature, and behaviour and work with full dedication to optimize the usage of the resources established across the country, using taxpayer’s money i.e. public fund. With these concepts, the portal was launched and dedicated to the nation by the Honourable Prime Minister of India, Shri Narendra Modi, on Jan 03, 2020. It has now entered in Phase-II, w.e.f. Aug 2021.', 'Internal', '', '2,3,4', '04-05-2022', '04-05-2022', '04-05-2022', 'Confidential', '', '1651643431sample.pdf', 'On Going', '4', 1, '2022-05-04 05:50:31', '2022-05-04 11:30:37');
+(1, 'ISTEMP00001', '2', 'Indian Science, Technology and Engineering facilities Map (I-STEM)', 'Dynamic and interactive national portal, which hosts various scientific programs', 'Aatma Nirbhar Bharat in their mind, nature, and behaviour and work with full dedication to optimize the usage of the resources established across the country, using taxpayer’s money i.e. public fund. With these concepts, the portal was launched and dedicated to the nation by the Honourable Prime Minister of India, Shri Narendra Modi, on Jan 03, 2020. It has now entered in Phase-II, w.e.f. Aug 2021.', 'Internal', '', '2,3,4,5,6,7,8,9,10,11,12,13', '1-1-2018', '1-1-2018', '1-5-2026', 'Confidential', '', '1652175650sample.pdf', 'New Project', '2', 1, '2022-05-10 09:40:50', '2022-05-10 15:10:50');
 
 -- --------------------------------------------------------
 
@@ -427,11 +418,11 @@ CREATE TABLE `project_modules` (
 --
 
 INSERT INTO `project_modules` (`module_id`, `lead_id`, `project_id`, `module`, `module_description`, `created_by`, `status`, `created_date`, `modified_date`) VALUES
-(1, '2', '1', 'Atma Nirbhar Initiatives (Self Reliant)', 'sample', '4', 1, '2022-04-28 11:52:42', '2022-05-04 05:52:05'),
-(2, '2', '1', 'Kaushal Bharat (Skill Development)', 'sample', '4', 1, '2022-04-29 06:51:08', '2022-05-04 05:53:08'),
-(3, '2', '1', 'R & D Infrastructure Map (Facilities On Map)', 'sample', '4', 1, '2022-05-03 03:24:01', '2022-05-04 05:53:07'),
-(4, '2', '1', 'Digital Catalogue<br>(Technology Products)', 'sample', '4', 1, '2022-05-04 05:51:44', '2022-05-04 05:53:10'),
-(5, '2', '1', 'Supplier Map', 'sample', '4', 1, '2022-05-04 05:51:44', '2022-05-04 05:53:10');
+(1, '2', '1', 'Atma Nirbhar Initiatives (Self Reliant)', 'sample', '4', 1, '2022-04-28 06:22:42', '2022-05-04 00:22:05'),
+(2, '2', '1', 'Kaushal Bharat (Skill Development)', 'sample', '4', 1, '2022-04-29 01:21:08', '2022-05-04 00:23:08'),
+(3, '2', '1', 'R & D Infrastructure Map (Facilities On Map)', 'sample', '4', 1, '2022-05-02 21:54:01', '2022-05-04 00:23:07'),
+(4, '2', '1', 'Digital Catalogue<br>(Technology Products)', 'sample', '4', 1, '2022-05-04 00:21:44', '2022-05-04 00:23:10'),
+(5, '2', '1', 'Supplier Map', 'sample', '4', 1, '2022-05-04 00:21:44', '2022-05-04 00:23:10');
 
 -- --------------------------------------------------------
 
@@ -444,7 +435,7 @@ CREATE TABLE `roles` (
   `lead_id` varchar(30) DEFAULT NULL,
   `role` varchar(45) NOT NULL DEFAULT '' COMMENT 'Name of entity like Super Admin, Nodal Agency/Institute etc',
   `role_prefix` varchar(45) NOT NULL DEFAULT '' COMMENT 'Short Code for Entity',
-  `role_brief` varchar(100) NOT NULL DEFAULT '' COMMENT 'Description',
+  `role_brief` text DEFAULT NULL COMMENT 'Description',
   `created_by` varchar(30) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -456,11 +447,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`role_id`, `lead_id`, `role`, `role_prefix`, `role_brief`, `created_by`, `status`, `created_date`, `modified_date`) VALUES
-(1, '1', 'Owner', 'OW', 'Super Admin Overall Administration/Control', NULL, 2, '2022-04-29 07:37:59', '2022-04-29 07:15:51'),
-(2, '2', 'Super Admin', 'SAD', 'Super Admin Overall Administration/Control', NULL, 1, '2022-04-29 07:37:59', '2022-04-29 07:15:48'),
-(3, '2', 'Admin', 'AD', 'Software Controller', NULL, 1, '2022-04-29 07:37:59', '2022-04-29 07:16:12'),
-(4, '2', 'User', 'US', 'User inside the Organization', NULL, 1, '2022-04-29 07:37:59', '2022-04-29 07:11:55'),
-(5, '2', 'Employee', 'EMP', 'All staff of the org', '4', 0, '2022-04-29 09:42:35', '2022-04-29 09:42:50');
+(1, '1', 'Owner', 'OW', '', NULL, 1, '2022-05-10 05:45:36', '2022-05-10 05:45:36'),
+(2, '2', 'Super Admin', 'SA', 'A Super Administrator is a user who has complete access to all objects, folders, role templates, and groups in the system. A deployment can have one or more Super Administrators. A Super Administrator can create users, groups, and other super administrators.', NULL, 1, '2022-05-10 05:45:36', '2022-05-10 08:22:08'),
+(3, '2', 'Admin', 'AD', 'Access control administration is the collection of tasks and duties assigned to an administrator to manage user accounts, access, and accountability. A system\'s security is based on effective administration of access controls.', NULL, 1, '2022-05-10 05:45:36', '2022-05-10 08:22:43'),
+(4, '2', 'User', 'EMP', 'Least Authorization ', NULL, 1, '2022-05-10 05:45:36', '2022-05-10 08:28:34');
 
 -- --------------------------------------------------------
 
@@ -489,12 +479,27 @@ CREATE TABLE `task` (
   `modified_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `task`
+-- Table structure for table `task_comments`
 --
 
-INSERT INTO `task` (`task_id`, `task_code`, `lead_id`, `project_id`, `project_module_id`, `title`, `description`, `date_from`, `date_to`, `priority`, `assign_to`, `followers`, `task_attachment`, `created_by`, `status`, `task_status`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEMT00001', '2', '1', '3', 'Search Equipment With Distance', 'Need to give distance option to filter nearby equipment', '04-05-2022', '06/01/2022', 'Medium', '4', '2,4', '1651647796sample.pdf', '4', 1, 'On Hold', '2022-05-04 07:03:16', '2022-05-04 16:30:43');
+CREATE TABLE `task_comments` (
+  `task_comment_id` int(9) UNSIGNED NOT NULL,
+  `lead_id` varchar(30) DEFAULT NULL,
+  `task_id` varchar(30) DEFAULT NULL,
+  `comment_replay` int(11) DEFAULT 0,
+  `comment_replay_id` int(11) DEFAULT 0,
+  `comment` text DEFAULT NULL,
+  `comment_attachment` varchar(250) DEFAULT NULL,
+  `comment_on` timestamp NOT NULL DEFAULT current_timestamp(),
+  `commented_by` varchar(30) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `task_status` varchar(60) NOT NULL DEFAULT 'Planned',
+  `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -516,15 +521,6 @@ CREATE TABLE `task_todo` (
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `task_todo`
---
-
-INSERT INTO `task_todo` (`task_todo_id`, `task_todo_code`, `lead_id`, `task_id`, `title`, `description`, `task_todo_attachment`, `created_by`, `status`, `tasktodo_status`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEMTT00001', '2', NULL, 'sample', 'sample', '1651649043sample.pdf', '4', 1, 'Completed', '2022-05-04 07:24:03', '2022-05-04 16:30:13'),
-(2, 'ISTEMTT00002', '2', NULL, 'sample', 'sample', '1651649043sample.pdf', '4', 1, 'Queued', '2022-05-04 07:24:03', '2022-05-04 15:07:43'),
-(3, 'ISTEMTT00003', '2', NULL, 'sample', 'sample', '1651649043sample.pdf', '4', 1, 'On Hold', '2022-05-04 07:24:03', '2022-05-04 15:09:05');
 
 -- --------------------------------------------------------
 
@@ -555,15 +551,7 @@ CREATE TABLE `todo` (
 --
 
 INSERT INTO `todo` (`todo_id`, `todo_code`, `lead_id`, `todo`, `description`, `date_from`, `date_to`, `priority`, `assign_to`, `attachment`, `created_by`, `todo_status`, `status`, `created_date`, `modified_date`) VALUES
-(1, 'FtSGeaMVEaH8tJg', '2', 'Event', NULL, '09/06/2021', '09/08/2021', 'Low', '3', NULL, '1', 0, 1, '2021-09-06 03:37:28', '2022-04-20 16:21:37'),
-(2, 'Bepg8VzMjN0Cxwy', '2', 'Reports', NULL, '08/01/2021', '09/09/2021', 'Medium', '5', NULL, '3', 0, 1, '2021-09-06 05:16:47', '2021-09-06 11:59:55'),
-(3, 'VEKfjpcLmSiWYPr', '2', 'Event Certificate need to be designed', 'Sample', '09/06/2021', '09/08/2021', 'Medium', '3', NULL, '3', 0, 1, '2021-09-06 06:23:47', '2022-04-20 16:21:34'),
-(4, 'IRSMuyae3eFFypb', '2', 'Event Certificate need to be designed', 'Sample', '09/15/2021', '09/15/2021', 'Low', '1', NULL, '1', 0, 1, '2021-09-07 04:39:29', '2022-04-20 10:15:13'),
-(5, 'Kxzo1AbkVe87ouL', '2', 'Event Certificate need to be designed', 'sdsd', '', '', 'Low', '1', NULL, '3', 1, 1, '2022-04-20 10:51:29', '2022-04-20 16:21:29'),
-(6, 'nQ2oETRCQYeUmpx', '2', '', '', '', '', '', '', NULL, '4', 1, 1, '2022-04-26 05:43:29', '2022-04-26 11:13:29'),
-(7, 'oBlLmtfFByxE0xu', '2', 'Event Certificate need to be designed', 'xz', '', '', 'Low', '2', NULL, '4', 1, 1, '2022-04-26 05:43:44', '2022-04-26 11:13:44'),
-(8, 'dqKrhhMxwP9XZMg', '2', 'Event Certificate need to be designed', 'df', '', '', 'Low', '4', NULL, '4', 1, 1, '2022-04-26 05:44:02', '2022-05-04 16:33:48'),
-(9, 'gnot9AE1mQGtC5a', '2', '', '', '05/04/2022', '05/04/2022', '', '', NULL, '4', 1, 1, '2022-05-04 11:03:34', '2022-05-04 16:33:34');
+(1, 'wa9CG1xGOZV37MB', '2', 'Event Certificate need to be designed', 'Test Todo', '05/10/2022', '05/10/2022', 'Medium', '8', NULL, '8', 0, 1, '2022-05-10 10:02:42', '2022-05-10 15:32:53');
 
 -- --------------------------------------------------------
 
@@ -608,10 +596,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `lead_id`, `code`, `role_id`, `access_id`, `department_id`, `designation_id`, `first_name`, `middle_name`, `last_name`, `user_name`, `description`, `email`, `phone`, `emp_type`, `emp_start_date`, `emp_end_date`, `joining_date`, `passcode`, `address`, `city`, `state`, `pincode`, `reporting_to`, `user_pic`, `user_document`, `status`, `created_date`, `modified_date`) VALUES
-(1, '1', 'GC00001', 1, NULL, '1', '1', 'G C', NULL, 'Brothers', 'GC Brothers', NULL, '', '9876543210', NULL, NULL, NULL, NULL, 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-04-11 18:14:38', '2022-04-22 13:14:20'),
-(2, '2', 'ISTEM00002', 2, NULL, '1', '1', 'Sanjeev', NULL, 'Kumar', 'Sanjeev Kumar', NULL, 'sanjeev@gmail.com', '9876543210', NULL, NULL, NULL, NULL, 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-04-11 18:14:38', '2022-04-26 11:21:13'),
-(3, '2', 'ISTEM00003', 4, NULL, '5', '4', 'Arvindha ', '', 'B N', 'Arvindha   B N', 'Server Side Developer', 'arvindhabn@iisc.ac.in', '9876543210', NULL, NULL, NULL, NULL, 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', 'Bangalore', 'Bangalore', 'Karnataka', '560010', '2', '1650952938user.png', NULL, 1, '2022-04-26 06:02:18', '2022-05-05 09:06:52'),
-(4, '2', 'ISTEM00004', 4, NULL, '5', '4', 'Karthick', '', 'Ramesh', 'Karthick  Ramesh', 'Full Stack Developer', 'karthickr@iisc.ac.in', '9876543210', 'Contract', '18-6-2021', '31-3-2023', '18-1-2021', 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', 'Bangalore', 'Bangalore', 'Karnataka', '560010', '2,3', '1650968304IMG20220102130225.jpg', NULL, 1, '2022-04-26 10:18:24', '2022-05-05 09:06:55');
+(1, '1', 'GC00001', 1, '1', '1', '1', 'G C', NULL, 'Brothers', 'GC Brothers', NULL, '', '9876543210', NULL, NULL, NULL, NULL, 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-04-11 18:14:38', '2022-05-05 15:04:12'),
+(2, '2', 'ISTEM00002', 2, '2', '1', '1', 'Sanjeev', '', 'Kumar', 'Sanjeev Kumar', 'Supmer Admin', 'sanjeev@gmail.com', '9876543210', '', '', '', '', 'f5ad3ef529cbf2fccfa0d71edff23e5692cfb8c5fa0a12ac75c90f5bb7d49b02829f55895554a303dccc986d231dadeccc8278eb473e20bf4c31ad65749b5e08', 'Bengalore', 'Bengalore', 'Karnataka', '560010', NULL, '1652173153user2.png', NULL, 1, '2021-04-11 18:14:38', '2022-05-10 14:29:13'),
+(3, '2', 'ISTEM00003', 3, '3', '7', '13', 'Arvindha', '', 'B N', 'Arvindha  B N', 'IT Head', 'aravindabn@iisc.ac.in', '080-23607022', 'Contract', '10-05-2022', '10-05-2022', '10-5-2022', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bangalore', 'Karnataka', '560010', '2', '1652172768user.png', NULL, 1, '2022-05-10 08:52:48', '2022-05-10 15:20:15'),
+(4, '2', 'ISTEM00004', 4, '4', '7', '14', 'Shailesh', '', 'Sharma', 'Shailesh  Sharma', 'Technology manager', 'shaileshs@iisc.ac.in', '9672472877', 'Contract', '10-05-2022', '10-05-2022', '10-5-2022', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652173376user2.png', NULL, 1, '2022-05-10 09:02:56', '2022-05-10 15:20:11'),
+(5, '2', 'ISTEM00005', 4, '4', '7', '15', 'Sweta', '', 'Mukherjee', 'Sweta  Mukherjee', 'Senior Facility Technologist', 'msweta@iisc.ac.in', '08022932680', 'Contract', '10-05-2022', '10-05-2022', '10-5-2022', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652173474user1.png', NULL, 1, '2022-05-10 09:04:34', '2022-05-10 15:20:09'),
+(6, '2', 'ISTEM00006', 4, '4', '7', '15', 'Narmdeshwar', '', 'Pandey', 'Narmdeshwar  Pandey', 'Senior Facility Technologist', 'narmdeshwarp@iisc.ac.in', '9342770330', 'Contract', '10-05-2022', '10-05-2022', '10-5-2022', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2,3', '1652173737user2.png', NULL, 1, '2022-05-10 09:08:57', '2022-05-10 15:20:07'),
+(7, '2', 'ISTEM00007', 4, '4', '7', '16', 'Pooja', '', 'Punetha', 'Pooja  Punetha', 'Facility Technologist', 'ppooja@iisc.ac.in', '7080533824', 'Contract', '10-05-2022', '10-05-2022', '10-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652173855user.png', NULL, 1, '2022-05-10 09:10:55', '2022-05-10 15:19:54'),
+(8, '2', 'ISTEM00008', 4, '4', '7', '15', 'Karthick', '', 'Ramesh', 'Karthick  Ramesh', 'Senior Facility Technologist', 'karthickr@iisc.ac.in', '9047837701', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560010', '2,3', '1652174011IMG20220102130036.jpg', NULL, 1, '2022-05-10 09:13:31', '2022-05-10 15:19:47'),
+(9, '2', 'ISTEM00009', 4, '4', '2', '6', 'R J', '', 'Manjunatha', 'R J  Manjunatha', 'Admin Assistant', 'manjunatharj@iisc.ac.in', '08022932680', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652174468user2.png', NULL, 1, '2022-05-10 09:21:08', '2022-05-10 15:19:46'),
+(10, '2', 'ISTEM00010', 4, '4', '2', '6', 'S', '', 'Pushpa', 'S Pushpa', 'Admin Assistant', 'pushpas@iisc.ac.in', '08022932680', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652174468user2.png', NULL, 1, '2022-05-10 09:21:08', '2022-05-10 15:19:44'),
+(11, '2', 'ISTEM00011', 4, '4', '7', '16', 'P', '', 'Sasikumar', 'P  Sasikumar', 'Facility Technologist', 'sasikumarp@iisc.ac.in', '7702436156', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnatak', '560012', '2,3', '1652174858user.png', NULL, 1, '2022-05-10 09:27:38', '2022-05-10 15:19:42'),
+(12, '2', 'ISTEM00012', 4, '4', '7', '16', 'U', '', 'Geethanjali', 'U  Geethanjali', 'Facility Technologist', 'geethanjaliu@iisc.ac.in', '9740383725', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560012', '2', '1652174957user2.png', NULL, 1, '2022-05-10 09:29:17', '2022-05-10 15:19:41'),
+(13, '2', 'ISTEM00013', 4, '4', '7', '15', 'Pawan', '', 'Baisoya', 'Pawan  Baisoya', 'Senior Facility Technologist', 'pawank@iisc.ac.in', '8810552217', 'Contract', '10-05-2022', '10-05-2022', '1-5-2023', '2b62460e0fa2376cfa3097823657407c236759f5ad49d7128483ad5ee0a9d40b0a0b2237d183f8c7fb3d981bfeb3278a5da0d458824f07af86c863f01fe82fdd', 'Bengalore', 'Bengalore', 'Karnataka', '560010', '2,3', '1652175058user2.png', NULL, 1, '2022-05-10 09:30:58', '2022-05-10 15:19:38');
 
 -- --------------------------------------------------------
 
@@ -638,13 +635,6 @@ CREATE TABLE `vendors` (
   `created_date` timestamp NULL DEFAULT current_timestamp(),
   `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `vendors`
---
-
-INSERT INTO `vendors` (`vendor_id`, `vendor_code`, `lead_id`, `name`, `description`, `email`, `phone`, `gst`, `address`, `city`, `state`, `pincode`, `vendor_logo`, `created_by`, `status`, `created_date`, `modified_date`) VALUES
-(1, 'ISTEMC00005', '2', 'Karthick Ramesh', 'Enter User Descriptio', 'karthick@gmail.co', '9047837701', 'GST123', 'Enter your Addres', 'Bangalor', 'Karnatak', '56001', '1651142365job.jpg', '4', 1, '2022-04-28 10:25:49', '2022-04-28 11:10:48');
 
 --
 -- Indexes for dumped tables
@@ -742,6 +732,12 @@ ALTER TABLE `task`
   ADD PRIMARY KEY (`task_id`);
 
 --
+-- Indexes for table `task_comments`
+--
+ALTER TABLE `task_comments`
+  ADD PRIMARY KEY (`task_comment_id`);
+
+--
 -- Indexes for table `task_todo`
 --
 ALTER TABLE `task_todo`
@@ -773,13 +769,13 @@ ALTER TABLE `vendors`
 -- AUTO_INCREMENT for table `accesspoint`
 --
 ALTER TABLE `accesspoint`
-  MODIFY `accesspoint_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `accesspoint_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -791,19 +787,19 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `division`
 --
 ALTER TABLE `division`
-  MODIFY `division_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `division_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `istem_user_roles`
 --
 ALTER TABLE `istem_user_roles`
-  MODIFY `role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `leads`
@@ -827,7 +823,7 @@ ALTER TABLE `modules`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `project`
@@ -845,37 +841,43 @@ ALTER TABLE `project_modules`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `task_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `task_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `task_comments`
+--
+ALTER TABLE `task_comments`
+  MODIFY `task_comment_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `task_todo`
 --
 ALTER TABLE `task_todo`
-  MODIFY `task_todo_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `task_todo_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `todo`
 --
 ALTER TABLE `todo`
-  MODIFY `todo_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `todo_id` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `vendor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `vendor_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
